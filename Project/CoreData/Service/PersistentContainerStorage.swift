@@ -23,7 +23,6 @@ enum EntityType {
 }
 
 enum PersistantContainerStorage {
-    
    static let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Project")
         container.loadPersistentStores { _, error in

@@ -69,6 +69,7 @@
 		4E25A6CC2C4A363400066DFD /* ArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25A6CB2C4A363400066DFD /* ArrayDataSource.swift */; };
 		4E25A6CE2C4A3B6300066DFD /* FavouriteViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25A6CD2C4A3B6300066DFD /* FavouriteViewData.swift */; };
 		4E4D6C842C6379A800F47B5F /* PersistentContainerStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6C832C6379A800F47B5F /* PersistentContainerStorage.swift */; };
+		4E4D6C862C64B81100F47B5F /* LikeButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6C852C64B81100F47B5F /* LikeButtonManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,7 @@
 		4E25A6CB2C4A363400066DFD /* ArrayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayDataSource.swift; sourceTree = "<group>"; };
 		4E25A6CD2C4A3B6300066DFD /* FavouriteViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewData.swift; sourceTree = "<group>"; };
 		4E4D6C832C6379A800F47B5F /* PersistentContainerStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainerStorage.swift; sourceTree = "<group>"; };
+		4E4D6C852C64B81100F47B5F /* LikeButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +300,7 @@
 				4E25A6792C3C33F000066DFD /* BigHeaderButton.swift */,
 				4E25A67B2C3C33F000066DFD /* BuyButton.swift */,
 				4E25A67A2C3C33F000066DFD /* LikeButton.swift */,
+				4E4D6C852C64B81100F47B5F /* LikeButtonManager.swift */,
 			);
 			path = CustomUIElements;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				4E25A66B2C3C33DE00066DFD /* Inspiration.swift in Sources */,
 				4E25A67E2C3C33F000066DFD /* BuyButton.swift in Sources */,
 				4E25A6BF2C494D9A00066DFD /* CoreDataService.swift in Sources */,
+				4E4D6C862C64B81100F47B5F /* LikeButtonManager.swift in Sources */,
 				4E25A6742C3C33E900066DFD /* HayEndpoints.swift in Sources */,
 				4E25A6772C3C33E900066DFD /* RequestProcessorError.swift in Sources */,
 				4E25A6B72C494B7900066DFD /* FavouriteProduct+CoreDataProperties.swift in Sources */,

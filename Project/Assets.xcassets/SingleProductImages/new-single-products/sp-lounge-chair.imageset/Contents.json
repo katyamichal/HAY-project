@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "sp-lounge-chair.jpeg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

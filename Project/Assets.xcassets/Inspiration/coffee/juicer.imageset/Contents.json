@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "juicer.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

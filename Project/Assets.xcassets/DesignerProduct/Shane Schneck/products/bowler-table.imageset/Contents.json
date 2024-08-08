@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "bowler-table.jpeg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

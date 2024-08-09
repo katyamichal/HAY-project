@@ -14,11 +14,9 @@ protocol IFavouriteCoordinator: AnyObject {
 final class FavouriteCoordinator: Coordinator, IFavouriteCoordinator {
     var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator] = []
-    private let dataService: any ICoreDataService
     private let navigationController: UINavigationController
     
-    init(dataService: any ICoreDataService, navigationController: UINavigationController) {
-        self.dataService = dataService
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
@@ -32,7 +30,7 @@ final class FavouriteCoordinator: Coordinator, IFavouriteCoordinator {
 
 private extension FavouriteCoordinator {
     func showModule() {
-        let viewModel = FavouriteProductsViewModel(coordinator: self, dataService: dataService)
+        let viewModel = FavouriteProductsViewModel(coordinator: self)
         let viewController = FavouriteProductsViewController(viewModel: viewModel)
        // viewModel.subscribe
         navigationController.pushViewController(viewController, animated: true)

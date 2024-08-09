@@ -8,17 +8,19 @@
 import UIKit
 
 protocol IFavouriteProductsView: AnyObject {
-    
+    func updateView()
 }
 
 final class FavouriteProductsViewController: UIViewController {
     private let viewModel: IFavouriteProductsViewModel
     private var favouriteView: FavouriteProductsView { return self.view as! FavouriteProductsView }
+    var id: UUID
     
     // MARK: - Inits
     
     init(viewModel: IFavouriteProductsViewModel) {
         self.viewModel = viewModel
+        id = UUID()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,7 +41,9 @@ final class FavouriteProductsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionViewDelegate()
         viewModel.setupView(with: self)
+        viewModel.suubscribe(observer: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +52,9 @@ final class FavouriteProductsViewController: UIViewController {
 }
 
 extension FavouriteProductsViewController: IFavouriteProductsView {
-    
+    func updateView() {
+        favouriteView.updateCollectionView()
+    }
 }
 
 // MARK: - UICollectionViewDataSource and Delegate
@@ -56,14 +62,15 @@ extension FavouriteProductsViewController: IFavouriteProductsView {
 extension FavouriteProductsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        0
-       // return viewModel
+        return viewModel.count
     }
  
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.cellIdentifier, for: indexPath) as? BasicCollectionViewCell else {
            return UICollectionViewCell()
         }
+        viewModel.setCurrentProduct(at: indexPath.row)
+        cell.update(productName: viewModel.productName, price: viewModel.price, image: viewModel.image)
         return cell
     }
 }
@@ -72,5 +79,18 @@ extension FavouriteProductsViewController: UICollectionViewDataSource {
 extension FavouriteProductsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+    }
+}
+
+extension FavouriteProductsViewController: IObserver {
+    func update<T>(with value: T) {
+        
+    }
+}
+
+private extension FavouriteProductsViewController {
+    func setupCollectionViewDelegate() {
+        favouriteView.setupCollectionViewdelegate(self)
+        favouriteView.setupCollectionViewDataSource(self)
     }
 }

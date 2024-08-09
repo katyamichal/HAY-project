@@ -31,7 +31,9 @@ extension CoreDataService: ICoreDataService {
         newFavouriteProduct.productDescription = product.description
         newFavouriteProduct.price = Int64(product.price)
         newFavouriteProduct.image = product.image
-      // newFavouriteProduct.imageCollection =
+        if let data = try? JSONSerialization.data(withJSONObject: product.imageCollection) {
+            newFavouriteProduct.imageCollection = data
+        }
         newFavouriteProduct.material = product.material
         newFavouriteProduct.size = product.size
         newFavouriteProduct.colour = product.colour

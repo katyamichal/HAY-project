@@ -61,15 +61,25 @@ final class FavouriteProductsView: UIView {
         return layout
     }
     
-    // MARK: - Private
-
+    
     private func updateView() {
         headerLabel.text = "favourite".uppercased()
         collectionView.isHidden = false
         collectionView.reloadData()
     }
+    
+    func setupCollectionViewdelegate(_ delegate: UICollectionViewDelegate) {
+        collectionView.delegate = delegate
+    }
+    
+    func setupCollectionViewDataSource(_ dataSource: UICollectionViewDataSource) {
+        collectionView.dataSource = dataSource
+    }
+    
+    func updateCollectionView() {
+        updateView()
+    }
 }
-
 
 // MARK: - Setups
 
@@ -83,7 +93,6 @@ private extension FavouriteProductsView {
     func setupViews() {
         addSubview(collectionView)
         addSubview(headerLabel)
-        
     }
     
     func setupConstraints() {

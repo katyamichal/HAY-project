@@ -59,7 +59,7 @@ extension CategoryViewModel: ICategoryViewModel {
 
     var isFavourite: Bool {
         guard let currentProduct else { return false }
-        if let isFavourite = likeManager.favoriteProducts.value?.products.first(where: { $0.id == currentProduct.id }) {
+        if likeManager.favoriteProducts.value?.products.first(where: { $0.id == currentProduct.id }) != nil {
           //  print(isFavourite)
             return true
         }
@@ -77,7 +77,11 @@ extension CategoryViewModel: ICategoryViewModel {
     }
     
     var image: UIImage {
-        guard let currentProduct, let image = UIImage(named: currentProduct.image) else { return UIImage() }
+        guard
+            let currentProduct,
+            let image = UIImage(named: currentProduct.image) else {
+            return UIImage()
+        }
         return image
     }
     

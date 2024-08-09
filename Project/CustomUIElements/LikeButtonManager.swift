@@ -10,10 +10,6 @@ struct Products {
     var products: [Product]
 }
 
-protocol ILikeButton: AnyObject {
-    func changeStatus(with id: Int)
-}
-
 final class LikeButtonManager {
     var favoriteProducts = Observable(Products(products: []))
     static let shared = LikeButtonManager()

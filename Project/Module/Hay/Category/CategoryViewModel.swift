@@ -14,6 +14,8 @@ protocol ICategoryViewModel: AnyObject {
     var image: UIImage { get }
     var isFavourite: Bool { get }
     var productId: Int { get }
+    var likeButtonIsUpdating: Bool { get }
+    
     func setupView(with view: ICategoryTableCell)
     func showDetail(with index: Int)
     func setCurrentProduct(at index: Int)
@@ -27,6 +29,8 @@ final class CategoryViewModel {
     private let likeManager = LikeButtonManager.shared
     private var currentProduct: Product?
     
+    private var isUpdating: Bool = false
+    
     init(coordinator: Coordinator, viewData: CategoryViewData) {
         self.coordinator = coordinator
         self.viewData = viewData
@@ -34,6 +38,10 @@ final class CategoryViewModel {
 }
 
 extension CategoryViewModel: ICategoryViewModel {
+    var likeButtonIsUpdating: Bool {
+        isUpdating
+    }
+    
     func subscribe(observer: IObserver) {
           likeManager.favoriteProducts.subscribe(observer: observer)
     }
@@ -93,8 +101,12 @@ extension CategoryViewModel: ICategoryViewModel {
 
 extension CategoryViewModel: ILikeButton {
     func changeStatus(with id: Int) {
+        defer {
+            isUpdating = false
+        }
         guard let product = viewData?.category.products.first(where: { $0.id == id }) else { return }
         print(product)
+        isUpdating = true
         likeManager.changeProductStatus(with: product)
     }
 }

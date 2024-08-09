@@ -140,9 +140,7 @@ extension HayViewController: IObserver {
                 self?.update()
                 self?.updateHeader()
             }
-        } else if value is Products {
-         //   update()
-   
+      
         } else {
             update(errorMessage: value as! String)
         }

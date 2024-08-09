@@ -5,8 +5,11 @@
 //  Created by Catarina Polakowsky on 08.07.2024.
 //
 
-
 import UIKit
+
+protocol ILikeButton: AnyObject {
+    func changeStatus(with id: Int)
+}
 
 class LikeButton: UIButton {
     weak var delegate: ILikeButton?
@@ -25,6 +28,7 @@ class LikeButton: UIButton {
     deinit {
         print("Like buttn deinit")
     }
+    
     // MARK: -  Setup Methods
     
     private func setupButton() {

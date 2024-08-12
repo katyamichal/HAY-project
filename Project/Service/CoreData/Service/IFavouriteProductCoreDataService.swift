@@ -10,11 +10,11 @@ import Foundation
 protocol ICoreDataService: AnyObject {
     associatedtype T: Entity
     func add(_ product: T)
-    func fetchProducts(completion: @escaping (Result<[T], Error>) -> Void)
+    func fetchProducts(productType: EntityType, completion: @escaping (Result<[T], Error>) -> Void)
     func fetchProduct(with id: Int) -> T?
     func deleteProduct(with id: Int)
 }
 
 protocol Entity {
-    var name: EntityType { get }
+    var typeName: EntityType { get }
 }

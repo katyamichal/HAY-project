@@ -13,7 +13,8 @@ protocol IFavouriteProductsViewModel: AnyObject {
     var price: String { get }
     var image: UIImage { get }
     func setupView(with view: IFavouriteProductsView)
-    func suubscribe(observer: IObserver)
+    func getData()
+    func subscribe(observer: IObserver)
     func setCurrentProduct(at index: Int)
 }
 
@@ -28,7 +29,6 @@ final class FavouriteProductsViewModel {
 
     init(coordinator: IFavouriteCoordinator) {
         self.coordinator = coordinator
-
     }
 }
 
@@ -62,20 +62,18 @@ extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
     
     func setupView(with view: IFavouriteProductsView) {
         self.view = view
-        getData()
     }
     
-    func suubscribe(observer: IObserver) {
-        likeManager.favoriteProducts.subscribe(observer: observer)
+    func subscribe(observer: IObserver) {
+        likeManager.favouriteProducts.subscribe(observer: observer)
     }
-}
-
-private extension FavouriteProductsViewModel {
+    
     func getData() {
         defer {
             view?.updateView()
         }
-        guard let data = likeManager.favoriteProducts.value else { return }
+        guard let data = likeManager.favouriteProducts.value else { return }
         viewData = data.products.map({FavouriteViewData(name: $0.productName, price: $0.price, image: $0.image)})
     }
 }
+

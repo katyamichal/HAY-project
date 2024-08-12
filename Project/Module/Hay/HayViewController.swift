@@ -140,7 +140,6 @@ extension HayViewController: IObserver {
                 self?.update()
                 self?.updateHeader()
             }
-      
         } else {
             update(errorMessage: value as! String)
         }

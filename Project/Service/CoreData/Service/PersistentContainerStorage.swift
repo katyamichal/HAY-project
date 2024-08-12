@@ -8,7 +8,7 @@
 import CoreData
 
 
-enum EntityType {
+enum EntityType: Codable {
    case favourite
    case backet
    

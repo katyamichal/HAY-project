@@ -22,6 +22,7 @@ extension API {
         guard let url = urlComponents.url else {
             throw RequestProcessorError.wrongURL(urlComponents)
         }
+        print(url)
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         

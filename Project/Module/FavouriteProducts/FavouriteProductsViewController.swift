@@ -43,7 +43,8 @@ final class FavouriteProductsViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionViewDelegate()
         viewModel.setupView(with: self)
-        viewModel.suubscribe(observer: self)
+        viewModel.getData()
+        viewModel.subscribe(observer: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,7 +85,9 @@ extension FavouriteProductsViewController: UICollectionViewDelegate {
 
 extension FavouriteProductsViewController: IObserver {
     func update<T>(with value: T) {
-        
+        if value is Products {
+            viewModel.getData()
+        }
     }
 }
 

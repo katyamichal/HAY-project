@@ -16,17 +16,17 @@ final class CoreDataService {
 }
 
 extension CoreDataService: ICoreDataService {
-    typealias T = Product
+    typealias T = ProductCDO
     
     // MARK: - Add
-
-    func add(_ product: Product) {
+    
+    func add(_ product: ProductCDO) {
         defer {
             PersistantContainerStorage.saveContext()
         }
         let newFavouriteProduct = FavouriteProduct(context: PersistantContainerStorage.persistentContainer.viewContext)
         
-        newFavouriteProduct.id = Int32(product.id)
+        newFavouriteProduct.identifier = Int32(product.id)
         newFavouriteProduct.name = product.productName
         newFavouriteProduct.productDescription = product.description
         newFavouriteProduct.price = Int64(product.price)
@@ -41,23 +41,23 @@ extension CoreDataService: ICoreDataService {
     }
     
     // MARK: - Fetching
-
-    func fetchProducts(completion: (Result<[Product], Error>) -> Void) {
+    
+    func fetchProducts(productType: EntityType, completion: @escaping (Result<[ProductCDO], Error>) -> Void) {
         let context = PersistantContainerStorage.persistentContainer.viewContext
         let request = FavouriteProduct.fetchRequest()
         do {
             let favouriteProducts = try context.fetch(request)
             let products = favouriteProducts.map { favouriteProduct in
-                Product(id: Int(favouriteProduct.id),
-                        productName: favouriteProduct.name,
-                        description: favouriteProduct.productDescription,
-                        price: Int(favouriteProduct.price),
-                        image: favouriteProduct.image ?? "",
-                        imageCollection: [],
-                        material: favouriteProduct.material,
-                        size: favouriteProduct.size,
-                        colour: favouriteProduct.colour)
-                
+                ProductCDO(id: Int(favouriteProduct.identifier),
+                           productName: favouriteProduct.name,
+                           description: favouriteProduct.productDescription,
+                           price: Int(favouriteProduct.price),
+                           image: favouriteProduct.image,
+                           imageCollection: [],
+                           material: favouriteProduct.material,
+                           size: favouriteProduct.size,
+                           colour: favouriteProduct.colour,
+                           typeName: productType)
             }
             completion(.success(products))
         } catch {
@@ -66,11 +66,23 @@ extension CoreDataService: ICoreDataService {
         }
     }
     
-    func fetchProduct(with id: Int) -> Product? {
+    func fetchProduct(with id: Int) -> ProductCDO? {
         nil
     }
     
     func deleteProduct(with id: Int) {
+        defer { PersistantContainerStorage.saveContext() }
+        let context = PersistantContainerStorage.persistentContainer.viewContext
+        let request = FavouriteProduct.fetchRequest()
+        let idNumber = NSNumber(value: id)
+        let predicate = NSPredicate(format: "identifier == %@", idNumber)
+        request.predicate = predicate
         
+        do {
+            let products = try context.fetch(request)
+            products.forEach { context.delete($0) }
+        } catch let error as NSError {
+            print("Error to delete: \(error)")
+        }
     }
 }

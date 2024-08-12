@@ -43,7 +43,7 @@ extension CategoryViewModel: ICategoryViewModel {
     }
     
     func subscribe(observer: IObserver) {
-          likeManager.favoriteProducts.subscribe(observer: observer)
+          likeManager.favouriteProducts.subscribe(observer: observer)
     }
     
     var productId: Int {
@@ -59,7 +59,7 @@ extension CategoryViewModel: ICategoryViewModel {
 
     var isFavourite: Bool {
         guard let currentProduct else { return false }
-        if likeManager.favoriteProducts.value?.products.first(where: { $0.id == currentProduct.id }) != nil {
+        if likeManager.favouriteProducts.value?.products.first(where: { $0.id == currentProduct.id }) != nil {
           //  print(isFavourite)
             return true
         }
@@ -109,7 +109,7 @@ extension CategoryViewModel: ILikeButton {
             isUpdating = false
         }
         guard let product = viewData?.category.products.first(where: { $0.id == id }) else { return }
-        print(product)
+       // print(product)
         isUpdating = true
         likeManager.changeProductStatus(with: product)
     }

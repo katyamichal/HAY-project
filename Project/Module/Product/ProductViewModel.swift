@@ -15,7 +15,6 @@ protocol IProductViewModel: AnyObject {
     func setupView(with view: IProductView)
     func fetchData()
     func goBack()
-    func subscribe(observer: IObserver)
 }
 
 final class ProductViewModel {

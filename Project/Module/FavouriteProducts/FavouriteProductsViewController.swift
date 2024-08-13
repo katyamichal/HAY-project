@@ -44,7 +44,6 @@ final class FavouriteProductsViewController: UIViewController {
         setupCollectionViewDelegate()
         viewModel.setupView(with: self)
         viewModel.getData()
-        viewModel.subscribe(observer: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {

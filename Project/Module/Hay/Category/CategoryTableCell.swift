@@ -79,6 +79,11 @@ final class CategoryTableCell: UITableViewCell {
         viewModel?.setupView(with: self)
         viewModel?.subscribe(observer: self)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        viewModel?.finish()
+    }
 }
 
 // MARK: - Cell Protocol

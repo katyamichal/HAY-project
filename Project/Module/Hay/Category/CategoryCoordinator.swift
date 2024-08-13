@@ -29,7 +29,11 @@ final class CategoryCoordinator: Coordinator {
     }
     
     func finish() {
-        navigationController.popViewController(animated: true)
+        navigationController.popToRootViewController(animated: true)
+    }
+    
+    func leave() {
+        parentCoordinator?.finish()
     }
     
     func showDetail(with productId: Int) {

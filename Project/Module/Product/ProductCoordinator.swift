@@ -35,6 +35,7 @@ private extension ProductCoordinator {
     func showModule() {
         let viewModel = ProductViewModel(service: service, coordinator: self, categoryName: categoryName, productId: productId)
         let viewController = ProducViewController(viewModel: viewModel)
+        viewModel.subscribe(observer: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
 }

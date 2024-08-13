@@ -22,7 +22,11 @@ final class HayCoordinator: Coordinator {
        showModule()
     }
     
-    func finish() {}
+    func finish() {
+        let first = childCoordinators.first
+        childCoordinators.removeAll()
+        childCoordinators.append(first!)
+    }
     
     func showCategoryCoordinator(cell: UITableViewCell, viewData: Category) {
         let categoryCoordinator = CategoryCoordinator(service: networkService, cell: cell as! CategoryTableCell, viewData: CategoryViewData.init(category: viewData), navigationController: navigationController)

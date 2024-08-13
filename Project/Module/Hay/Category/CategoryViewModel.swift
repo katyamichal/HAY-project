@@ -20,6 +20,8 @@ protocol ICategoryViewModel: AnyObject {
     func showDetail(with index: Int)
     func setCurrentProduct(at index: Int)
     func subscribe(observer: IObserver)
+    
+    func finish()
 }
 
 final class CategoryViewModel {
@@ -38,6 +40,10 @@ final class CategoryViewModel {
 }
 
 extension CategoryViewModel: ICategoryViewModel {
+    func finish() {
+        (coordinator as? CategoryCoordinator)?.leave()
+    }
+    
     var likeButtonIsUpdating: Bool {
         isUpdating
     }
@@ -109,7 +115,6 @@ extension CategoryViewModel: ILikeButton {
             isUpdating = false
         }
         guard let product = viewData?.category.products.first(where: { $0.id == id }) else { return }
-       // print(product)
         isUpdating = true
         likeManager.changeProductStatus(with: product)
     }

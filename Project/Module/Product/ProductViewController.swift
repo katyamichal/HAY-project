@@ -51,7 +51,6 @@ final class ProducViewController: UIViewController {
         super.viewDidLoad()
         setupNavBarButton()
         viewModel.setupView(with: self)
-        viewModel.subscribe(observer: self)
         setupTabelView()
         setupActions()
     }
@@ -129,6 +128,10 @@ private extension ProducViewController {
     
     func setupNavBarButton() {
         navigationItem.title = "HAY"
+        navigationController?.navigationBar.barTintColor = .red
+        navigationController?.navigationBar.backgroundColor = .yellow
+        
+        navigationController?.navigationBar.tintColor = .black
         let config = UIImage.SymbolConfiguration(pointSize: 18, weight: .light)
         let image = UIImage(systemName: "chevron.left", withConfiguration: config)?.withTintColor(.black)
         let leftBarButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(backToMainView))

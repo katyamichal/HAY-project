@@ -14,7 +14,7 @@ protocol IFavouriteProductsViewModel: AnyObject {
     var image: UIImage { get }
     func setupView(with view: IFavouriteProductsView)
     func getData()
-    func subscribe(observer: IObserver)
+  //  func subscribe(observer: IObserver)
     func setCurrentProduct(at index: Int)
 }
 

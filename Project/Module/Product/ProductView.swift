@@ -38,6 +38,7 @@ final class ProductView: UIView {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        tableView.isHidden = true
         tableView.register(ProductGaleryCell.self)
         tableView.register(ProductInfoCell.self)
         return tableView
@@ -46,8 +47,19 @@ final class ProductView: UIView {
     private lazy var actionButtonView: ProductActionsView = {
         let view = ProductActionsView()
         view.backgroundColor = .clear
+        view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .large
+        activityIndicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        activityIndicator.center = self.center
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
     }()
     
     // MARK: - Public methods
@@ -65,11 +77,14 @@ final class ProductView: UIView {
     }
     
     func updateView() {
+        tableView.isHidden = false
+        actionButtonView.isHidden = false
+        loadingIndicator.stopAnimating()
         tableView.reloadData()
     }
     
     func updateView(with error: String) {
-        tableView.isHidden = true
+        
     }
 }
 
@@ -83,6 +98,7 @@ private extension ProductView {
     }
     
     func setupViews() {
+        addSubview(loadingIndicator)
         addSubview(tableView)
         addSubview(actionButtonView)
     }

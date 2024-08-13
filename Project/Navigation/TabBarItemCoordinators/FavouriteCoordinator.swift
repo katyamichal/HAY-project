@@ -32,7 +32,7 @@ private extension FavouriteCoordinator {
     func showModule() {
         let viewModel = FavouriteProductsViewModel(coordinator: self)
         let viewController = FavouriteProductsViewController(viewModel: viewModel)
-       // viewModel.subscribe
+        viewModel.subscribe(observer: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
 }

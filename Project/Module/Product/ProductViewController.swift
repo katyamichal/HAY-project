@@ -17,6 +17,7 @@ private enum Sections: Int, CaseIterable {
 
 protocol IProductView: AnyObject {
     func getData()
+    func updateView(with status: Bool, and productId: Int)
 }
 
 final class ProducViewController: UIViewController {
@@ -60,6 +61,10 @@ final class ProducViewController: UIViewController {
 }
 
 extension ProducViewController: IProductView {
+    func updateView(with status: Bool, and productId: Int) {
+        productView.updateActivityView(isFavouriteStatus: status, productId: productId)
+    }
+    
     func getData() {
         viewModel.fetchData()
     }
@@ -105,7 +110,8 @@ extension ProducViewController: IObserver {
     func update<T>(with value: T) {
         if value is ProductViewData {
             DispatchQueue.main.async { [weak self] in
-                self?.productView.updateView()
+                guard let strongSelf = self else { return }
+                strongSelf.productView.updateView(isFavouriteStatus: strongSelf.viewModel.isFavourite, productId: strongSelf.viewModel.productId)
             }
           
         } else {
@@ -128,9 +134,6 @@ private extension ProducViewController {
     
     func setupNavBarButton() {
         navigationItem.title = "HAY"
-        navigationController?.navigationBar.barTintColor = .red
-        navigationController?.navigationBar.backgroundColor = .yellow
-        
         navigationController?.navigationBar.tintColor = .black
         let config = UIImage.SymbolConfiguration(pointSize: 18, weight: .light)
         let image = UIImage(systemName: "chevron.left", withConfiguration: config)?.withTintColor(.black)
@@ -144,19 +147,17 @@ private extension ProducViewController {
     }
     
     func setupActions() {
-        productView.setupLikeButtonAction(self, action: #selector(likeButtonDidTapped))
+        guard let delegate = viewModel as? ILikeButton else {
+           return
+        }
+        productView.setupLikeButtonDelegate(delegate)
     }
     
     @objc
     func backToMainView() {
         viewModel.goBack()
     }
-    
-    @objc
-    func likeButtonDidTapped() {
-        //viewModel.changeFavourite()
-    }
-    
+        
     @objc
     func shareProduct() {
         let productName = viewModel.productName

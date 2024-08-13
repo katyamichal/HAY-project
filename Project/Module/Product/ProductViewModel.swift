@@ -12,6 +12,9 @@ protocol IProductViewModel: AnyObject {
     var description: String { get }
     var images: [UIImage] { get }
     var productInfo: [[String: String]] { get }
+    var isFavourite: Bool { get }
+    var productId: Int { get }
+    
     func setupView(with view: IProductView)
     func fetchData()
     func goBack()
@@ -21,7 +24,7 @@ final class ProductViewModel {
     private weak var coordinator: Coordinator?
     private weak var view: IProductView?
     private let service: HayServiceable
-    private let productId: Int
+    internal let productId: Int
     private let categoryName: String
     private var viewData: Observable<ProductViewData>
     private var loadingError = Observable<String>()
@@ -69,6 +72,14 @@ final class ProductViewModel {
 }
 
 extension ProductViewModel: IProductViewModel {
+    var isFavourite: Bool {
+        if likeManager.favouriteProducts.value?.products.first(where: { $0.id == viewData.value?.id }) != nil {
+          //  print(isFavourite)
+            return true
+        }
+        return false
+    }
+    
     var images: [UIImage] {
         guard let product = viewData.value else { return [] }
         return  (product.imageCollection + [product.image]).map { imageName in
@@ -97,6 +108,14 @@ extension ProductViewModel: IProductViewModel {
     
     func goBack() {
         (coordinator as? ProductCoordinator)?.finish()
+    }
+}
+
+extension ProductViewModel: ILikeButton {
+    func changeStatus(with id: Int) {
+        defer { view?.updateView(with: isFavourite, and: productId) }
+        guard let product = viewData.value else { return }
+        likeManager.changeProductStatus(with: product)
     }
 }
 

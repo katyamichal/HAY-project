@@ -18,9 +18,16 @@ struct ProductViewData {
     let colour: String
     let size: String
     let price: Int
+//    var isFavourite: Bool = false
+//    var inBasket: Bool = false
+   // var typeName: EntityType
 }
 
-extension ProductViewData {
+extension ProductViewData: IProductCDO {
+//    var type: EntityType {
+//        .
+//    }
+    
     init(product: Product) {
         self.id = product.id
         self.productName = product.productName

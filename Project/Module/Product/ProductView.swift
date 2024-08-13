@@ -72,19 +72,24 @@ final class ProductView: UIView {
         tableView.delegate = delegate
     }
     
-    func setupLikeButtonAction(_ target: Any, action: Selector) {
-        actionButtonView.setupLikeButtonAction(target, action: action)
+    func setupLikeButtonDelegate(_ delegate: ILikeButton) {
+        actionButtonView.setupLikeButtonDelegate(delegate)
     }
     
-    func updateView() {
+    func updateView(isFavouriteStatus: Bool, productId: Int) {
         tableView.isHidden = false
         actionButtonView.isHidden = false
+        updateActivityView(isFavouriteStatus: isFavouriteStatus, productId: productId)
         loadingIndicator.stopAnimating()
         tableView.reloadData()
     }
     
     func updateView(with error: String) {
         
+    }
+    
+    func updateActivityView(isFavouriteStatus: Bool, productId: Int) {
+        actionButtonView.updateLikeButton(with: isFavouriteStatus, productId: productId)
     }
 }
 

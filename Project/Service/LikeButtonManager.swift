@@ -22,7 +22,7 @@ final class LikeButtonManager {
         print("LikeManager Init")
     }
     
-    func changeProductStatus(with product: Product) {
+    func changeProductStatus(with product: IProductCDO) {
         
         let product = ProductCDO(with: product, type: .favourite)
         

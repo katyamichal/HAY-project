@@ -51,10 +51,13 @@ final class ProductActionsView: UIView {
     
     // MARK: - Public
     
-    func update(product: Product) {}
+    func updateLikeButton(with status: Bool, productId: Int) {
+        likeButton.isSelected = status
+        likeButton.productId = productId
+    }
     
-    func setupLikeButtonAction(_ target: Any, action: Selector, for event: UIControl.Event = .touchDown) {
-        likeButton.addTarget(target, action: action, for: event)
+    func setupLikeButtonDelegate(_ delegate: ILikeButton) {
+        likeButton.delegate = delegate
     }
 }
 

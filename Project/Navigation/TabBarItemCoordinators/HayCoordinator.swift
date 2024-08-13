@@ -29,7 +29,7 @@ final class HayCoordinator: Coordinator {
     }
     
     func showCategoryCoordinator(cell: UITableViewCell, viewData: Category) {
-        let categoryCoordinator = CategoryCoordinator(service: networkService, cell: cell as! CategoryTableCell, viewData: CategoryViewData.init(category: viewData), navigationController: navigationController)
+        let categoryCoordinator = CategoryCoordinator(service: networkService, cell: cell as! CategoryTableCell, viewData: CategoryViewData.init(with: viewData), navigationController: navigationController)
         categoryCoordinator.parentCoordinator = self
         childCoordinators.append(categoryCoordinator)
         categoryCoordinator.start()

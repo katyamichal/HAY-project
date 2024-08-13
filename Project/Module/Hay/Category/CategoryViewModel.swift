@@ -29,7 +29,7 @@ final class CategoryViewModel {
     private weak var view: ICategoryTableCell?
     private var viewData: CategoryViewData?
     private let likeManager = LikeButtonManager.shared
-    private var currentProduct: Product?
+    private var currentProduct: IProductCDO?
     
     private var isUpdating: Bool = false
     
@@ -58,7 +58,7 @@ extension CategoryViewModel: ICategoryViewModel {
     }
     
     func setCurrentProduct(at index: Int) {
-        currentProduct = viewData?.category.products[index]
+        currentProduct = viewData?.products[index]
     }
     
     // MARK: - Computed properties for a single product
@@ -93,28 +93,26 @@ extension CategoryViewModel: ICategoryViewModel {
     
     var numberOfItemInSection: Int {
         guard let viewData else { return 0 }
-        return viewData.category.products.count
+        return viewData.products.count
     }
     
     func setupView(with view: ICategoryTableCell) {
         self.view = view
         guard let viewData else { return }
-        view.update(with: viewData.category.categoryName.uppercased())
+        view.update(with: viewData.categoryName.uppercased())
         view.updateData()
     }
     
     func showDetail(with index: Int) {
-        guard let product = viewData?.category.products[index] else {return}
+        guard let product = viewData?.products[index] else {return}
         (coordinator as? CategoryCoordinator)?.showDetail(with: product.id)
     }
 }
 
 extension CategoryViewModel: ILikeButton {
     func changeStatus(with id: Int) {
-        defer {
-            isUpdating = false
-        }
-        guard let product = viewData?.category.products.first(where: { $0.id == id }) else { return }
+        defer { isUpdating = false }
+        guard let product = viewData?.products.first(where: { $0.id == id }) else { return }
         isUpdating = true
         likeManager.changeProductStatus(with: product)
     }

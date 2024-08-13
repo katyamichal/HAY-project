@@ -8,5 +8,13 @@
 import Foundation
 
 struct CategoryViewData {
-    let category: Category
+    let categoryName: String
+    let products: [ProductCDO]
+}
+
+extension CategoryViewData {
+    init(with category: Category) {
+        self.categoryName = category.categoryName
+        self.products = category.products.map({ProductCDO(with: $0, type: .favourite)})
+    }
 }

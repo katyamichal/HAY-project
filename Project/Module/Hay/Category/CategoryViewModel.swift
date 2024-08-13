@@ -99,7 +99,7 @@ extension CategoryViewModel: ICategoryViewModel {
     
     func showDetail(with index: Int) {
         guard let product = viewData?.category.products[index] else {return}
-        (coordinator as? CategoryCoordinator)?.showDetail(with: product)
+        (coordinator as? CategoryCoordinator)?.showDetail(with: product.id)
     }
 }
 

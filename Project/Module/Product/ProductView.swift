@@ -63,6 +63,14 @@ final class ProductView: UIView {
     func setupLikeButtonAction(_ target: Any, action: Selector) {
         actionButtonView.setupLikeButtonAction(target, action: action)
     }
+    
+    func updateView() {
+        tableView.reloadData()
+    }
+    
+    func updateView(with error: String) {
+        tableView.isHidden = true
+    }
 }
 
 // MARK: - Setups

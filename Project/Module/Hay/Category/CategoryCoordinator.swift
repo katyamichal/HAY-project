@@ -15,8 +15,10 @@ final class CategoryCoordinator: Coordinator {
     private let viewData: CategoryViewData
     private let cell: CategoryTableCell
     private let navigationController: UINavigationController
+    private let service: HayServiceable
     
-    init(cell: CategoryTableCell, viewData: CategoryViewData, navigationController: UINavigationController) {
+    init(service: HayServiceable, cell: CategoryTableCell, viewData: CategoryViewData, navigationController: UINavigationController) {
+        self.service = service
         self.cell = cell
         self.viewData = viewData
         self.navigationController = navigationController
@@ -30,8 +32,8 @@ final class CategoryCoordinator: Coordinator {
         navigationController.popViewController(animated: true)
     }
     
-    func showDetail(with product: Product) {
-        let productCoordinator = ProductCoordinator(product: product, navigationController: navigationController)
+    func showDetail(with productId: Int) {
+        let productCoordinator = ProductCoordinator(service: service, categoryName: viewData.category.categoryName, productId: productId, navigationController: navigationController)
         productCoordinator.parentCoordinator = self
         childCoordinators.append(productCoordinator)
         productCoordinator.start()

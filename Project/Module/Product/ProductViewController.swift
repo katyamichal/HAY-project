@@ -12,23 +12,23 @@ import UIKit
 
 private enum Sections: Int, CaseIterable {
     case productImages = 1
-    case productInfo = 4
+    case productInfo
 }
 
 protocol IProductView: AnyObject {
-    
+    func getData()
 }
 
 final class ProducViewController: UIViewController {
     
     private let viewModel: IProductViewModel
     private var productView: ProductView { return self.view as! ProductView }
-    
-    
+    var id: UUID
     // MARK: - Init
     
     init(viewModel: IProductViewModel) {
         self.viewModel = viewModel
+        self.id = UUID()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -51,6 +51,7 @@ final class ProducViewController: UIViewController {
         super.viewDidLoad()
         setupNavBarButton()
         viewModel.setupView(with: self)
+        viewModel.subscribe(observer: self)
         setupTabelView()
         setupActions()
     }
@@ -59,7 +60,11 @@ final class ProducViewController: UIViewController {
     }
 }
 
-extension ProducViewController: IProductView {}
+extension ProducViewController: IProductView {
+    func getData() {
+        viewModel.fetchData()
+    }
+}
 
 // MARK: - TableView Data Source
 
@@ -74,7 +79,7 @@ extension ProducViewController: UITableViewDataSource {
         case .productImages:
             return section.rawValue
         case .productInfo:
-            return section.rawValue
+            return viewModel.productInfo.count
         }
     }
     
@@ -93,6 +98,21 @@ extension ProducViewController: UITableViewDataSource {
                 cell.update(infoType: key, infoDesscription: value)
             }
             return cell
+        }
+    }
+}
+
+extension ProducViewController: IObserver {
+    func update<T>(with value: T) {
+        if value is ProductViewData {
+            DispatchQueue.main.async { [weak self] in
+                self?.productView.updateView()
+            }
+          
+        } else {
+            DispatchQueue.main.async { [weak self] in
+                self?.productView.updateView(with: "Error")
+            }
         }
     }
 }
@@ -131,7 +151,7 @@ private extension ProducViewController {
     
     @objc
     func likeButtonDidTapped() {
-        viewModel.changeFavourite()
+        //viewModel.changeFavourite()
     }
     
     @objc

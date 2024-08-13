@@ -60,7 +60,6 @@ final class HayViewModel {
     func subscribe(observer: IObserver) {
         viewData.subscribe(observer: observer)
         loadingError.subscribe(observer: observer)
-      //  likeManager.favoriteProducts.subscribe(observer: observer)
     }
 
     func createCategory(with cell: UITableViewCell, at index: Int) {

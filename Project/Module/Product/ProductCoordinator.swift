@@ -11,10 +11,14 @@ final class ProductCoordinator: Coordinator {
     var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator] = []
     private let navigationController: UINavigationController
-    private let product: Product
+    private let productId: Int
+    private let categoryName: String
+    private let service: HayServiceable
     
-    init(product: Product, navigationController: UINavigationController) {
-        self.product = product
+    init(service: HayServiceable, categoryName: String, productId: Int, navigationController: UINavigationController) {
+        self.service = service
+        self.categoryName = categoryName
+        self.productId = productId
         self.navigationController = navigationController
     }
     
@@ -29,7 +33,7 @@ final class ProductCoordinator: Coordinator {
 
 private extension ProductCoordinator {
     func showModule() {
-        let viewModel = ProductViewModel(coordinator: self, product: product)
+        let viewModel = ProductViewModel(service: service, coordinator: self, categoryName: categoryName, productId: productId)
         let viewController = ProducViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }

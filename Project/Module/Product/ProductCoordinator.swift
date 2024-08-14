@@ -27,7 +27,7 @@ final class ProductCoordinator: Coordinator {
     }
     
     func finish() {
-        parentCoordinator?.finish()
+        navigationController.popViewController(animated: true)
     }
 }
 

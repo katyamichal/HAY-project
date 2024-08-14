@@ -18,6 +18,7 @@ protocol IProductViewModel: AnyObject {
     func setupView(with view: IProductView)
     func fetchData()
     func goBack()
+    func unsubscribe(observer: IObserver) 
 }
 
 final class ProductViewModel {
@@ -69,12 +70,16 @@ final class ProductViewModel {
         viewData.subscribe(observer: observer)
         loadingError.subscribe(observer: observer)
     }
+    
+    func unsubscribe(observer: IObserver) {
+        viewData.unsubscribe(observer: observer)
+        loadingError.unsubscribe(observer: observer)
+    }
 }
 
 extension ProductViewModel: IProductViewModel {
     var isFavourite: Bool {
         if likeManager.favouriteProducts.value?.products.first(where: { $0.id == viewData.value?.id }) != nil {
-          //  print(isFavourite)
             return true
         }
         return false
@@ -107,6 +112,7 @@ extension ProductViewModel: IProductViewModel {
     }
     
     func goBack() {
+        view?.unsubscribe()
         (coordinator as? ProductCoordinator)?.finish()
     }
 }

@@ -16,6 +16,7 @@ private enum Sections: Int, CaseIterable {
 }
 
 protocol IProductView: AnyObject {
+    func unsubscribe()
     func getData()
     func updateView(with status: Bool, and productId: Int)
 }
@@ -61,6 +62,10 @@ final class ProducViewController: UIViewController {
 }
 
 extension ProducViewController: IProductView {
+    func unsubscribe() {
+        viewModel.unsubscribe(observer: self)
+    }
+    
     func updateView(with status: Bool, and productId: Int) {
         productView.updateActivityView(isFavouriteStatus: status, productId: productId)
     }
@@ -134,7 +139,7 @@ private extension ProducViewController {
     
     func setupNavBarButton() {
         navigationItem.title = "HAY"
-        navigationController?.navigationBar.tintColor = .black
+//        navigationController?.navigationBar.tintColor = .black
         let config = UIImage.SymbolConfiguration(pointSize: 18, weight: .light)
         let image = UIImage(systemName: "chevron.left", withConfiguration: config)?.withTintColor(.black)
         let leftBarButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(backToMainView))
@@ -160,11 +165,11 @@ private extension ProducViewController {
         
     @objc
     func shareProduct() {
-        let productName = viewModel.productName
-        let url = URL(string: "https://hay.dk")!
-        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-        activityVC.title = productName
-        activityVC.excludedActivityTypes = [.airDrop]
-        self.present(activityVC, animated: true)
+//        let productName = viewModel.productName
+//        let url = URL(string: "https://hay.dk")!
+//        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+//        activityVC.title = productName
+//        activityVC.excludedActivityTypes = [.airDrop]
+//        self.present(activityVC, animated: true)
     }
 }

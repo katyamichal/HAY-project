@@ -465,8 +465,8 @@
             filePath = "Project/Module/Product/ProductViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "goBack()"
             landmarkType = "7">
             <Locations>
@@ -513,9 +513,9 @@
             filePath = "Project/Module/Product/ProductViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "shareProduct()"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "backToMainView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -529,8 +529,8 @@
             filePath = "Project/Module/Product/ProductViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "goBack()"
             landmarkType = "7">
             <Locations>
@@ -957,10 +957,42 @@
             filePath = "Project/Module/Product/ProductViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "changeStatus(with:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F45C45A3-D004-4F68-ACE7-187C86738EDA - 963b7ea17179e3e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project.ProductViewModel.material.getter : Swift.Dictionary&lt;Swift.String, Swift.String&gt;"
+                  moduleName = "Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "1418">
+               </Location>
+               <Location
+                  uuid = "F45C45A3-D004-4F68-ACE7-187C86738EDA - 610bf72ba7428e9b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project.ProductViewModel.changeStatus(with: Swift.Int) -&gt; ()"
+                  moduleName = "Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "1114">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -973,72 +1005,25 @@
             filePath = "Project/Module/Product/ProductViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "changeStatus(with:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B936E24F-FFDA-42DE-B046-69F2971F5D23 - 610bf72ba74291f0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.ProductViewModel.changeStatus(with: Swift.Int) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "436">
-               </Location>
-               <Location
-                  uuid = "B936E24F-FFDA-42DE-B046-69F2971F5D23 - 610bf72ba7429193"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.ProductViewModel.changeStatus(with: Swift.Int) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "131">
-               </Location>
-               <Location
-                  uuid = "B936E24F-FFDA-42DE-B046-69F2971F5D23 - 610bf72ba7428e55"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.ProductViewModel.changeStatus(with: Swift.Int) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "1114">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5F5AEC40-2506-4051-8CFB-988531142F0B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Project/Module/Product/ProductViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "backToMainView()"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "setupActions()"
             landmarkType = "7">
             <Locations>
                <Location

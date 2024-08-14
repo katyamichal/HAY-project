@@ -29,14 +29,14 @@ extension API {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let response = response as? HTTPURLResponse else {
-                throw RequestProcessorError.unexpectedResponse
+                throw RequestProcessorError.invalidResponse()
             }
             switch response.statusCode {
             case 200..<300:
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                 guard let decodedResponse = try? jsonDecoder.decode(HayType.self, from: data) else {
-                    throw RequestProcessorError.unableToDecode
+                    throw RequestProcessorError.decodingError()
                 }
                 return decodedResponse
             case 401:
@@ -45,7 +45,8 @@ extension API {
                 throw RequestProcessorError.statusCode(response.statusCode)
             }
         } catch {
-            throw RequestProcessorError.unknown
+            throw RequestProcessorError.urlSessionError
         }
     }
 }
+

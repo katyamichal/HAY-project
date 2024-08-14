@@ -145,7 +145,6 @@ extension HayViewController: IObserver {
         }
     }
 }
-
 private extension HayViewController {
     func setupHayView() {
         hayView.setupDataSource(with: self)

@@ -8,7 +8,8 @@ import UIKit
 
 
 final class HayView: UIView {
-
+    private let inset: CGFloat = 16
+    
     var showErrorMessage: String? {
         didSet {
             tableView.isHidden = true
@@ -46,6 +47,8 @@ final class HayView: UIView {
         return label
     }()
     
+    // MARK: - Public methods
+
     func setupDataSource(with delegate: UITableViewDataSource) {
         tableView.setupTableDataSource(with: delegate)
     }
@@ -70,8 +73,9 @@ private extension HayView {
     }
     
     func setupConstraints() {
-        errorLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        errorLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
+        errorLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset).isActive = true
+        errorLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: inset).isActive = true
+        errorLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -inset).isActive = true
 
         tableView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true

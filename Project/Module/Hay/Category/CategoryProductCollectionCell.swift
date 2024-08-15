@@ -16,9 +16,9 @@ final class CategoryProductCollectionCell: UICollectionViewCell {
     private let likeButtonTopInset: CGFloat = 16
     private let likeButtonTrailingInset: CGFloat = -1
     private let likeButtonSize: CGFloat = 25
-    private let productImageViewMultiplier: CGFloat = 0.6
-    private lazy var productImageViewWidth: CGFloat = Constants.Layout.width * productImageViewMultiplier
-    private  lazy var productImageViewHeight: CGFloat = Constants.Layout.width * productImageViewMultiplier
+    private let productImageViewWidth: CGFloat = Constants.Layout.width * 0.6
+    private let productImageViewHeight: CGFloat = Constants.Layout.width * 0.6
+    
     
     // MARK: - Inits
     
@@ -52,17 +52,15 @@ final class CategoryProductCollectionCell: UICollectionViewCell {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         return label
     }()
     
     private lazy var pricelLabel: UILabel = {
         let label = UILabel()
-        label.text = "Price"
-        label.textColor = .label
         label.numberOfLines = 0
-        label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         return label
     }()

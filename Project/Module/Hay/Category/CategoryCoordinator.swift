@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class CategoryCoordinator: Coordinator {
     var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator] = []

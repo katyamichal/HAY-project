@@ -66,7 +66,6 @@ extension CategoryViewModel: ICategoryViewModel {
     var isFavourite: Bool {
         guard let currentProduct else { return false }
         if likeManager.favouriteProducts.value?.products.first(where: { $0.id == currentProduct.id }) != nil {
-          //  print(isFavourite)
             return true
         }
         return false

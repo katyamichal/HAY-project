@@ -17,14 +17,17 @@ final class CategoryTableCell: UITableViewCell {
     static var reuseIdentifier: String {
         return String(describing: CategoryTableCell.self)
     }
+    
     var id: UUID
     var viewModel: ICategoryViewModel?
-    private var indexCurrentIsFavourite = IndexPath()
     
+    // MARK: - Constants
+
     private let inset: CGFloat = 16
     private let containerViewTopInset: CGFloat = 44
     private let containerViewTrailingInset: CGFloat = 8
     private let containerViewHeight: CGFloat = Constants.Layout.width
+    
     
     // MARK: - Inits
     
@@ -54,14 +57,16 @@ final class CategoryTableCell: UITableViewCell {
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 21, weight: .light)
+        label.font = Fonts.Subtitles.largeFont
         label.textColor = .black
         return label
     }()
     
     private lazy var collectionView: UICollectionView = {
+        let itemWidth: CGFloat = Constants.Layout.width * 0.6
+        let itemHeight: CGFloat = Constants.Layout.width * 0.8
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: Constants.Layout.width * 0.6, height: Constants.Layout.width * 0.8)
+        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 16
         
@@ -146,7 +151,6 @@ extension CategoryTableCell: IObserver {
 // MARK: - Setups
 
 private extension CategoryTableCell {
-    
     func setupCell() {
         selectionStyle = .none
         backgroundColor = .clear

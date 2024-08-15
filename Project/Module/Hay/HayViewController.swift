@@ -95,7 +95,9 @@ extension HayViewController: UITableViewDataSource {
             hayViewModel.createCategory(with: cell, at: index)
             cell.update()
             return cell
-            
+        
+            // TODO: - Separete logic into a concrete module
+
         case .designer1, .designer2:
             let index = section == .designer1 ? indexPath.row : indexPath.row + 1
             guard index < viewData.categories.count else {
@@ -107,10 +109,10 @@ extension HayViewController: UITableViewDataSource {
             
             if section == .designer1 {
                 let designer = designers[indexPath.row]
-                cell.update(name: designer.designerName, collectionName: designer.collectionName, image: UIImage(named: designer.designerImage)!, products: designer.products)
+                cell.update(sectionName: Constants.LabelTitle.designerSection, name: designer.designerName, collectionName: designer.collectionName, image: UIImage(named: designer.designerImage)!, products: designer.products)
             } else {
                 let designer = designers[indexPath.row + 1]
-                cell.update(name: designer.designerName, collectionName: designer.collectionName, image: UIImage(named: designer.designerImage)!, products: designer.products)
+                cell.update(sectionName: Constants.LabelTitle.designerSection, name: designer.designerName, collectionName: designer.collectionName, image: UIImage(named: designer.designerImage)!, products: designer.products)
             }
             return cell
         }

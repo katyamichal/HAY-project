@@ -42,7 +42,7 @@ final class DesignerTableCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 22, weight: .bold)
-        label.text = "HAY × Designers"
+    
         label.textColor = .black
         return label
     }()
@@ -97,7 +97,7 @@ final class DesignerTableCell: UITableViewCell {
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.alignment = .leading
-       // stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0)
+//        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0)
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
@@ -122,11 +122,16 @@ final class DesignerTableCell: UITableViewCell {
     
     // MARK: - Public
     
-    func update(name: String, collectionName: String, image: UIImage, products: [Product]) {
+    func update(sectionName: String, name: String, collectionName: String, image: UIImage, products: [Product]) {
         designerNameLabel.text = name
         collectionNameLabel.text = collectionName
         designerImageView.image = image
         designerProduct = products
+        headerLabel.text = sectionName
+        updateCollectionView()
+    }
+    
+    func updateCollectionView() {
         collectionView.reloadData()
     }
 }

@@ -26,4 +26,8 @@ enum Constants {
     enum SystemUIElementNames {
         static let detailArrow = "arrow.right"
     }
+    
+    enum LabelTitle {
+        static let designerSection = "HAY × Designers"
+    }
 }

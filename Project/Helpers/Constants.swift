@@ -45,6 +45,7 @@ enum Constants {
     
     enum EmptyData {
         static let noData = "no data"
+        static let noFavouriteProduct = "You haven't added any favorite products yet. Start exploring and save your top picks here!"
     }
     
     enum Links {

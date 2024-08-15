@@ -9,6 +9,7 @@ import UIKit
 
 protocol IFavouriteProductsView: AnyObject {
     func updateView()
+    func updateViewHeader()
 }
 
 final class FavouriteProductsViewController: UIViewController {
@@ -54,6 +55,10 @@ final class FavouriteProductsViewController: UIViewController {
 extension FavouriteProductsViewController: IFavouriteProductsView {
     func updateView() {
         favouriteView.updateCollectionView()
+    }
+    
+    func updateViewHeader() {
+        favouriteView.updateHeader(with: viewModel.headerTitle, and: viewModel.headerFont)
     }
 }
 

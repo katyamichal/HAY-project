@@ -8,6 +8,7 @@
 import Foundation
 
 struct FavouriteViewData {
+    let id: Int
     let name: String
     let price: Int
     let image: String

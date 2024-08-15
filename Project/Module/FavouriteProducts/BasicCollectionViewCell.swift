@@ -13,6 +13,7 @@ final class BasicCollectionViewCell: UICollectionViewCell {
         String(describing: BasicCollectionViewCell.self)
     }
     
+    // MARK: - Constants for constraints
     private let buttonInset: CGFloat = 6
     private let likeButtonSize: CGFloat = 25
     private let productImageViewHeightMultiplier: CGFloat = 0.7
@@ -52,7 +53,7 @@ final class BasicCollectionViewCell: UICollectionViewCell {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         return label
     }()
@@ -65,9 +66,8 @@ final class BasicCollectionViewCell: UICollectionViewCell {
     
     private lazy var pricelLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .label
         label.numberOfLines = 0
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         return label
     }()
@@ -95,7 +95,7 @@ final class BasicCollectionViewCell: UICollectionViewCell {
         productImageView.image = image
     }
 }
-// MARK: - setup methods
+// MARK: - Setup methods
 
 private extension BasicCollectionViewCell {
     func setupCell() {

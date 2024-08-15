@@ -74,7 +74,7 @@ final class DesignerTableCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.Subtitles.descriptionFont
+        label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         return label
     }()

@@ -9,8 +9,13 @@ import UIKit
 
 final class FavouriteProductsView: UIView {
     
+    // MARK: - Constants for constraints
+    private let headerTopPadding: CGFloat = 40.0
+    private let headerSidePadding: CGFloat = 20.0
+    private let headerBottomPadding: CGFloat = 10.0
+    
     // MARK: - Inits
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -26,10 +31,9 @@ final class FavouriteProductsView: UIView {
     }
     
     // MARK: - UI Elements
-
-   private lazy var collectionView: UICollectionView = {
-        let layout = createLayout()
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    
+    private lazy var collectionView: UICollectionView = {
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.backgroundColor = Colours.Main.hayBackground
         collection.showsVerticalScrollIndicator = false
@@ -37,36 +41,15 @@ final class FavouriteProductsView: UIView {
         return collection
     }()
     
-   private lazy var headerLabel: UILabel = {
+    private lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 22, weight: .light)
-        label.textColor = .label
         label.numberOfLines = 0
         label.textColor = .black
         return label
     }()
     
-    // MARK: - Layout
-
-    private func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(300))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
-        group.interItemSpacing = .fixed(16)
-        let section = NSCollectionLayoutSection(group: group)
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
-    
-    
-    private func updateView() {
-        headerLabel.text = "favourite".uppercased()
-        collectionView.isHidden = false
-        collectionView.reloadData()
-    }
+    // MARK: - Public
     
     func setupCollectionViewdelegate(_ delegate: UICollectionViewDelegate) {
         collectionView.delegate = delegate
@@ -77,7 +60,13 @@ final class FavouriteProductsView: UIView {
     }
     
     func updateCollectionView() {
-        updateView()
+        collectionView.isHidden = false
+        collectionView.reloadData()
+    }
+    
+    func updateHeader(with title: String, and font: UIFont) {
+        headerLabel.text = title
+        headerLabel.font = font
     }
 }
 
@@ -96,13 +85,29 @@ private extension FavouriteProductsView {
     }
     
     func setupConstraints() {
-        headerLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
-        headerLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        headerLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        headerLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: headerTopPadding).isActive = true
+        headerLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: headerSidePadding).isActive = true
+        headerLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -headerSidePadding).isActive = true
         
-        collectionView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 10).isActive = true
+        collectionView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: headerBottomPadding).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
+    }
+    
+    // MARK: - Layout
+    
+    func createLayout() -> UICollectionViewLayout {
+        let inset: CGFloat = 16
+        let groupHeight: CGFloat = 300
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: 0, bottom: 0, trailing: 0)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(groupHeight))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        group.interItemSpacing = .fixed(inset)
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
 }

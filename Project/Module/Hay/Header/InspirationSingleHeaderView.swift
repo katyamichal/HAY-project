@@ -43,7 +43,7 @@ final class InspirationSingleView: UIView {
     private lazy var collectionNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.Subtitles.descriptionFont
+        label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         return label
     }()

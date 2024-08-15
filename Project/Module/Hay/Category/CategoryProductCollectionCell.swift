@@ -14,6 +14,7 @@ final class CategoryProductCollectionCell: UICollectionViewCell {
     }
     
     // MARK: - Constants for constraints
+    
     private let likeButtonTopInset: CGFloat = 16
     private let likeButtonTrailingInset: CGFloat = -1
     private let likeButtonSize: CGFloat = 25

@@ -36,7 +36,7 @@ final class ProductInfoCell: UITableViewCell {
     private lazy var infoType: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = Fonts.Subtitles.largeFont
+        label.font = Fonts.Subtitles.secondaryFont
         label.textColor = .black
         return label
     }()

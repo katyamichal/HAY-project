@@ -10,10 +10,23 @@ final class DesignerTableCell: UITableViewCell {
     
     private var designerProduct: [Product] = []
     
+    // MARK: - Constants for constraints
+    
+    private let containerViewTopMargin: CGFloat = 20
+    private let containerViewHeight: CGFloat = 600
+    private let headerLabelLeadingMargin: CGFloat = 8
+    private let designerStackViewTopMargin: CGFloat = 20
+    private let collectionViewTopMargin: CGFloat = -25
+    private let collectionViewBottomMargin: CGFloat = -8
+    private let collectionViewLeadingMargin: CGFloat = 30
+    
+    private let imageViewhHeight: CGFloat = Constants.Layout.width * 0.7
+    private let imageViewWidth: CGFloat = Constants.Layout.width * 0.65
+    
     static var reuseIdentifier: String {
         return String(describing: DesignerTableCell.self)
     }
-
+    
     // MARK: - Inits
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -41,12 +54,10 @@ final class DesignerTableCell: UITableViewCell {
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 22, weight: .bold)
-    
+        label.font = Fonts.Titles.title
         label.textColor = .black
         return label
     }()
-    
     
     // MARK: - Designer Description
     
@@ -54,7 +65,7 @@ final class DesignerTableCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 21, weight: .light)
+        label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         return label
     }()
@@ -63,7 +74,7 @@ final class DesignerTableCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 17, weight: .light)
+        label.font = Fonts.Subtitles.descriptionFont
         label.textColor = .black
         return label
     }()
@@ -86,8 +97,8 @@ final class DesignerTableCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
-        imageView.widthAnchor.constraint(equalToConstant: Constants.Layout.width * 0.65).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: Constants.Layout.width * 0.7).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: imageViewWidth).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: imageViewhHeight).isActive = true
         return imageView
     }()
     
@@ -97,18 +108,21 @@ final class DesignerTableCell: UITableViewCell {
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.alignment = .leading
-//        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0)
         stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
+    
     // MARK: - Collection View
     
     lazy var collectionView: UICollectionView = {
+        let itemWidth: CGFloat = Constants.Layout.width * 0.5
+        let itemHeight: CGFloat = Constants.Layout.width * 0.7
+        let itemSpacing: CGFloat = 16
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: Constants.Layout.width * 0.5, height: Constants.Layout.width * 0.7)
+        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 16
+        layout.minimumLineSpacing = itemSpacing
         
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.backgroundColor = .clear
@@ -136,7 +150,7 @@ final class DesignerTableCell: UITableViewCell {
     }
 }
 
-// MARK: - Setups
+// MARK: - Setup methods
 
 private extension DesignerTableCell {
     func setupCell() {
@@ -159,23 +173,23 @@ private extension DesignerTableCell {
     
     
     func setupConstraints() {
-        containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: containerViewTopMargin).isActive = true
         containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        containerView.heightAnchor.constraint(equalToConstant: 600).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: containerViewHeight).isActive = true
         
         headerLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        headerLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8).isActive = true
+        headerLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: headerLabelLeadingMargin).isActive = true
         headerLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         
-        designerStackView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 20).isActive = true
+        designerStackView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: designerStackViewTopMargin).isActive = true
         designerStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
         designerStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         
-        collectionView.topAnchor.constraint(equalTo: designerStackView.bottomAnchor, constant: -25).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: designerStackView.leadingAnchor, constant: 30).isActive = true
+        collectionView.topAnchor.constraint(equalTo: designerStackView.bottomAnchor, constant: collectionViewTopMargin).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: collectionViewBottomMargin).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: designerStackView.leadingAnchor, constant: collectionViewLeadingMargin).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
     }
 }

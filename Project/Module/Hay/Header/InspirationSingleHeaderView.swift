@@ -9,7 +9,8 @@ import UIKit
 
 
 final class InspirationSingleView: UIView {
-    // MARK: - Constatnts
+    
+    // MARK: - Constants for constraints
     
     private let imageViewWidth: CGFloat = UIScreen.main.bounds.width
     private let topBlurryViewHeight: CGFloat = 135

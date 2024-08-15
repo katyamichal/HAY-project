@@ -21,7 +21,7 @@ final class CategoryTableCell: UITableViewCell {
     var id: UUID
     var viewModel: ICategoryViewModel?
     
-    // MARK: - Constants
+    // MARK: - Constants for constraints
 
     private let inset: CGFloat = 16
     private let containerViewTopInset: CGFloat = 44

@@ -12,6 +12,18 @@ final class DesignerProductsCollectionCell: UICollectionViewCell {
         return String(describing: DesignerProductsCollectionCell.self)
     }
     
+    // MARK: - Constants for constraints
+    private let likeButtonTopMargin: CGFloat = 16
+    private let likeButtonTrailingMargin: CGFloat = -1
+    private let likeButtonWidth: CGFloat = 25
+    private let likeButtonHeight: CGFloat = 25
+
+    private let productImageViewHeightMultiplier: CGFloat = 0.7
+    private let productImageViewTopMargin: CGFloat = -8
+
+    private let verticalStackViewTopMargin: CGFloat = 8
+    private let verticalStackViewLeadingMargin: CGFloat = 3
+    
     // MARK: - Inits
     
     override init(frame: CGRect) {
@@ -44,7 +56,7 @@ final class DesignerProductsCollectionCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         return label
     }()
@@ -54,7 +66,7 @@ final class DesignerProductsCollectionCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .label
         label.numberOfLines = 0
-        label.font = UIFont.boldSystemFont(ofSize: 13)
+        label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         return label
     }()
@@ -98,18 +110,18 @@ private extension DesignerProductsCollectionCell {
     }
     
     func setupConstraints() {
-        likeButton.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 16).isActive = true
-        likeButton.trailingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: -1).isActive = true
-        likeButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        likeButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        likeButton.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: likeButtonTopMargin).isActive = true
+        likeButton.trailingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: likeButtonTrailingMargin).isActive = true
+        likeButton.widthAnchor.constraint(equalToConstant: likeButtonWidth).isActive = true
+        likeButton.heightAnchor.constraint(equalToConstant: likeButtonHeight).isActive = true
         
-        productImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.7).isActive = true
-        productImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -8).isActive = true
+        productImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: productImageViewHeightMultiplier).isActive = true
+        productImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: productImageViewTopMargin).isActive = true
         productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         productImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
-        verticalStackView.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: 8).isActive = true
+        verticalStackView.topAnchor.constraint(equalTo: productImageView.bottomAnchor, constant: verticalStackViewTopMargin).isActive = true
         verticalStackView.trailingAnchor.constraint(equalTo: likeButton.leadingAnchor).isActive = true
-        verticalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 3).isActive = true
+        verticalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: verticalStackViewLeadingMargin).isActive = true
     }
 }

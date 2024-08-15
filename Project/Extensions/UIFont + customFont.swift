@@ -10,14 +10,16 @@ import UIKit
 enum Fonts {
     enum Titles {
       //  static let title = UIFont.cachedFont(name: "Avenir-Black", size: 24)
-        static let title = UIFont.cachedFont(name: "BodoniSvtyTwoITCTT-Bold", size: 21)
+        static let title = UIFont.cachedFont(name: "Georgia-Bold", size: 21)
     }
     
     enum Subtitles {
         static let largeFont = UIFont.cachedFont(name: "Didot", size: 21)
         static let defaultFont = UIFont.cachedFont(name: "Avenir", size: 16)
-        static let secondaryFont = UIFont.cachedFont(name: "Georgia", size: 14)
-        static let descriptionFont = UIFont.cachedFont(name: "Didot", size: 14)
+        
+        static let secondaryFont = UIFont.cachedFont(name: "Georgia", size: 16)
+        
+        static let descriptionFont = UIFont.cachedFont(name: "Avenir", size: 16)
     }
     
     enum Buttons {

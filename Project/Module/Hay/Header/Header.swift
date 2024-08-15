@@ -15,7 +15,7 @@ final class Header: UIView {
     var viewModel: HeaderViewModel?
     private var pages: [InspirationSingleView] = []
     
-    // MARK: - Constatns
+    // MARK: - Constants for constraints
 
     private let pageControlTopConstant: CGFloat = 70
     private let pageControlLeadingConstant: CGFloat = -15

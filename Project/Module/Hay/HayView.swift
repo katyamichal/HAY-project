@@ -8,6 +8,8 @@ import UIKit
 
 
 final class HayView: UIView {
+    
+    // MARK: - Constants for constraints
     private let inset: CGFloat = 16
     
     var showErrorMessage: String? {

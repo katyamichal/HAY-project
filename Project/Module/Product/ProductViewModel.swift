@@ -18,7 +18,7 @@ protocol IProductViewModel: AnyObject {
     func setupView(with view: IProductView)
     func fetchData()
     func goBack()
-    func unsubscribe(observer: IObserver) 
+    func unsubscribe(observer: IObserver)
 }
 
 final class ProductViewModel {
@@ -32,7 +32,7 @@ final class ProductViewModel {
     private let likeManager = LikeButtonManager.shared
     
     // MARK: - Inits
-
+    
     init(service: HayServiceable, coordinator: Coordinator, categoryName: String, productId: Int) {
         self.service = service
         self.coordinator = coordinator
@@ -126,7 +126,6 @@ extension ProductViewModel: ILikeButton {
 }
 
 private extension ProductViewModel {
-    
     var material: [String: String] {
         guard let product = viewData.value else { return ["material:" : "no data"] }
         return ["material:".uppercased(): product.material.lowercased()]

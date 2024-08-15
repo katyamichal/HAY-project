@@ -71,6 +71,7 @@
 		4E4D6C882C6A094D00F47B5F /* ProductCDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6C872C6A094C00F47B5F /* ProductCDO.swift */; };
 		4E4D6C9A2C6A108500F47B5F /* FavouriteProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6C982C6A108500F47B5F /* FavouriteProduct+CoreDataClass.swift */; };
 		4E4D6C9B2C6A108500F47B5F /* FavouriteProduct+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6C992C6A108500F47B5F /* FavouriteProduct+CoreDataProperties.swift */; };
+		4E4D6CBD2C6DDE1500F47B5F /* UIFont + customFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6CBC2C6DDE1400F47B5F /* UIFont + customFont.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +141,7 @@
 		4E4D6C872C6A094C00F47B5F /* ProductCDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCDO.swift; sourceTree = "<group>"; };
 		4E4D6C982C6A108500F47B5F /* FavouriteProduct+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteProduct+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4E4D6C992C6A108500F47B5F /* FavouriteProduct+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteProduct+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4E4D6CBC2C6DDE1400F47B5F /* UIFont + customFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + customFont.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 			children = (
 				4E25A6802C3C33F700066DFD /* UIColor + customColor.swift */,
 				4E25A6812C3C33F700066DFD /* UITableView + registerCell.swift */,
+				4E4D6CBC2C6DDE1400F47B5F /* UIFont + customFont.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				4E25A6592C3C33BE00066DFD /* HayTableView.swift in Sources */,
 				4E25A6982C43DD0500066DFD /* CategoryViewData.swift in Sources */,
 				4E25A69E2C45591100066DFD /* HeaderViewData.swift in Sources */,
+				4E4D6CBD2C6DDE1500F47B5F /* UIFont + customFont.swift in Sources */,
 				4E25A6C22C4951E600066DFD /* FavouriteProductsView.swift in Sources */,
 				4E25A6B32C46791500066DFD /* ProductViewData.swift in Sources */,
 				4E25A6582C3C33BE00066DFD /* HayViewController.swift in Sources */,

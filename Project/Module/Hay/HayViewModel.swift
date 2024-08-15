@@ -29,10 +29,20 @@ final class HayViewModel {
     }
     
     deinit {
-        print("MainViewModel")
+        print("MainViewModel deinit")
+    }
+
+    func setupView(with view: IHayViewController) {
+        self.view = view
+        self.view?.viewIsSetUp()
     }
     
-    // MARK: - Fetching Data
+    func subscribe(observer: IObserver) {
+        viewData.subscribe(observer: observer)
+        loadingError.subscribe(observer: observer)
+    }
+    
+    // MARK:  Fetching Data
     
     func fetchServerData() {
         Task {
@@ -46,40 +56,30 @@ final class HayViewModel {
                 let designers = try await designersResponse.designers
                 
                 self.viewData.value = HayViewData(inspiration: inspiration, categories: categories, designers: designers)
+                
             } catch {
                 self.loadingError.value = getErrorResponse(with: error)
             }
         }
     }
-
-    func setupView(with view: IHayViewController) {
-        self.view = view
-        self.view?.getData()
-    }
     
-    func subscribe(observer: IObserver) {
-        viewData.subscribe(observer: observer)
-        loadingError.subscribe(observer: observer)
-    }
+    // MARK: - Initializinf TableView modules
 
     func createCategory(with cell: UITableViewCell, at index: Int) {
         guard let categoryData = viewData.value?.categories[index] else { return }
         (coordinator as? HayCoordinator)?.showCategoryCoordinator(cell: cell, viewData: categoryData)
-        print((coordinator as? HayCoordinator)?.childCoordinators)
+       // print((coordinator as? HayCoordinator)?.childCoordinators)
     }
     
     func createInspiration(with view: Header) {
         guard let inspiration = viewData.value?.inspiration else { return }
         (coordinator as? HayCoordinator)?.showInspiration(view: view, viewData: inspiration)
-        print((coordinator as? HayCoordinator)?.childCoordinators)
     }
-    
-    func showDetail() {
-        print("Detail")
-    }
-    
-    // MARK: - Error Handeling
+}
 
+// MARK: - Private
+
+private extension HayViewModel {
     func getErrorResponse(with requestError: Error) -> String {
         if let error = requestError as? RequestProcessorError {
             return configureKnownResponseError(with: error)

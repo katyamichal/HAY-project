@@ -29,8 +29,6 @@ final class HeaderCoordinator: Coordinator {
     }
     
     func showDetail(with id: Int) {
-//        let viewController = DetailView()
-//        navigationController.pushViewController(viewController, animated: true)
     }
 }
 

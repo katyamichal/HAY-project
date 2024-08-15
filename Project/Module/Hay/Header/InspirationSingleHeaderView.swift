@@ -9,12 +9,18 @@ import UIKit
 
 
 final class InspirationSingleView: UIView {
+    // MARK: - Constatnts
     
-    // MARK: - Changable Constraints
+    private let imageViewWidth: CGFloat = UIScreen.main.bounds.width
+    private let topBlurryViewHeight: CGFloat = 135
+    private let collectionNameLabelTopMargin: CGFloat = 90
+    private let collectionNameLabelLeadingMargin: CGFloat = 20
+    private let collectionNameLabelHeight: CGFloat = 40
     
-    private var inspirationFeed: InspirationFeed?
+    // MARK: - Changeble constrain
+    
     var imageViewHeight = NSLayoutConstraint()
-
+    
     // MARK: - Inits
     
     override init(frame: CGRect) {
@@ -27,20 +33,24 @@ final class InspirationSingleView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("InspirationSingleView deinit")
+    }
+    
     // MARK: - UI Elements
     
-    private let collectionNameLabel: UILabel = {
+    private lazy var collectionNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Avenir Next Regular", size: 18)
+        label.font = Fonts.Subtitles.descriptionFont
         label.textColor = .black
         return label
     }()
     
-    private let topBlurryView: UIView = {
+    private lazy var topBlurryView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Colours.Main.hayBackground.withAlphaComponent(0.6)
+        view.backgroundColor = Colours.Main.hayBackgroundAlpha
         return view
     }()
     
@@ -53,15 +63,14 @@ final class InspirationSingleView: UIView {
     }()
     
     // MARK: - Public
-    func update(with model: InspirationFeed) {
-        self.inspirationFeed = model
-        collectionNameLabel.text = model.collectionName.uppercased()
-        imageView.image = UIImage(named: "\(model.coverImage)")
+    
+    func update(collectionName: String, image: UIImage) {
+        collectionNameLabel.text = collectionName
+        imageView.image = image
     }
 }
 
 private extension InspirationSingleView {
-    
     func setupInspirationView() {
         setupViews()
         setupConstraints()
@@ -74,18 +83,18 @@ private extension InspirationSingleView {
     }
     
     func setupConstraints() {
-        imageView.widthAnchor.constraint(equalToConstant: self.bounds.size.width).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: imageViewWidth).isActive = true
         imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         
         topBlurryView.topAnchor.constraint(equalTo: imageView.topAnchor).isActive = true
         topBlurryView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor).isActive = true
         topBlurryView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor).isActive = true
-        topBlurryView.heightAnchor.constraint(equalToConstant: 135).isActive = true
+        topBlurryView.heightAnchor.constraint(equalToConstant: topBlurryViewHeight).isActive = true
         
-        collectionNameLabel.topAnchor.constraint(equalTo: topBlurryView.topAnchor, constant: 90).isActive = true
-        collectionNameLabel.leadingAnchor.constraint(equalTo: topBlurryView.leadingAnchor, constant: 20).isActive = true
-        collectionNameLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        collectionNameLabel.topAnchor.constraint(equalTo: topBlurryView.topAnchor, constant: collectionNameLabelTopMargin).isActive = true
+        collectionNameLabel.leadingAnchor.constraint(equalTo: topBlurryView.leadingAnchor, constant: collectionNameLabelLeadingMargin).isActive = true
+        collectionNameLabel.heightAnchor.constraint(equalToConstant: collectionNameLabelHeight).isActive = true
         
         imageViewHeight = imageView.heightAnchor.constraint(equalTo: self.heightAnchor)
         imageViewHeight.isActive = true

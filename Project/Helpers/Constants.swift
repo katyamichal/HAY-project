@@ -22,4 +22,8 @@ enum Constants {
         static let urlSessionError = "Oops! Something went wrong while getting your result. Please try again."
         static let unknown = "We are trying to figure it out why the app is not working"
     }
+    
+    enum SystemUIElementNames {
+        static let detailArrow = "arrow.right"
+    }
 }

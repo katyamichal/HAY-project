@@ -24,11 +24,12 @@ final class HayTableView: UITableView {
     deinit {
         print("MainTableView deinit")
     }
-         
+    
     // MARK: - UI Elements
-
+    
     lazy var tableHeader = Header()
     
+    // MARK: - Public
     
     func setupTableDataSource(with delegate: UITableViewDataSource) {
         self.dataSource = delegate
@@ -44,15 +45,6 @@ final class HayTableView: UITableView {
     }
 }
 
-// MARK: -  Scroll View Delegate to Scroll Header
-
-//extension HayTableView: UIScrollViewDelegate {
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        guard let header = self.tableHeaderView as? Header else { return }
-//        header.scrollViewDidScroll(self)
-//    }
-//}
-
 private extension HayTableView {
     func setupHeader() {
         tableHeader.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: Constants.Layout.headerHeight)
@@ -60,9 +52,9 @@ private extension HayTableView {
         self.tableHeaderView?.isUserInteractionEnabled = true
     }
     
-    // MARK: - Setup TV
+    // MARK: - Setup TableView
     
-    private func setupTableView() {
+    func setupTableView() {
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         showsVerticalScrollIndicator = false

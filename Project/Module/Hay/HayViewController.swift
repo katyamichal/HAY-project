@@ -16,7 +16,7 @@ enum TableSections: Int, CaseIterable {
 }
 
 protocol IHayViewController: AnyObject {
-    func getData()
+    func viewIsSetUp()
 }
 
 final class HayViewController: UIViewController {
@@ -61,7 +61,7 @@ final class HayViewController: UIViewController {
 // MARK: - IHayViewController
 
 extension HayViewController: IHayViewController {
-    func getData() {
+    func viewIsSetUp() {
         hayViewModel.fetchServerData()
     }
 }
@@ -124,7 +124,8 @@ extension HayViewController: UITableViewDelegate {
         case .category1, .category2:
             break
         case .designer1, .designer2:
-            hayViewModel.showDetail()
+        print("Should show designer detail")
+          //  hayViewModel.showDetail()
         }
     }
     
@@ -145,6 +146,7 @@ extension HayViewController: IObserver {
         }
     }
 }
+
 private extension HayViewController {
     func setupHayView() {
         hayView.setupDataSource(with: self)

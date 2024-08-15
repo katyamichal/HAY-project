@@ -12,9 +12,11 @@ protocol IHeaderView: AnyObject {
 
 final class Header: UIView {
     
-    private var pages: [InspirationSingleView] = []
     var viewModel: HeaderViewModel?
+    private var pages: [InspirationSingleView] = []
     
+    // MARK: - Constatns
+
     private let pageControlTopConstant: CGFloat = 70
     private let pageControlLeadingConstant: CGFloat = -15
     private let pageControlHeightConstant: CGFloat = 20
@@ -24,7 +26,11 @@ final class Header: UIView {
     private let detailButtonHeightConstant: CGFloat = 40
     private let detailButtonWidthConstant: CGFloat = 60
     
-    // MARK: - Constraints to change
+    private let detailButtonPaddingTopAndLeft: CGFloat = 40
+    private let detailButtonPaddingBottom: CGFloat = 16
+    private let detailButtonPaddingRight: CGFloat = 20
+    
+    // MARK: - Changable Constraints
     
     private var scrollViewHeight = NSLayoutConstraint()
     private var scrollViewBottom = NSLayoutConstraint()
@@ -41,6 +47,7 @@ final class Header: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     deinit {
         print("Header deinit")
     }
@@ -62,16 +69,18 @@ final class Header: UIView {
     private lazy var detailButton: CustomButton = {
         let button = CustomButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .white.withAlphaComponent(0.8)
-        button.setImage(UIImage(systemName: "arrow.right"), for: .normal)
+        button.backgroundColor = Colours.HayHeader.detailButtonColour
+        button.setImage(UIImage(systemName: Constants.SystemUIElementNames.detailArrow), for: .normal)
         button.tintColor = .black
         button.setTitleColor(.black, for: .normal)
         button.clipsToBounds = true
         ///  setting padding area of the view' size blocks scroll view touches
-        button.touchAreaPadding = UIEdgeInsets(top: 40, left: 40, bottom: 16, right: 20)
+        button.touchAreaPadding = UIEdgeInsets(top: detailButtonPaddingTopAndLeft, left: detailButtonPaddingTopAndLeft, bottom: detailButtonPaddingBottom, right: detailButtonPaddingRight)
         button.isHidden = true
         return button
     }()
+    
+    // MARK: - Public
     
     func setupDetailAction(_ target: Any, action: Selector, for event: UIControl.Event = .touchUpInside) {
         detailButton.addTarget(self, action: action, for: event)
@@ -82,6 +91,8 @@ final class Header: UIView {
     }
 }
 
+// MARK: - Header Protocol
+
 extension Header: IHeaderView {
     func update(with inspiration: [InspirationFeed]) {
         pageControl.numberOfPages = inspiration.count
@@ -89,6 +100,8 @@ extension Header: IHeaderView {
         detailButton.isHidden = false
     }
 }
+
+// MARK: - Setup methods
 
 private extension Header {
     func setupHeader() {
@@ -107,18 +120,18 @@ private extension Header {
         pageControl.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: pageControlTopConstant).isActive = true
         pageControl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: pageControlLeadingConstant).isActive = true
         pageControl.heightAnchor.constraint(equalToConstant: pageControlHeightConstant).isActive = true
-
+        
         widthAnchor.constraint(equalTo: container.widthAnchor).isActive = true
         heightAnchor.constraint(equalTo: container.heightAnchor).isActive = true
         centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
         centerYAnchor.constraint(equalTo: container.centerYAnchor).isActive = true
-
+        
         detailButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: detailButtonBottomConstant).isActive = true
         detailButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: detailButtonTrailingConstant).isActive = true
         detailButton.heightAnchor.constraint(equalToConstant: detailButtonHeightConstant).isActive = true
         detailButton.widthAnchor.constraint(equalToConstant: detailButtonWidthConstant).isActive = true
         
-        // MARK: - Changable constraints
+        // MARK:  Changable constraints
         
         container.translatesAutoresizingMaskIntoConstraints = false
         container.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
@@ -148,7 +161,7 @@ private extension Header {
                 y: 0,
                 width: Constants.Layout.width,
                 height: scrollView.frame.size.height))
-            page.update(with: inspirationItem)
+            page.update(collectionName: inspirationItem.collectionName.uppercased(), image: UIImage(named: inspirationItem.coverImage) ?? UIImage())
             scrollView.addSubview(page)
             return page
         }

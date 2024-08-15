@@ -18,7 +18,7 @@ final class HayView: UIView {
         }
     }
     // MARK: - Inits
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -42,13 +42,12 @@ final class HayView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true
         label.numberOfLines = 0
-        label.text = "Something went wrong..."
-        label.font = .boldSystemFont(ofSize: 17)
+        label.font = Fonts.Subtitles.defaultFont
         return label
     }()
     
     // MARK: - Public methods
-
+    
     func setupDataSource(with delegate: UITableViewDataSource) {
         tableView.setupTableDataSource(with: delegate)
     }
@@ -76,7 +75,7 @@ private extension HayView {
         errorLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset).isActive = true
         errorLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: inset).isActive = true
         errorLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -inset).isActive = true
-
+        
         tableView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true

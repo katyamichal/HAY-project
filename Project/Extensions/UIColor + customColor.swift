@@ -12,6 +12,7 @@ enum Colours {
         static let hayAccent = UIColor.rgba(red: 210, green: 186, blue: 159, alpha: 1)
         static let hayBackground = UIColor.rgba(red: 242, green: 242, blue: 242, alpha: 1)
         static let productDescription = UIColor.rgba(red: 236, green: 236, blue: 236, alpha: 1)
+        static let hayBackgroundAlpha = UIColor.rgba(red: 242, green: 242, blue: 242, alpha: 1).withAlphaComponent(0.6)
     }
     
     enum Gradient {
@@ -28,10 +29,15 @@ enum Colours {
     enum Text {
         static let selectedColour = UIColor.rgba(red: 36, green: 36, blue: 36, alpha: 1)
     }
+    
+    enum HayHeader {
+        static let detailButtonColour = UIColor.white.withAlphaComponent(0.8)
+    }
 }
 
 extension UIColor {
     private static var colourCache: [String: UIColor] = [:]
+    
     public static func rgba(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
         
         let key = "\(red)\(green)\(blue)\(alpha)"
@@ -47,11 +53,7 @@ extension UIColor {
     
     private static func clearColourCacheIfNeeded() {
         let maxObjectCount = 100
-        
         guard self.colourCache .count >= maxObjectCount else {return}
         self.colourCache = [:]
     }
 }
-
-
- 

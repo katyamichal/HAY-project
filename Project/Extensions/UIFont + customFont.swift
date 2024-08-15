@@ -9,7 +9,6 @@ import UIKit
 
 enum Fonts {
     enum Titles {
-      //  static let title = UIFont.cachedFont(name: "Avenir-Black", size: 24)
         static let title = UIFont.cachedFont(name: "Georgia-Bold", size: 21)
     }
     

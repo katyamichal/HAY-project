@@ -14,6 +14,7 @@ protocol IProductViewModel: AnyObject {
     var productInfo: [[String: String]] { get }
     var isFavourite: Bool { get }
     var productId: Int { get }
+    var buttonTitle: String { get }
     
     func setupView(with view: IProductView)
     func fetchData()
@@ -56,7 +57,7 @@ final class ProductViewModel {
                 guard let category = categories.first(where: { $0.categoryName == categoryName }),
                       let product = category.products.first(where: { $0.id == productId })
                 else {
-                    self.loadingError.value = "Couldn't load the product"
+                    self.loadingError.value =  Constants.LoadingMessage.unknown
                     return
                 }
                 self.viewData.value = ProductViewData(product: product)
@@ -66,6 +67,8 @@ final class ProductViewModel {
         }
     }
     
+    // MARK: - Observable methods
+
     func subscribe(observer: IObserver) {
         viewData.subscribe(observer: observer)
         loadingError.subscribe(observer: observer)
@@ -77,7 +80,13 @@ final class ProductViewModel {
     }
 }
 
+// MARK: - ViewModel Protocol
+
 extension ProductViewModel: IProductViewModel {
+    var buttonTitle: String {
+        return Constants.LabelTitles.addBasketButtonName
+    }
+    
     var isFavourite: Bool {
         if likeManager.favouriteProducts.value?.products.first(where: { $0.id == viewData.value?.id }) != nil {
             return true
@@ -97,18 +106,18 @@ extension ProductViewModel: IProductViewModel {
     }
     
     var description: String {
-        guard let product = viewData.value else { return "no data" }
+        guard let product = viewData.value else { return emptyData }
         return  product.description
     }
     
     var productName: String {
-        guard let product = viewData.value else { return "no data" }
+        guard let product = viewData.value else { return emptyData }
         return product.productName.uppercased()
     }
     
     func setupView(with view: IProductView) {
         self.view = view
-        self.view?.getData()
+        self.view?.viewIsSetUp()
     }
     
     func goBack() {
@@ -126,23 +135,28 @@ extension ProductViewModel: ILikeButton {
 }
 
 private extension ProductViewModel {
+    
+    var emptyData: String {
+        Constants.EmptyData.noData
+    }
+    
     var material: [String: String] {
-        guard let product = viewData.value else { return ["material:" : "no data"] }
-        return ["material:".uppercased(): product.material.lowercased()]
+        guard let product = viewData.value else { return [Constants.ProductModuleTitles.material : emptyData] }
+        return [Constants.ProductModuleTitles.material.uppercased(): product.material.lowercased()]
     }
     
     var size: [String: String] {
-        guard let product = viewData.value else { return ["size:" : "no data"] }
-        return ["size".uppercased(): product.size.lowercased()]
+        guard let product = viewData.value else { return [Constants.ProductModuleTitles.size: emptyData] }
+        return [Constants.ProductModuleTitles.size.uppercased(): product.size.lowercased()]
     }
     
     var colour: [String: String] {
-        guard let product = viewData.value else { return ["colour:" : "no data"] }
-        return  ["colour".uppercased(): product.colour.lowercased()]
+        guard let product = viewData.value else { return [Constants.ProductModuleTitles.colour: emptyData] }
+        return  [Constants.ProductModuleTitles.colour.uppercased(): product.colour.lowercased()]
     }
     
     var price: [String: String] {
-        guard let product = viewData.value else { return ["price:" : "no data"] }
-        return ["price".uppercased(): "£\(product.price)".lowercased()]
+        guard let product = viewData.value else { return [Constants.ProductModuleTitles.price: emptyData] }
+        return [Constants.ProductModuleTitles.price.uppercased(): "£\(product.price)".lowercased()]
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 
 final class ProductActionsView: UIView {
     
+    // MARK: - Constants for constraints
     private let basketButtonWidth: CGFloat = Constants.Layout.width / 1.3
     private let buttonSpacing: CGFloat = 10
     
@@ -42,12 +43,10 @@ final class ProductActionsView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .light)
-        button.setTitle("Add to Basket", for: .normal)
+        button.titleLabel?.font = Fonts.Buttons.primaryButtonFont
         button.backgroundColor = .black
         return button
     }()
-    
     
     // MARK: - Public
     
@@ -59,6 +58,9 @@ final class ProductActionsView: UIView {
     func setupLikeButtonDelegate(_ delegate: ILikeButton) {
         likeButton.delegate = delegate
     }
+    
+    func setupBasketButtonTitle(with name: String) {
+        basketButton.setTitle(name, for: .normal)}
 }
 
 // MARK: - Setups

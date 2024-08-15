@@ -61,7 +61,7 @@ final class ProductGaleryCell: UITableViewCell {
     
     private lazy var productNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 23, weight: .regular)
+        label.font = Fonts.Subtitles.largeFont
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .black
@@ -71,8 +71,7 @@ final class ProductGaleryCell: UITableViewCell {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 13, weight: .light)
-        label.textColor = .label
+        label.font = Fonts.Subtitles.defaultFont
         label.textAlignment = .center
         label.textColor = .black
         return label
@@ -131,11 +130,13 @@ private extension ProductGaleryCell {
     }
     
     func configureViews(with images: [UIImage], detail: String) {
-        let scrollViewContentMode: UIView.ContentMode = .scaleAspectFill
         let scrollViewWidth: CGFloat = Constants.Layout.width - 32
+        let scrollViewContentMode: UIView.ContentMode = .scaleAspectFill
         let contentWidth = CGFloat(images.count) * scrollViewWidth
+        
         pageControl.numberOfPages = images.count
         scrollView.contentSize = CGSize(width: contentWidth, height: scrollView.frame.size.height)
+        
         for index in images.indices {
             let page = UIImageView(frame: CGRect(
                 x: CGFloat(index) * scrollViewWidth,

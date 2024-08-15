@@ -25,9 +25,29 @@ enum Constants {
     
     enum SystemUIElementNames {
         static let detailArrow = "arrow.right"
+        static let goBack = "chevron.left"
+        static let share =  "square.and.arrow.up"
+        
     }
     
-    enum LabelTitle {
+    enum LabelTitles {
         static let designerSection = "HAY × Designers"
+        static let addBasketButtonName = "Add to Basket"
+        static let navigationBarHay = "HAY"
+    }
+    
+    enum ProductModuleTitles {
+        static let material = "material:"
+        static let size = "size:"
+        static let colour = "colour:"
+        static let price = "price:"
+    }
+    
+    enum EmptyData {
+        static let noData = "no data"
+    }
+    
+    enum Links {
+        static let mainHay = "https://www.hay.dk"
     }
 }

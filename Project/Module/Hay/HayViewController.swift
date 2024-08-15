@@ -109,10 +109,10 @@ extension HayViewController: UITableViewDataSource {
             
             if section == .designer1 {
                 let designer = designers[indexPath.row]
-                cell.update(sectionName: Constants.LabelTitle.designerSection, name: designer.designerName, collectionName: designer.collectionName, image: UIImage(named: designer.designerImage)!, products: designer.products)
+                cell.update(sectionName: Constants.LabelTitles.designerSection, name: designer.designerName, collectionName: designer.collectionName, image: UIImage(named: designer.designerImage)!, products: designer.products)
             } else {
                 let designer = designers[indexPath.row + 1]
-                cell.update(sectionName: Constants.LabelTitle.designerSection, name: designer.designerName, collectionName: designer.collectionName, image: UIImage(named: designer.designerImage)!, products: designer.products)
+                cell.update(sectionName: Constants.LabelTitles.designerSection, name: designer.designerName, collectionName: designer.collectionName, image: UIImage(named: designer.designerImage)!, products: designer.products)
             }
             return cell
         }

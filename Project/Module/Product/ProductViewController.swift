@@ -17,8 +17,9 @@ private enum Sections: Int, CaseIterable {
 
 protocol IProductView: AnyObject {
     func unsubscribe()
-    func getData()
+    func viewIsSetUp()
     func updateView(with status: Bool, and productId: Int)
+    func updateBasketButton(with title: String)
 }
 
 final class ProducViewController: UIViewController {
@@ -70,7 +71,11 @@ extension ProducViewController: IProductView {
         productView.updateActivityView(isFavouriteStatus: status, productId: productId)
     }
     
-    func getData() {
+    func updateBasketButton(with title: String) {
+        productView.updateBasketButtonTitle(with: title)
+    }
+    
+    func viewIsSetUp() {
         viewModel.fetchData()
     }
 }
@@ -117,8 +122,8 @@ extension ProducViewController: IObserver {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
                 strongSelf.productView.updateView(isFavouriteStatus: strongSelf.viewModel.isFavourite, productId: strongSelf.viewModel.productId)
+                strongSelf.productView.updateBasketButtonTitle(with: strongSelf.viewModel.buttonTitle)
             }
-          
         } else {
             DispatchQueue.main.async { [weak self] in
                 self?.productView.updateView(with: "Error")
@@ -138,16 +143,16 @@ private extension ProducViewController {
     }
     
     func setupNavBarButton() {
-        navigationItem.title = "HAY"
-//        navigationController?.navigationBar.tintColor = .black
+        navigationItem.title = Constants.LabelTitles.navigationBarHay
         let config = UIImage.SymbolConfiguration(pointSize: 18, weight: .light)
-        let image = UIImage(systemName: "chevron.left", withConfiguration: config)?.withTintColor(.black)
-        let leftBarButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(backToMainView))
-        navigationItem.leftBarButtonItem = leftBarButton
         
-        let config2 = UIImage.SymbolConfiguration(pointSize: 18, weight: .light)
-        let image2 = UIImage(systemName: "square.and.arrow.up", withConfiguration: config2)
+        let image = UIImage(systemName: Constants.SystemUIElementNames.goBack, withConfiguration: config)?.withTintColor(.black)
+        let leftBarButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(backToMainView))
+        
+        let image2 = UIImage(systemName: Constants.SystemUIElementNames.share, withConfiguration: config)
         let rightBarButton = UIBarButtonItem(image: image2, style: .plain, target: self, action: #selector(shareProduct))
+        
+        navigationItem.leftBarButtonItem = leftBarButton
         navigationItem.rightBarButtonItem = rightBarButton
     }
     
@@ -162,14 +167,16 @@ private extension ProducViewController {
     func backToMainView() {
         viewModel.goBack()
     }
-        
+    
+    // TODO: -  clean up
+
     @objc
     func shareProduct() {
-//        let productName = viewModel.productName
-//        let url = URL(string: "https://hay.dk")!
-//        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-//        activityVC.title = productName
-//        activityVC.excludedActivityTypes = [.airDrop]
-//        self.present(activityVC, animated: true)
+        let productName = viewModel.productName
+        let url = URL(string: "https://hay.dk")!
+        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        activityVC.title = productName
+        activityVC.excludedActivityTypes = [.airDrop]
+        self.present(activityVC, animated: true)
     }
 }

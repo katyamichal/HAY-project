@@ -91,6 +91,10 @@ final class ProductView: UIView {
     func updateActivityView(isFavouriteStatus: Bool, productId: Int) {
         actionButtonView.updateLikeButton(with: isFavouriteStatus, productId: productId)
     }
+    
+    func updateBasketButtonTitle(with name: String) {
+        actionButtonView.setupBasketButtonTitle(with: name)
+    }
 }
 
 // MARK: - Setups

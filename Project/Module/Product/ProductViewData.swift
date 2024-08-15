@@ -38,6 +38,6 @@ extension ProductViewData: IProductCDO {
         self.colour = product.colour
         self.size = product.size
         self.price = product.price
-        self.link = "https://www.hay.dk"
+        self.link = Constants.Links.mainHay
     }
 }

@@ -14,7 +14,6 @@ final class ProductInfoCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
-        
     }
     
     @available(*, unavailable)
@@ -37,7 +36,7 @@ final class ProductInfoCell: UITableViewCell {
     private lazy var infoType: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 17, weight: .light)
+        label.font = Fonts.Subtitles.largeFont
         label.textColor = .black
         return label
     }()
@@ -45,7 +44,7 @@ final class ProductInfoCell: UITableViewCell {
     private lazy var infoDescription: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 14, weight: .light)
+        label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         return label
     }()

@@ -75,6 +75,11 @@
 		4EB5B4BD2C6F620000F6ED0C /* DesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4BC2C6F620000F6ED0C /* DesignerViewModel.swift */; };
 		4EB5B4BF2C6F620800F6ED0C /* DesignerViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4BE2C6F620800F6ED0C /* DesignerViewData.swift */; };
 		4EB5B4C12C6F622600F6ED0C /* DesignerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4C02C6F622600F6ED0C /* DesignerCoordinator.swift */; };
+		4EB5B4C42C6F677200F6ED0C /* DesignerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4C32C6F677200F6ED0C /* DesignerDetailViewController.swift */; };
+		4EB5B4C62C6F67C000F6ED0C /* DesignerDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4C52C6F67C000F6ED0C /* DesignerDetailsViewModel.swift */; };
+		4EB5B4C82C6F67CD00F6ED0C /* DesignerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4C72C6F67CD00F6ED0C /* DesignerDetailsView.swift */; };
+		4EB5B4CA2C6F67DD00F6ED0C /* DesignerDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4C92C6F67DD00F6ED0C /* DesignerDetailsCoordinator.swift */; };
+		4EB5B4CC2C6F67E600F6ED0C /* DesignerDetailsViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4CB2C6F67E600F6ED0C /* DesignerDetailsViewData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,6 +153,11 @@
 		4EB5B4BC2C6F620000F6ED0C /* DesignerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerViewModel.swift; sourceTree = "<group>"; };
 		4EB5B4BE2C6F620800F6ED0C /* DesignerViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerViewData.swift; sourceTree = "<group>"; };
 		4EB5B4C02C6F622600F6ED0C /* DesignerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerCoordinator.swift; sourceTree = "<group>"; };
+		4EB5B4C32C6F677200F6ED0C /* DesignerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerDetailViewController.swift; sourceTree = "<group>"; };
+		4EB5B4C52C6F67C000F6ED0C /* DesignerDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerDetailsViewModel.swift; sourceTree = "<group>"; };
+		4EB5B4C72C6F67CD00F6ED0C /* DesignerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerDetailsView.swift; sourceTree = "<group>"; };
+		4EB5B4C92C6F67DD00F6ED0C /* DesignerDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerDetailsCoordinator.swift; sourceTree = "<group>"; };
+		4EB5B4CB2C6F67E600F6ED0C /* DesignerDetailsViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerDetailsViewData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +344,7 @@
 		4E25A6922C3C34F800066DFD /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				4EB5B4C22C6F675700F6ED0C /* DesignerDetails */,
 				4E25A6892C3C347000066DFD /* Hay */,
 				4E25A6A22C466ACF00066DFD /* Product */,
 				4E25A6C02C49517A00066DFD /* FavouriteProducts */,
@@ -453,6 +464,18 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		4EB5B4C22C6F675700F6ED0C /* DesignerDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4EB5B4C32C6F677200F6ED0C /* DesignerDetailViewController.swift */,
+				4EB5B4C52C6F67C000F6ED0C /* DesignerDetailsViewModel.swift */,
+				4EB5B4C72C6F67CD00F6ED0C /* DesignerDetailsView.swift */,
+				4EB5B4CB2C6F67E600F6ED0C /* DesignerDetailsViewData.swift */,
+				4EB5B4C92C6F67DD00F6ED0C /* DesignerDetailsCoordinator.swift */,
+			);
+			path = DesignerDetails;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -531,6 +554,8 @@
 				4E25A6982C43DD0500066DFD /* CategoryViewData.swift in Sources */,
 				4E25A69E2C45591100066DFD /* HeaderViewData.swift in Sources */,
 				4E4D6CBD2C6DDE1500F47B5F /* UIFont + customFont.swift in Sources */,
+				4EB5B4CA2C6F67DD00F6ED0C /* DesignerDetailsCoordinator.swift in Sources */,
+				4EB5B4CC2C6F67E600F6ED0C /* DesignerDetailsViewData.swift in Sources */,
 				4E25A6C22C4951E600066DFD /* FavouriteProductsView.swift in Sources */,
 				4E25A6B32C46791500066DFD /* ProductViewData.swift in Sources */,
 				4EB5B4BF2C6F620800F6ED0C /* DesignerViewData.swift in Sources */,
@@ -555,6 +580,7 @@
 				4E25A6C42C49520200066DFD /* FavouriteProductsViewController.swift in Sources */,
 				4E25A64E2C3C33AE00066DFD /* HayTabBarController.swift in Sources */,
 				4E25A6782C3C33E900066DFD /* Endpoint.swift in Sources */,
+				4EB5B4C42C6F677200F6ED0C /* DesignerDetailViewController.swift in Sources */,
 				4E25A6832C3C33F800066DFD /* UIColor + customColor.swift in Sources */,
 				4E25A67C2C3C33F000066DFD /* BigHeaderButton.swift in Sources */,
 				4E25A6A42C466B1900066DFD /* ProductViewController.swift in Sources */,
@@ -562,6 +588,7 @@
 				4E25A6562C3C33BE00066DFD /* HayView.swift in Sources */,
 				4E25A6CA2C4958B700066DFD /* FavouriteCoordinator.swift in Sources */,
 				4E25A6BB2C494CC900066DFD /* IFavouriteProductCoreDataService.swift in Sources */,
+				4EB5B4C62C6F67C000F6ED0C /* DesignerDetailsViewModel.swift in Sources */,
 				4E25A6CC2C4A363400066DFD /* ArrayDataSource.swift in Sources */,
 				4E25A6AD2C466D3200066DFD /* ProductInfoCell.swift in Sources */,
 				4E25A65D2C3C33C500066DFD /* Header.swift in Sources */,
@@ -576,6 +603,7 @@
 				4E25A66B2C3C33DE00066DFD /* Inspiration.swift in Sources */,
 				4E25A67E2C3C33F000066DFD /* BuyButton.swift in Sources */,
 				4E25A6BF2C494D9A00066DFD /* CoreDataService.swift in Sources */,
+				4EB5B4C82C6F67CD00F6ED0C /* DesignerDetailsView.swift in Sources */,
 				4E4D6C862C64B81100F47B5F /* LikeButtonManager.swift in Sources */,
 				4E25A6742C3C33E900066DFD /* HayEndpoints.swift in Sources */,
 				4E25A6772C3C33E900066DFD /* RequestProcessorError.swift in Sources */,

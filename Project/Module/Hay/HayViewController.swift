@@ -96,7 +96,7 @@ extension HayViewController: UITableViewDataSource {
             cell.update()
             return cell
         
-            // TODO: - Separete logic into a concrete module
+            // TODO: - Separate logic into a concrete module
 
         case .designer1, .designer2:
             let index = section == .designer1 ? indexPath.row : indexPath.row + 1

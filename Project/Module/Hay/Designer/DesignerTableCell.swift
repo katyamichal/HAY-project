@@ -6,6 +6,10 @@
 
 import UIKit
 
+protocol IDesignerView: AnyObject {
+    
+}
+
 final class DesignerTableCell: UITableViewCell {
     
     private var designerProduct: [Product] = []

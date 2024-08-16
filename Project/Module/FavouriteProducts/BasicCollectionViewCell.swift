@@ -14,6 +14,7 @@ final class BasicCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Constants for constraints
+    
     private let buttonInset: CGFloat = 6
     private let likeButtonSize: CGFloat = 25
     private let productImageViewHeightMultiplier: CGFloat = 0.7

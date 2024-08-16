@@ -521,8 +521,8 @@
             filePath = "Project/Module/FavouriteProducts/BasicCollectionViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "update(productName:price:image:)"
             landmarkType = "7">
          </BreakpointContent>

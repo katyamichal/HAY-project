@@ -72,6 +72,9 @@
 		4E4D6C9A2C6A108500F47B5F /* FavouriteProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6C982C6A108500F47B5F /* FavouriteProduct+CoreDataClass.swift */; };
 		4E4D6C9B2C6A108500F47B5F /* FavouriteProduct+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6C992C6A108500F47B5F /* FavouriteProduct+CoreDataProperties.swift */; };
 		4E4D6CBD2C6DDE1500F47B5F /* UIFont + customFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6CBC2C6DDE1400F47B5F /* UIFont + customFont.swift */; };
+		4EB5B4BD2C6F620000F6ED0C /* DesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4BC2C6F620000F6ED0C /* DesignerViewModel.swift */; };
+		4EB5B4BF2C6F620800F6ED0C /* DesignerViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4BE2C6F620800F6ED0C /* DesignerViewData.swift */; };
+		4EB5B4C12C6F622600F6ED0C /* DesignerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4C02C6F622600F6ED0C /* DesignerCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +145,9 @@
 		4E4D6C982C6A108500F47B5F /* FavouriteProduct+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteProduct+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		4E4D6C992C6A108500F47B5F /* FavouriteProduct+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteProduct+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4E4D6CBC2C6DDE1400F47B5F /* UIFont + customFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + customFont.swift"; sourceTree = "<group>"; };
+		4EB5B4BC2C6F620000F6ED0C /* DesignerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerViewModel.swift; sourceTree = "<group>"; };
+		4EB5B4BE2C6F620800F6ED0C /* DesignerViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerViewData.swift; sourceTree = "<group>"; };
+		4EB5B4C02C6F622600F6ED0C /* DesignerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +276,9 @@
 			children = (
 				4E25A6642C3C33D300066DFD /* DesignerTableCell.swift */,
 				4E25A6632C3C33D300066DFD /* DesignerProductsCollectionCell.swift */,
+				4EB5B4BC2C6F620000F6ED0C /* DesignerViewModel.swift */,
+				4EB5B4BE2C6F620800F6ED0C /* DesignerViewData.swift */,
+				4EB5B4C02C6F622600F6ED0C /* DesignerCoordinator.swift */,
 			);
 			path = Designer;
 			sourceTree = "<group>";
@@ -524,10 +533,12 @@
 				4E4D6CBD2C6DDE1500F47B5F /* UIFont + customFont.swift in Sources */,
 				4E25A6C22C4951E600066DFD /* FavouriteProductsView.swift in Sources */,
 				4E25A6B32C46791500066DFD /* ProductViewData.swift in Sources */,
+				4EB5B4BF2C6F620800F6ED0C /* DesignerViewData.swift in Sources */,
 				4E25A6582C3C33BE00066DFD /* HayViewController.swift in Sources */,
 				4E25A6AB2C466C4700066DFD /* ProductGaleryCell.swift in Sources */,
 				4E25A6752C3C33E900066DFD /* HayServices.swift in Sources */,
 				4E25A6822C3C33F800066DFD /* Constants.swift in Sources */,
+				4EB5B4C12C6F622600F6ED0C /* DesignerCoordinator.swift in Sources */,
 				4E25A69A2C43DD1700066DFD /* CategoryCoordinator.swift in Sources */,
 				4E25A69C2C44F0DC00066DFD /* Observer.swift in Sources */,
 				4E25A6962C43DC5B00066DFD /* CategoryViewModel.swift in Sources */,
@@ -561,6 +572,7 @@
 				4E25A6A62C466B4800066DFD /* ProductView.swift in Sources */,
 				4E25A6652C3C33D300066DFD /* DesignerProductsCollectionCell.swift in Sources */,
 				4E25A63D2C3C332E00066DFD /* Project.xcdatamodeld in Sources */,
+				4EB5B4BD2C6F620000F6ED0C /* DesignerViewModel.swift in Sources */,
 				4E25A66B2C3C33DE00066DFD /* Inspiration.swift in Sources */,
 				4E25A67E2C3C33F000066DFD /* BuyButton.swift in Sources */,
 				4E25A6BF2C494D9A00066DFD /* CoreDataService.swift in Sources */,
@@ -732,7 +744,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Project;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hay.project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -759,7 +771,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Project;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hay.project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

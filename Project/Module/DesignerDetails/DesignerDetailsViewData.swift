@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DesignerDetailsViewData {
+struct DesignerDetailsViewData: Hashable {
     let designerId: Int
     let designerName: String
     let collectionName: String
@@ -17,6 +17,10 @@ struct DesignerDetailsViewData {
     let designerImage: String
     let collectionImages: [String]
     let products: [ProductCDO]
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(designerId)
+    }
 }
 
 extension DesignerDetailsViewData {

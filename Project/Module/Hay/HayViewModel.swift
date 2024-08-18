@@ -75,6 +75,10 @@ final class HayViewModel {
         guard let inspiration = viewData.value?.inspiration else { return }
         (coordinator as? HayCoordinator)?.showInspiration(view: view, viewData: inspiration)
     }
+    
+    func showDesignerDetail(designerId: Int) {
+        (coordinator as? HayCoordinator)?.showDesignerDetail(designerId)
+    }
 }
 
 // MARK: - Private

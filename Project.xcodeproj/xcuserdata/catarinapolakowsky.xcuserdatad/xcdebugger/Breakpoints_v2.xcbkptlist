@@ -30,8 +30,8 @@
             filePath = "Project/Module/Hay/HayViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "update(with:)"
             landmarkType = "7">
             <Locations>
@@ -937,6 +937,133 @@
             endingLineNumber = "53"
             landmarkName = "didSelectedLikeButton()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "584D54C4-09DD-4379-92A9-C432826647DA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project/Module/DesignerDetails/DesignerDetailsCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "showModule()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83AEA24A-22F3-4338-8077-499D539D4968"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project/Module/DesignerDetails/DesignerDetailsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "getData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "83AEA24A-22F3-4338-8077-499D539D4968 - 57eb1fcf59defbaa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Project.DesignerDetailsViewModel.getData() -&gt; ()"
+                  moduleName = "Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/DesignerDetails/DesignerDetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "874">
+               </Location>
+               <Location
+                  uuid = "83AEA24A-22F3-4338-8077-499D539D4968 - ffa706586f9e44ef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Project.DesignerDetailsViewModel.getData() -&gt; ()"
+                  moduleName = "Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/DesignerDetails/DesignerDetailsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D162D4C-7794-4EB4-ACCB-9708A8A6D374"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project/Module/DesignerDetails/DesignerDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0D162D4C-7794-4EB4-ACCB-9708A8A6D374 - 421a65d30fa9dd64"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project.DesignerDetailViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/DesignerDetails/DesignerDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "867">
+               </Location>
+               <Location
+                  uuid = "0D162D4C-7794-4EB4-ACCB-9708A8A6D374 - 421a65d30fa9dd64"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project.DesignerDetailViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/DesignerDetails/DesignerDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "539">
+               </Location>
+               <Location
+                  uuid = "0D162D4C-7794-4EB4-ACCB-9708A8A6D374 - 421a65d30fa9dd64"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Project.DesignerDetailViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/DesignerDetails/DesignerDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "543">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

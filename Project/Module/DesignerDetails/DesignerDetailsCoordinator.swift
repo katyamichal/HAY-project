@@ -12,10 +12,12 @@ final class DesignerDetailsCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     private let service: HayServiceable
     private let navigationController: UINavigationController
+    private let designerId: Int
     
-    init(service: HayServiceable, navigationController: UINavigationController) {
+    init(service: HayServiceable, navigationController: UINavigationController, designerId: Int) {
         self.service = service
         self.navigationController = navigationController
+        self.designerId = designerId
     }
     
     
@@ -29,5 +31,9 @@ final class DesignerDetailsCoordinator: Coordinator {
 }
 
 private extension DesignerDetailsCoordinator {
-    func showModule() {}
+    func showModule() {
+        let viewModel = DesignerDetailsViewModel(coordinator: self, service: service, designerId: designerId)
+        let viewController = DesignerDetailViewController(viewModel: viewModel)
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

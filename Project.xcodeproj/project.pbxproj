@@ -80,6 +80,7 @@
 		4EB5B4C82C6F67CD00F6ED0C /* DesignerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4C72C6F67CD00F6ED0C /* DesignerDetailsView.swift */; };
 		4EB5B4CA2C6F67DD00F6ED0C /* DesignerDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4C92C6F67DD00F6ED0C /* DesignerDetailsCoordinator.swift */; };
 		4EB5B4CC2C6F67E600F6ED0C /* DesignerDetailsViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4CB2C6F67E600F6ED0C /* DesignerDetailsViewData.swift */; };
+		4EB5B4CE2C71ECD600F6ED0C /* DesignerInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4CD2C71ECD600F6ED0C /* DesignerInfoCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +159,7 @@
 		4EB5B4C72C6F67CD00F6ED0C /* DesignerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerDetailsView.swift; sourceTree = "<group>"; };
 		4EB5B4C92C6F67DD00F6ED0C /* DesignerDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerDetailsCoordinator.swift; sourceTree = "<group>"; };
 		4EB5B4CB2C6F67E600F6ED0C /* DesignerDetailsViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerDetailsViewData.swift; sourceTree = "<group>"; };
+		4EB5B4CD2C71ECD600F6ED0C /* DesignerInfoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerInfoCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,10 +346,10 @@
 		4E25A6922C3C34F800066DFD /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				4EB5B4C22C6F675700F6ED0C /* DesignerDetails */,
 				4E25A6892C3C347000066DFD /* Hay */,
 				4E25A6A22C466ACF00066DFD /* Product */,
 				4E25A6C02C49517A00066DFD /* FavouriteProducts */,
+				4EB5B4C22C6F675700F6ED0C /* DesignerDetails */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -468,12 +470,21 @@
 			isa = PBXGroup;
 			children = (
 				4EB5B4C32C6F677200F6ED0C /* DesignerDetailViewController.swift */,
-				4EB5B4C52C6F67C000F6ED0C /* DesignerDetailsViewModel.swift */,
 				4EB5B4C72C6F67CD00F6ED0C /* DesignerDetailsView.swift */,
+				4EB5B4C52C6F67C000F6ED0C /* DesignerDetailsViewModel.swift */,
 				4EB5B4CB2C6F67E600F6ED0C /* DesignerDetailsViewData.swift */,
 				4EB5B4C92C6F67DD00F6ED0C /* DesignerDetailsCoordinator.swift */,
+				4EB5B4CF2C71ECDB00F6ED0C /* Cells */,
 			);
 			path = DesignerDetails;
+			sourceTree = "<group>";
+		};
+		4EB5B4CF2C71ECDB00F6ED0C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4EB5B4CD2C71ECD600F6ED0C /* DesignerInfoCollectionCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -578,6 +589,7 @@
 				4E25A6CE2C4A3B6300066DFD /* FavouriteViewData.swift in Sources */,
 				4E25A6332C3C332E00066DFD /* AppDelegate.swift in Sources */,
 				4E25A6C42C49520200066DFD /* FavouriteProductsViewController.swift in Sources */,
+				4EB5B4CE2C71ECD600F6ED0C /* DesignerInfoCollectionCell.swift in Sources */,
 				4E25A64E2C3C33AE00066DFD /* HayTabBarController.swift in Sources */,
 				4E25A6782C3C33E900066DFD /* Endpoint.swift in Sources */,
 				4EB5B4C42C6F677200F6ED0C /* DesignerDetailViewController.swift in Sources */,

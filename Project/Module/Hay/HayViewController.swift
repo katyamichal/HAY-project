@@ -127,7 +127,8 @@ extension HayViewController: UITableViewDelegate {
             break
         case .designer1, .designer2:
         print("Should show designer detail")
-          //  hayViewModel.showDetail()
+            guard let id = hayViewModel.viewData.value?.designers[0].id else { return }
+            hayViewModel.showDesignerDetail(designerId: id)
         }
     }
     

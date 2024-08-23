@@ -36,7 +36,7 @@ final class HayCoordinator: Coordinator {
     }
     
     func showInspiration(view: Header, viewData: [InspirationFeed]) {
-        let headerCoordinator = HeaderCoordinator(header: view, viewData: viewData, navigationController: navigationController)
+        let headerCoordinator = HeaderCoordinator(service: networkService, header: view, viewData: viewData, navigationController: navigationController)
         headerCoordinator.parentCoordinator = self
         childCoordinators.append(headerCoordinator)
         headerCoordinator.start()

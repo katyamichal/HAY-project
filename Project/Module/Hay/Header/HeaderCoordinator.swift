@@ -14,11 +14,13 @@ final class HeaderCoordinator: Coordinator {
     private let viewData: [InspirationFeed]
     private let view: Header
     private let navigationController: UINavigationController
+    private let service: HayServiceable
     
-    init(header: Header, viewData: [InspirationFeed], navigationController: UINavigationController) {
+    init(service: HayServiceable, header: Header, viewData: [InspirationFeed], navigationController: UINavigationController) {
         self.view = header
         self.viewData = viewData
         self.navigationController = navigationController
+        self.service = service
     }
     
     func start() {
@@ -28,7 +30,9 @@ final class HeaderCoordinator: Coordinator {
     func finish() {
     }
     
-    func showDetail(with id: Int) {
+    func showDetail(with index: Int) {
+        let inspirationDetailCoordinator = InspirationDetailCoordinator(service: service, inspirationIndex: index, navigationController: navigationController)
+        inspirationDetailCoordinator.start()
     }
 }
 

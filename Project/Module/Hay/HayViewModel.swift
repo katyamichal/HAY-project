@@ -42,7 +42,7 @@ final class HayViewModel {
         loadingError.subscribe(observer: observer)
     }
     
-    // MARK:  Fetching Data
+    // MARK: - Fetching Data
     
     func fetchServerData() {
         Task {

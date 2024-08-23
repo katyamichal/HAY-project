@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol IHeaderViewModel: AnyObject {
+    func setupView(with view: IHeaderView)
+    func showDetail(at index: Int)
+}
+
 final  class HeaderViewModel {
     
     private weak var coordinator: Coordinator?
@@ -17,9 +22,16 @@ final  class HeaderViewModel {
         self.coordinator = coordinator
         self.viewData = viewData
     }
+}
+
+extension HeaderViewModel: IHeaderViewModel {
     
     func setupView(with view: IHeaderView) {
         self.view = view
         view.update(with: viewData.inspiration)
+    }
+    
+    func showDetail(at index: Int) {
+        (coordinator as? HeaderCoordinator)?.showDetail(with: index)
     }
 }

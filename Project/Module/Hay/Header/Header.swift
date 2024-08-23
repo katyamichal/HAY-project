@@ -12,8 +12,7 @@ protocol IHeaderView: AnyObject {
 
 final class Header: UIView {
     
-    var viewModel: HeaderViewModel?
-    private var pages: [InspirationSingleView] = []
+    var viewModel: IHeaderViewModel?
     
     // MARK: - Constants for constraints
 
@@ -53,7 +52,7 @@ final class Header: UIView {
     }
     
     // MARK: - UI Elements
-    
+    private var pages: [InspirationSingleView] = []
     private var container = UIView()
     private let scrollView = UIScrollView()
     
@@ -77,14 +76,9 @@ final class Header: UIView {
         ///  setting padding area of the view' size blocks scroll view touches
         button.touchAreaPadding = UIEdgeInsets(top: detailButtonPaddingTopAndLeft, left: detailButtonPaddingTopAndLeft, bottom: detailButtonPaddingBottom, right: detailButtonPaddingRight)
         button.isHidden = true
+        button.addTarget(self, action: #selector(detailButtonDidPressed), for: .touchUpInside)
         return button
     }()
-    
-    // MARK: - Public
-    
-    func setupDetailAction(_ target: Any, action: Selector, for event: UIControl.Event = .touchUpInside) {
-        detailButton.addTarget(self, action: action, for: event)
-    }
     
     func setupViewModel() {
         viewModel?.setupView(with: self)
@@ -171,6 +165,12 @@ private extension Header {
     func pageControlDidChange(_ sender: UIPageControl) {
         let current = CGFloat(sender.currentPage)
         scrollView.setContentOffset(CGPoint(x: current * (Constants.Layout.width), y: 0), animated: true)
+    }
+    
+    @objc
+    func detailButtonDidPressed() {
+        let index = pageControl.currentPage
+        viewModel?.showDetail(at: index)
     }
 }
 

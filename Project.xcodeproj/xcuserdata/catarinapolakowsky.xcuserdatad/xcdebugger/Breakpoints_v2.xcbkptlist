@@ -329,8 +329,8 @@
             filePath = "Project/Module/Product/ProductViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "backToMainView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -505,8 +505,8 @@
             filePath = "Project/Module/FavouriteProducts/BasicCollectionViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "update(productName:price:image:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -837,8 +837,8 @@
             filePath = "Project/Module/Product/ProductViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "setupActions()"
             landmarkType = "7">
             <Locations>
@@ -1124,8 +1124,8 @@
             filePath = "Project/Module/InspirationDetails/InspirationDetailCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "showModule()"
             landmarkType = "7">
          </BreakpointContent>

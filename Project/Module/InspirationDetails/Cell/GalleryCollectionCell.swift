@@ -1,5 +1,5 @@
 //
-//  GaleryCollectionCell.swift
+//  GalleryCollectionCell.swift
 //  Project
 //
 //  Created by Catarina Polakowsky on 23.08.2024.
@@ -7,13 +7,15 @@
 
 import UIKit
 
-final class GaleryCollectionCell: UICollectionViewCell {
-    
-   private let scrollViewHeight = Constants.Layout.height / 1.8
+final class GalleryCollectionCell: UICollectionViewCell {
     
     static var cellIdentifier: String {
-        String(describing: GaleryCollectionCell.self)
+        String(describing: GalleryCollectionCell.self)
     }
+    
+    // MARK: - Constants for constraints
+    
+    private let scrollViewHeight = Constants.Layout.height / 1.8
     
     // MARK: - Inits
     
@@ -28,12 +30,12 @@ final class GaleryCollectionCell: UICollectionViewCell {
     }
     
     deinit {
-        print("InspirationGaleryCollectionCell deinit")
+        print("GalleryCollectionCell deinit")
     }
     
     // MARK: -  UIElements
     
-    let scrollView = UIScrollView()
+    private lazy var scrollView = UIScrollView()
     
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -82,20 +84,17 @@ final class GaleryCollectionCell: UICollectionViewCell {
     
     // MARK: - Public
     
-    func update(with collectionName: String, descriptionText: String) {
+    func update(with collectionName: String, descriptionText: String, images: [UIImage]) {
         productNameLabel.text = collectionName
         descriptionLabel.text = descriptionText
-//        configureGalleryView(with: inspirationFeed)
-//        if inspirationFeed.images.count  == 1 {
-//            pageControl.isHidden = true
-//        }
+        configureGalleryView(with: images)
+        pageControl.isHidden = images.count == 1
     }
 }
 
 // MARK: - Setup' methods
 
-private extension GaleryCollectionCell {
-    
+private extension GalleryCollectionCell {
     func setupCell() {
         backgroundColor = .clear
         setupViews()
@@ -129,7 +128,7 @@ private extension GaleryCollectionCell {
 }
 
 
-private extension GaleryCollectionCell {
+private extension GalleryCollectionCell {
     
     func setupScrollView() {
         scrollView.frame = CGRect(x: .zero, y: .zero, width: Constants.Layout.width, height: scrollViewHeight)
@@ -159,7 +158,7 @@ private extension GaleryCollectionCell {
 }
 
 
-extension GaleryCollectionCell: UIScrollViewDelegate {
+extension GalleryCollectionCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int(floorf(Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width)))
     }

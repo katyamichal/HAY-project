@@ -7,12 +7,13 @@
 
 import UIKit
 
+enum InspirationDetailSectionType: CaseIterable {
+    case photoGalleryDescription
+    case products
+}
+
 final class InspirationDetailView: UIView {
-    
-    private enum SectionType: CaseIterable {
-        case photoGaleryDescription
-        case products
-    }
+    // MARK: - Constants for constraints
 
     // MARK: - Init
 
@@ -30,16 +31,44 @@ final class InspirationDetailView: UIView {
         print("InspirationDetailView deinit")
     }
     
-    // MARK: - UI Element
+    // MARK: - UI Elements
+    
     private(set) lazy var collectionView: UICollectionView = {
         let layout = createCollectionView()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.backgroundColor = .clear
-        collection.register(GaleryCollectionCell.self, forCellWithReuseIdentifier: GaleryCollectionCell.cellIdentifier)
+        collection.isHidden = true
+        collection.register(GalleryCollectionCell.self, forCellWithReuseIdentifier: GalleryCollectionCell.cellIdentifier)
         collection.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.cellIdentifier)
         return collection
     }()
+    
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .large
+        activityIndicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        activityIndicator.center = self.center
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
+    
+    // MARK: - Public methods
+
+    func setupCollectionViewDataSource(with dataSource: UICollectionViewDataSource) {
+        collectionView.dataSource = dataSource
+    }
+    
+    func setupCollectionViewDelegate(with delegate: UICollectionViewDelegate) {
+        collectionView.delegate = delegate
+    }
+    
+    func updateView() {
+        collectionView.isHidden = false
+        loadingIndicator.stopAnimating()
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - Layout methods
@@ -51,6 +80,7 @@ private extension InspirationDetailView {
     }
 
     func setupViews() {
+        addSubview(loadingIndicator)
         addSubview(collectionView)
     }
 
@@ -61,14 +91,16 @@ private extension InspirationDetailView {
         collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
 
+    // MARK: - Collection layout
+    
     func createCollectionView() -> UICollectionViewLayout {
         let config = UICollectionViewCompositionalLayoutConfiguration()
         let layout = UICollectionViewCompositionalLayout(sectionProvider: { [weak self] (sectionIndex, layoutEnviroment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let isWideView = layoutEnviroment.container.effectiveContentSize.width > 500
 
-            let sectionLayoutKind = SectionType.allCases[sectionIndex]
+            let sectionLayoutKind = InspirationDetailSectionType.allCases[sectionIndex]
             switch sectionLayoutKind {
-            case .photoGaleryDescription:
+            case .photoGalleryDescription:
                 return self?.createDescriptionLayout(isWide: isWideView)
             case .products:
                 return self?.createProductsLayout(isWide: isWideView)
@@ -78,7 +110,7 @@ private extension InspirationDetailView {
         return layout
     }
 
-    // MARK:  collection section' layouts
+    // MARK: Gallery Section
 
     func createDescriptionLayout(isWide: Bool) -> NSCollectionLayoutSection {
         let height = Constants.Layout.headerHeight + 200

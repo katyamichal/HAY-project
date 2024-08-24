@@ -10,6 +10,8 @@ import UIKit
 
 final class ProductGaleryCell: UITableViewCell {
     
+    // MARK: - Constants for constraints
+    
     private let scrollViewTopInset: CGFloat = 40
     private let scrollViewSideInset: CGFloat = 16
     private let scrollViewHeight: CGFloat = Constants.Layout.height / 2

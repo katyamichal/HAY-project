@@ -57,6 +57,7 @@ final class ProducViewController: UIViewController {
         setupTabelView()
         setupActions()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }

@@ -10,6 +10,7 @@ import UIKit
 final class FavouriteProductsView: UIView {
     
     // MARK: - Constants for constraints
+    
     private let headerTopPadding: CGFloat = 40.0
     private let headerSidePadding: CGFloat = 20.0
     private let headerBottomPadding: CGFloat = 10.0

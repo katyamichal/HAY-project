@@ -77,7 +77,7 @@
 		4E5C23FE2C78CE8F004EC7BF /* InspirationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C23FD2C78CE8F004EC7BF /* InspirationDetailViewController.swift */; };
 		4E5C24002C78CE9D004EC7BF /* InspirationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C23FF2C78CE9D004EC7BF /* InspirationDetailView.swift */; };
 		4E5C24022C78CEB6004EC7BF /* InspirationDetailViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C24012C78CEB6004EC7BF /* InspirationDetailViewData.swift */; };
-		4E5C24042C78D390004EC7BF /* GaleryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C24032C78D390004EC7BF /* GaleryCollectionCell.swift */; };
+		4E5C24042C78D390004EC7BF /* GalleryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C24032C78D390004EC7BF /* GalleryCollectionCell.swift */; };
 		4EB5B4BD2C6F620000F6ED0C /* DesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4BC2C6F620000F6ED0C /* DesignerViewModel.swift */; };
 		4EB5B4BF2C6F620800F6ED0C /* DesignerViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4BE2C6F620800F6ED0C /* DesignerViewData.swift */; };
 		4EB5B4C12C6F622600F6ED0C /* DesignerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4C02C6F622600F6ED0C /* DesignerCoordinator.swift */; };
@@ -162,7 +162,7 @@
 		4E5C23FD2C78CE8F004EC7BF /* InspirationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationDetailViewController.swift; sourceTree = "<group>"; };
 		4E5C23FF2C78CE9D004EC7BF /* InspirationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationDetailView.swift; sourceTree = "<group>"; };
 		4E5C24012C78CEB6004EC7BF /* InspirationDetailViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationDetailViewData.swift; sourceTree = "<group>"; };
-		4E5C24032C78D390004EC7BF /* GaleryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaleryCollectionCell.swift; sourceTree = "<group>"; };
+		4E5C24032C78D390004EC7BF /* GalleryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionCell.swift; sourceTree = "<group>"; };
 		4EB5B4BC2C6F620000F6ED0C /* DesignerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerViewModel.swift; sourceTree = "<group>"; };
 		4EB5B4BE2C6F620800F6ED0C /* DesignerViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerViewData.swift; sourceTree = "<group>"; };
 		4EB5B4C02C6F622600F6ED0C /* DesignerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerCoordinator.swift; sourceTree = "<group>"; };
@@ -442,8 +442,8 @@
 				4E25A6C32C49520200066DFD /* FavouriteProductsViewController.swift */,
 				4E25A6C12C4951E600066DFD /* FavouriteProductsView.swift */,
 				4E25A6C52C49525400066DFD /* FavouriteProductsViewModel.swift */,
-				4E25A6C72C49550B00066DFD /* BasicCollectionViewCell.swift */,
 				4E25A6CD2C4A3B6300066DFD /* FavouriteViewData.swift */,
+				4E25A6C72C49550B00066DFD /* BasicCollectionViewCell.swift */,
 			);
 			path = FavouriteProducts;
 			sourceTree = "<group>";
@@ -495,7 +495,7 @@
 		4E5C24052C78D526004EC7BF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				4E5C24032C78D390004EC7BF /* GaleryCollectionCell.swift */,
+				4E5C24032C78D390004EC7BF /* GalleryCollectionCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -626,7 +626,7 @@
 				4E25A6CE2C4A3B6300066DFD /* FavouriteViewData.swift in Sources */,
 				4E25A6332C3C332E00066DFD /* AppDelegate.swift in Sources */,
 				4E5C24022C78CEB6004EC7BF /* InspirationDetailViewData.swift in Sources */,
-				4E5C24042C78D390004EC7BF /* GaleryCollectionCell.swift in Sources */,
+				4E5C24042C78D390004EC7BF /* GalleryCollectionCell.swift in Sources */,
 				4E25A6C42C49520200066DFD /* FavouriteProductsViewController.swift in Sources */,
 				4EB5B4CE2C71ECD600F6ED0C /* DesignerInfoCollectionCell.swift in Sources */,
 				4E25A64E2C3C33AE00066DFD /* HayTabBarController.swift in Sources */,

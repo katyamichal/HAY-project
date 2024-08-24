@@ -25,14 +25,12 @@ final class InspirationDetailCoordinator: Coordinator {
         showModule()
     }
     
-    func finish() {
-        
-    }
+    func finish() {}
 }
 
 private extension InspirationDetailCoordinator {
     func showModule() {
-        let viewModel = InspirationDetailViewModel()
+        let viewModel = InspirationDetailViewModel(service: service, coordinator: self, inspirationIndex: inspirationIndex)
         let viewController = InspirationDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }

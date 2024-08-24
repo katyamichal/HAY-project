@@ -9,6 +9,8 @@ import UIKit
 
 final class ProductView: UIView {
     
+    // MARK: - Constants for constraints
+    
     private let tableViewBottomInset: CGFloat = -10
     private let actionButtonViewBottomInset: CGFloat = -20
     private let actionButtonViewSideInset: CGFloat = 16

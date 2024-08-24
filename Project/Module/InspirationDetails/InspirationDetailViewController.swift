@@ -12,12 +12,15 @@ protocol InspirationDetailViewProtocol: AnyObject {
 }
 
 final class InspirationDetailViewController: UIViewController {
-    private let viewModel: InspirationDetailViewModelProtocol
     
+    private let viewModel: InspirationDetailViewModelProtocol
+    private var inspirationDetailView: InspirationDetailView { return self.view as! InspirationDetailView }
+    var id: UUID
     // MARK: - Inits
     
     init(viewModel: InspirationDetailViewModelProtocol) {
         self.viewModel = viewModel
+        self.id = UUID()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,6 +42,9 @@ final class InspirationDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBarButton()
+        viewModel.setupView(with: self)
+        viewModel.subscribe(self)
+        setupCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,11 +53,65 @@ final class InspirationDetailViewController: UIViewController {
     }
 }
 
-extension InspirationDetailViewController: InspirationDetailViewProtocol {}
+extension InspirationDetailViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        InspirationDetailSectionType.allCases.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let sectionType = InspirationDetailSectionType.allCases[section]
+        switch sectionType {
+        case .photoGalleryDescription: return 1
+        case .products: return viewModel.productCount
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let sectionType = InspirationDetailSectionType.allCases[indexPath.section]
+      
+        switch sectionType {
+        case .photoGalleryDescription:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCollectionCell.cellIdentifier, for: indexPath) as? GalleryCollectionCell else {
+                return UICollectionViewCell()
+            }
+            cell.update(with: viewModel.collectionName, descriptionText: viewModel.description, images: viewModel.imageCollection)
+            return cell
+
+        case .products:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.cellIdentifier, for: indexPath) as? BasicCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            return cell
+        }
+    }
+}
+
+extension InspirationDetailViewController: IObserver {
+    func update<T>(with value: T) {
+        if value is InspirationDetailViewData {
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.inspirationDetailView.updateView()
+            }
+        }
+    }
+}
+
+extension InspirationDetailViewController: UICollectionViewDelegate {}
+
+extension InspirationDetailViewController: InspirationDetailViewProtocol {
+
+}
 
 // MARK: - Nav Bar Setup
 
 private extension InspirationDetailViewController {
+    
+    func setupCollectionView() {
+        inspirationDetailView.setupCollectionViewDelegate(with: self)
+        inspirationDetailView.setupCollectionViewDataSource(with: self)
+    }
     
     func setupNavBarButton() {
         navigationItem.title = "HAY"

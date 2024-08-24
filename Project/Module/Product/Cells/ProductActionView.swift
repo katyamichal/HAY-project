@@ -10,6 +10,7 @@ import UIKit
 final class ProductActionsView: UIView {
     
     // MARK: - Constants for constraints
+    
     private let basketButtonWidth: CGFloat = Constants.Layout.width / 1.3
     private let buttonSpacing: CGFloat = 10
     

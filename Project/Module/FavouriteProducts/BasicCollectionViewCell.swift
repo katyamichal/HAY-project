@@ -84,7 +84,6 @@ final class BasicCollectionViewCell: UICollectionViewCell {
     private lazy var likeButton: LikeButton = {
         let button = LikeButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.isSelected = true
         return button
     }()
     

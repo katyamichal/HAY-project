@@ -24,10 +24,6 @@ struct ProductViewData {
 }
 
 extension ProductViewData: IProductCDO {
-//    var type: EntityType {
-//        .
-//    }
-    
     init(product: Product) {
         self.id = product.id
         self.productName = product.productName

@@ -14,6 +14,8 @@ protocol IFavouriteProductsViewModel: AnyObject {
     var image: UIImage { get }
     var headerTitle: String { get }
     var headerFont: UIFont { get }
+    var isFavourite: Bool { get }
+    var productId: Int { get }
     func setupView(with view: IFavouriteProductsView)
     func getData()
     func setCurrentProduct(at index: Int)
@@ -34,6 +36,19 @@ final class FavouriteProductsViewModel {
 }
 
 extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
+    var productId: Int {
+        guard let currentProduct else { return 0 }
+        return currentProduct.id
+    }
+    
+    var isFavourite: Bool {
+        guard let currentProduct else { return false }
+        if likeManager.favouriteProducts.value?.products.first(where: { $0.id == currentProduct.id }) != nil {
+            return true
+        }
+        return false
+    }
+    
     var headerFont: UIFont {
         (viewData.count == 0) ? Fonts.Subtitles.defaultFont : Fonts.Subtitles.largeFont
     }

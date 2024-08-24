@@ -89,10 +89,20 @@ final class BasicCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public
     
-    func update(productName: String, price: String, image: UIImage) {
+    func update(productName: String, price: String, image: UIImage,  isFavourite: Bool, productId: Int) {
         nameLabel.text = productName
         pricelLabel.text = price
         productImageView.image = image
+        setupLikeButton(with: isFavourite, productId: productId)
+    }
+    
+    func setupLikeButtonDelegate(_ delegate: ILikeButton) {
+        likeButton.delegate = delegate
+    }
+    
+    func setupLikeButton(with status: Bool, productId: Int) {
+        likeButton.isSelected = status
+        likeButton.productId = productId
     }
 }
 // MARK: - Setup methods

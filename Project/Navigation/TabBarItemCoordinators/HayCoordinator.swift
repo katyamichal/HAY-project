@@ -41,7 +41,9 @@ final class HayCoordinator: Coordinator {
         childCoordinators.append(headerCoordinator)
         headerCoordinator.start()
     }
-    
+  
+    // MARK: - Show Detail Modules
+
     func showDesignerDetail(_ designerId: Int) {
         let designerDetailCoordinator = DesignerDetailsCoordinator(service: networkService, navigationController: navigationController, designerId: designerId)
         designerDetailCoordinator.parentCoordinator = self

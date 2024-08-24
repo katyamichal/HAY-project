@@ -13,7 +13,7 @@ final class CategoryCoordinator: Coordinator {
     
     private let viewData: CategoryViewData
     private let cell: CategoryTableCell
-    private let navigationController: UINavigationController
+    var navigationController: UINavigationController
     private let service: HayServiceable
     
     init(service: HayServiceable, cell: CategoryTableCell, viewData: CategoryViewData, navigationController: UINavigationController) {

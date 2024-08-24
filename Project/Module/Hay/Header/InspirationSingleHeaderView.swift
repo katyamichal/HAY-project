@@ -55,7 +55,7 @@ final class InspirationSingleView: UIView {
         return view
     }()
     
-    let imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill

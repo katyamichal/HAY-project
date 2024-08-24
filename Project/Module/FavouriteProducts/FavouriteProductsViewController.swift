@@ -75,7 +75,7 @@ extension FavouriteProductsViewController: UICollectionViewDataSource {
            return UICollectionViewCell()
         }
         viewModel.setCurrentProduct(at: indexPath.row)
-        cell.update(productName: viewModel.productName, price: viewModel.price, image: viewModel.image)
+        cell.update(productName: viewModel.productName, price: viewModel.price, image: viewModel.image, isFavourite: viewModel.isFavourite, productId: viewModel.productId)
         return cell
     }
 }

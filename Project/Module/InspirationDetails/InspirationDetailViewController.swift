@@ -83,7 +83,7 @@ extension InspirationDetailViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             viewModel.setCurrentProduct(at: indexPath.row)
-            cell.update(productName: viewModel.productName, price: viewModel.productPrice, image: viewModel.productImage)
+            cell.update(productName: viewModel.productName, price: viewModel.productPrice, image: viewModel.productImage, isFavourite: viewModel.isFavourite, productId: viewModel.productId)
             return cell
         }
     }
@@ -120,22 +120,17 @@ private extension InspirationDetailViewController {
     }
     
     func setupNavBarButton() {
-        navigationItem.title = "HAY"
+        navigationItem.title = Constants.LabelTitles.navigationBarHay
         let leftButtonImageConfiguration = UIImage.SymbolConfiguration(pointSize: 18, weight: .light)
-        let leftButtonImage = UIImage(systemName: "chevron.left", withConfiguration: leftButtonImageConfiguration)?.withTintColor(.black)
+        let leftButtonImage = UIImage(systemName: Constants.SystemUIElementNames.goBack, withConfiguration: leftButtonImageConfiguration)?.withTintColor(.black)
         
-        let leftBarButton = UIBarButtonItem(image: leftButtonImage, style: .done, target: self, action: #selector(backToMainView))
+        let leftBarButton = UIBarButtonItem(image: leftButtonImage, style: .done, target: self, action: #selector(backButtonDidTapped))
         navigationItem.leftBarButtonItem = leftBarButton
-        
-        
-        let rightButtonImageConfiguration = UIImage.SymbolConfiguration(pointSize: 18, weight: .light)
-        let rightButtonImage = UIImage(systemName: "square.and.arrow.up", withConfiguration: rightButtonImageConfiguration)
-        let rightBarButton = UIBarButtonItem(image: rightButtonImage, style: .plain, target: self, action: nil)
-        navigationItem.rightBarButtonItem = rightBarButton
     }
     
     @objc
-    func backToMainView() {
-        navigationController?.popViewController(animated: true)
+    func backButtonDidTapped() {
+        viewModel.goBack()
+        viewModel.unsubscribe(self)
     }
 }

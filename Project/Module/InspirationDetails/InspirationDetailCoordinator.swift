@@ -26,6 +26,10 @@ final class InspirationDetailCoordinator: Coordinator {
     }
     
     func finish() {}
+    
+    func goBack() {
+        navigationController.popViewController(animated: true)
+    }
 }
 
 private extension InspirationDetailCoordinator {

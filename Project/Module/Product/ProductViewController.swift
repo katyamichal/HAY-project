@@ -148,7 +148,7 @@ private extension ProducViewController {
         let config = UIImage.SymbolConfiguration(pointSize: 18, weight: .light)
         
         let image = UIImage(systemName: Constants.SystemUIElementNames.goBack, withConfiguration: config)?.withTintColor(.black)
-        let leftBarButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(backToMainView))
+        let leftBarButton = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(backButtonDidTapped))
         
         let image2 = UIImage(systemName: Constants.SystemUIElementNames.share, withConfiguration: config)
         let rightBarButton = UIBarButtonItem(image: image2, style: .plain, target: self, action: #selector(shareProduct))
@@ -165,7 +165,7 @@ private extension ProducViewController {
     }
     
     @objc
-    func backToMainView() {
+    func backButtonDidTapped() {
         viewModel.goBack()
     }
     

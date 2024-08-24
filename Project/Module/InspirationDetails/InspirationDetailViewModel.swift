@@ -16,10 +16,13 @@ protocol InspirationDetailViewModelProtocol: AnyObject {
     var productPrice: String { get }
     var productImage: UIImage { get }
     var isFavourite: Bool { get }
+    var productId: Int { get }
     
     func setupView(with view: InspirationDetailViewProtocol)
     func subscribe(_ observer: IObserver)
+    func unsubscribe(_ observer: IObserver)
     func setCurrentProduct(at index: Int)
+    func goBack()
 }
 
 final class InspirationDetailViewModel {
@@ -88,6 +91,11 @@ extension InspirationDetailViewModel: InspirationDetailViewModelProtocol {
         return false
     }
     
+    var productId: Int {
+        guard let currentProduct else { return 0 }
+        return currentProduct.id
+    }
+    
     var productName: String {
         guard let currentProduct else { return emptyData }
         return currentProduct.productName
@@ -116,10 +124,20 @@ extension InspirationDetailViewModel: InspirationDetailViewModelProtocol {
     
     func subscribe(_ observer: IObserver) {
         viewData.subscribe(observer: observer)
+        loadingError.subscribe(observer: observer)
+    }
+    
+    func unsubscribe(_ observer: IObserver) {
+        viewData.unsubscribe(observer: observer)
+        loadingError.unsubscribe(observer: observer)
     }
     
     func setCurrentProduct(at index: Int) {
         currentProduct = viewData.value?.products[index]
+    }
+    
+    func goBack() {
+        (coordinator as? InspirationDetailCoordinator)?.goBack()
     }
 }
 

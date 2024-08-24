@@ -32,6 +32,7 @@ final class HeaderCoordinator: Coordinator {
     
     func showDetail(with index: Int) {
         let inspirationDetailCoordinator = InspirationDetailCoordinator(service: service, inspirationIndex: index, navigationController: navigationController)
+        inspirationDetailCoordinator.parentCoordinator = self
         inspirationDetailCoordinator.start()
     }
 }

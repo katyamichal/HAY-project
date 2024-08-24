@@ -12,9 +12,14 @@ protocol InspirationDetailViewModelProtocol: AnyObject {
     var collectionName: String { get }
     var imageCollection: [UIImage] { get }
     var description: String { get }
+    var productName: String { get }
+    var productPrice: String { get }
+    var productImage: UIImage { get }
+    var isFavourite: Bool { get }
     
     func setupView(with view: InspirationDetailViewProtocol)
     func subscribe(_ observer: IObserver)
+    func setCurrentProduct(at index: Int)
 }
 
 final class InspirationDetailViewModel {
@@ -25,6 +30,9 @@ final class InspirationDetailViewModel {
     private var viewData: Observable<InspirationDetailViewData>
     private var loadingError = Observable<String>()
     private let likeManager = LikeButtonManager.shared
+    
+    private var currentProduct: ProductCDO?
+    
     // MARK: - Inits
     
     init(service: HayServiceable, coordinator: Coordinator, inspirationIndex: Int) {
@@ -44,16 +52,16 @@ final class InspirationDetailViewModel {
                 async let inspirationResponse = try service.getInspiration()
                 let inspiration = try await inspirationResponse.inspiration[inspirationIndex]
                 viewData.value = InspirationDetailViewData(with: inspiration)
+            } catch {
+                self.loadingError.value = ErrorHandler.getErrorResponse(with: error)
             }
         }
     }
 }
 
 extension InspirationDetailViewModel: InspirationDetailViewModelProtocol {
-    func subscribe(_ observer: IObserver) {
-        viewData.subscribe(observer: observer)
-    }
-    
+    // MARK: - Data For Gallery Cell
+
     var imageCollection: [UIImage] {
         return [coverImage] + images
     }
@@ -66,13 +74,52 @@ extension InspirationDetailViewModel: InspirationDetailViewModelProtocol {
         return viewData.value?.description ?? emptyData
     }
     
+    // MARK: - Data for Product Cell
+
     var productCount: Int {
         return viewData.value?.products.count ?? 0
     }
     
+    var isFavourite: Bool {
+        guard let currentProduct else { return false }
+        if likeManager.favouriteProducts.value?.products.first(where: { $0.id == currentProduct.id }) != nil {
+            return true
+        }
+        return false
+    }
+    
+    var productName: String {
+        guard let currentProduct else { return emptyData }
+        return currentProduct.productName
+    }
+    
+    var productPrice: String {
+        guard let currentProduct else { return emptyData }
+        return "£\(currentProduct.price)"
+    }
+    
+    var productImage: UIImage {
+        guard
+            let currentProduct,
+            let image = UIImage(named: currentProduct.image) else {
+            return UIImage()
+        }
+        return image
+    }
+    
+    // MARK: - Basic Protocol Methods
+
     func setupView(with view: InspirationDetailViewProtocol) {
         self.view = view
         fetchData()
+    }
+    
+    func subscribe(_ observer: IObserver) {
+        viewData.subscribe(observer: observer)
+    }
+    
+    func setCurrentProduct(at index: Int) {
+        currentProduct = viewData.value?.products[index]
     }
 }
 

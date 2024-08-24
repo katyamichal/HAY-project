@@ -78,6 +78,7 @@
 		4E5C24002C78CE9D004EC7BF /* InspirationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C23FF2C78CE9D004EC7BF /* InspirationDetailView.swift */; };
 		4E5C24022C78CEB6004EC7BF /* InspirationDetailViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C24012C78CEB6004EC7BF /* InspirationDetailViewData.swift */; };
 		4E5C24042C78D390004EC7BF /* GalleryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C24032C78D390004EC7BF /* GalleryCollectionCell.swift */; };
+		4E5C24072C79BE54004EC7BF /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C24062C79BE54004EC7BF /* ErrorHandler.swift */; };
 		4EB5B4BD2C6F620000F6ED0C /* DesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4BC2C6F620000F6ED0C /* DesignerViewModel.swift */; };
 		4EB5B4BF2C6F620800F6ED0C /* DesignerViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4BE2C6F620800F6ED0C /* DesignerViewData.swift */; };
 		4EB5B4C12C6F622600F6ED0C /* DesignerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5B4C02C6F622600F6ED0C /* DesignerCoordinator.swift */; };
@@ -163,6 +164,7 @@
 		4E5C23FF2C78CE9D004EC7BF /* InspirationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationDetailView.swift; sourceTree = "<group>"; };
 		4E5C24012C78CEB6004EC7BF /* InspirationDetailViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationDetailViewData.swift; sourceTree = "<group>"; };
 		4E5C24032C78D390004EC7BF /* GalleryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionCell.swift; sourceTree = "<group>"; };
+		4E5C24062C79BE54004EC7BF /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		4EB5B4BC2C6F620000F6ED0C /* DesignerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerViewModel.swift; sourceTree = "<group>"; };
 		4EB5B4BE2C6F620800F6ED0C /* DesignerViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerViewData.swift; sourceTree = "<group>"; };
 		4EB5B4C02C6F622600F6ED0C /* DesignerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerCoordinator.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 			children = (
 				4E25A6A12C4668EC00066DFD /* Observer */,
 				4E25A67F2C3C33F700066DFD /* Constants.swift */,
+				4E5C24062C79BE54004EC7BF /* ErrorHandler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				4E25A66E2C3C33DE00066DFD /* Product.swift in Sources */,
 				4E25A6562C3C33BE00066DFD /* HayView.swift in Sources */,
 				4E25A6CA2C4958B700066DFD /* FavouriteCoordinator.swift in Sources */,
+				4E5C24072C79BE54004EC7BF /* ErrorHandler.swift in Sources */,
 				4E25A6BB2C494CC900066DFD /* IFavouriteProductCoreDataService.swift in Sources */,
 				4EB5B4C62C6F67C000F6ED0C /* DesignerDetailsViewModel.swift in Sources */,
 				4E25A6CC2C4A363400066DFD /* ArrayDataSource.swift in Sources */,

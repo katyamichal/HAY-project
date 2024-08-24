@@ -82,6 +82,8 @@ extension InspirationDetailViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.cellIdentifier, for: indexPath) as? BasicCollectionViewCell else {
                 return UICollectionViewCell()
             }
+            viewModel.setCurrentProduct(at: indexPath.row)
+            cell.update(productName: viewModel.productName, price: viewModel.productPrice, image: viewModel.productImage)
             return cell
         }
     }
@@ -93,6 +95,10 @@ extension InspirationDetailViewController: IObserver {
             DispatchQueue.main.async { [weak self] in
                 guard let strongSelf = self else { return }
                 strongSelf.inspirationDetailView.updateView()
+            }
+        } else {
+            DispatchQueue.main.async { [weak self] in
+                self?.inspirationDetailView.updateView(with: value as? String)
             }
         }
     }

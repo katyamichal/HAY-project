@@ -33,6 +33,25 @@ final class InspirationDetailView: UIView {
     
     // MARK: - UI Elements
     
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .large
+        activityIndicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        activityIndicator.center = self.center
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
+    
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        label.isHidden = true
+        label.numberOfLines = 0
+        label.font = Fonts.Subtitles.defaultFont
+        return label
+    }()
+    
     private(set) lazy var collectionView: UICollectionView = {
         let layout = createCollectionView()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -42,16 +61,6 @@ final class InspirationDetailView: UIView {
         collection.register(GalleryCollectionCell.self, forCellWithReuseIdentifier: GalleryCollectionCell.cellIdentifier)
         collection.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.cellIdentifier)
         return collection
-    }()
-    
-    private lazy var loadingIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.style = .large
-        activityIndicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        activityIndicator.center = self.center
-        activityIndicator.startAnimating()
-        activityIndicator.hidesWhenStopped = true
-        return activityIndicator
     }()
     
     // MARK: - Public methods
@@ -69,6 +78,12 @@ final class InspirationDetailView: UIView {
         loadingIndicator.stopAnimating()
         collectionView.reloadData()
     }
+    
+    func updateView(with error: String?) {
+        loadingIndicator.stopAnimating()
+        errorLabel.isHidden = false
+        errorLabel.text = error
+    }
 }
 
 // MARK: - Layout methods
@@ -80,6 +95,7 @@ private extension InspirationDetailView {
     }
 
     func setupViews() {
+        addSubview(errorLabel)
         addSubview(loadingIndicator)
         addSubview(collectionView)
     }

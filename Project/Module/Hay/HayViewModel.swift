@@ -58,7 +58,7 @@ final class HayViewModel {
                 self.viewData.value = HayViewData(inspiration: inspiration, categories: categories, designers: designers)
                 
             } catch {
-                self.loadingError.value = getErrorResponse(with: error)
+                self.loadingError.value = ErrorHandler.getErrorResponse(with: error)
             }
         }
     }
@@ -78,36 +78,5 @@ final class HayViewModel {
     
     func showDesignerDetail(designerId: Int) {
         (coordinator as? HayCoordinator)?.showDesignerDetail(designerId)
-    }
-}
-
-// MARK: - Private
-
-private extension HayViewModel {
-    func getErrorResponse(with requestError: Error) -> String {
-        if let error = requestError as? RequestProcessorError {
-            return configureKnownResponseError(with: error)
-        } else {
-            return Constants.LoadingMessage.unknown
-        }
-    }
-    
-    func configureKnownResponseError(with type: RequestProcessorError) -> String {
-        switch type {
-        case .noInternetConnection:
-            return Constants.LoadingMessage.noInternetConnection
-            
-        case .invalidURL, .decodingError, .invalidResponse:
-            return Constants.LoadingMessage.failFetchData
-            
-        case .urlSessionError:
-            return Constants.LoadingMessage.urlSessionError
-            
-        case .serverError:
-            return Constants.LoadingMessage.serverError
-            
-        case .unauthorized, .statusCode(_), .wrongURL(_):
-            return Constants.LoadingMessage.unknown
-        }
     }
 }

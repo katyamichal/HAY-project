@@ -39,7 +39,7 @@ final class HayView: UIView {
     
     private(set) var tableView = HayTableView()
     
-    private let errorLabel: UILabel = {
+    private lazy var errorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true

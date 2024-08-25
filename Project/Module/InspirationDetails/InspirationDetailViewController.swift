@@ -121,6 +121,8 @@ private extension InspirationDetailViewController {
     
     func setupNavBarButton() {
         navigationItem.title = Constants.LabelTitles.navigationBarHay
+        navigationController?.navigationBar.tintColor = .black
+        
         let leftButtonImageConfiguration = UIImage.SymbolConfiguration(pointSize: 18, weight: .light)
         let leftButtonImage = UIImage(systemName: Constants.SystemUIElementNames.goBack, withConfiguration: leftButtonImageConfiguration)?.withTintColor(.black)
         

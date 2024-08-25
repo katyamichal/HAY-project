@@ -28,7 +28,7 @@ final class InspirationDetailCoordinator: Coordinator {
     func finish() {}
     
     func goBack() {
-        navigationController.popViewController(animated: true)
+        navigationController.popToRootViewController(animated: true)
     }
 }
 

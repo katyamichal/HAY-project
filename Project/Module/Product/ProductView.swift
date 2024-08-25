@@ -115,7 +115,7 @@ private extension ProductView {
     }
     
     func setupConstraints() {
-        tableView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: actionButtonView.topAnchor, constant: tableViewBottomInset).isActive = true

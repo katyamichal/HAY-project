@@ -19,8 +19,8 @@ final class DesignerDetailViewController: UIViewController, IDesignerView {
     
     private var designerDetailsView: DesignerDetailsView { return self.view as! DesignerDetailsView }
     private let viewModel: IDesignerDetailsViewModel
-    
     var id: UUID
+    
     // MARK: - Inits
     
     init(viewModel: IDesignerDetailsViewModel) {

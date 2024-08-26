@@ -56,7 +56,7 @@ final class ProductView: UIView {
     
     private lazy var loadingIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.style = .large
+        activityIndicator.style = .medium
         activityIndicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         activityIndicator.center = self.center
         activityIndicator.startAnimating()

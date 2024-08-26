@@ -12,10 +12,10 @@ final class ProductCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     private let navigationController: UINavigationController
     private let productId: Int
-    private let categoryName: String
-    private let service: HayServiceable
+    private let categoryName: String?
+    private let service: HayServiceable?
     
-    init(service: HayServiceable, categoryName: String, productId: Int, navigationController: UINavigationController) {
+    init(service: HayServiceable?, categoryName: String?, productId: Int, navigationController: UINavigationController) {
         self.service = service
         self.categoryName = categoryName
         self.productId = productId

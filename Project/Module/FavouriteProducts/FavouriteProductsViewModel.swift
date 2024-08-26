@@ -16,15 +16,19 @@ protocol IFavouriteProductsViewModel: AnyObject {
     var headerFont: UIFont { get }
     var isFavourite: Bool { get }
     var productId: Int { get }
+    
     func setupView(with view: IFavouriteProductsView)
     func getData()
     func setCurrentProduct(at index: Int)
+    func showDetail(at index: Int)
 }
 
 final class FavouriteProductsViewModel {
     private weak var coordinator: IFavouriteCoordinator?
     private weak var view: IFavouriteProductsView?
+    
     private let likeManager = LikeButtonManager.shared
+    
     private var viewData: [FavouriteViewData] = []
     private var currentProduct: FavouriteViewData?
     
@@ -36,6 +40,10 @@ final class FavouriteProductsViewModel {
 }
 
 extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
+    func showDetail(at index: Int) {
+        (coordinator as? FavouriteCoordinator)?.showProductDetail(productId: viewData[index].id)
+    }
+    
     var productId: Int {
         guard let currentProduct else { return 0 }
         return currentProduct.id
@@ -105,7 +113,7 @@ extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
             view?.updateViewHeader()
             return
         }
-        viewData = data.products.map({FavouriteViewData(id: $0.id, name: $0.productName, price: $0.price, image: $0.image)})
+        viewData = data.products.map({FavouriteViewData(id: $0.id, name: $0.productName, price: $0.price, image: $0.image)}).reversed()
     }
 }
 

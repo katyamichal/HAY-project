@@ -83,7 +83,7 @@ extension FavouriteProductsViewController: UICollectionViewDataSource {
 
 extension FavouriteProductsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        viewModel.showDetail(at: indexPath.row)
     }
 }
 

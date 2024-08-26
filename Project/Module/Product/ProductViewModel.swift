@@ -25,16 +25,19 @@ protocol IProductViewModel: AnyObject {
 final class ProductViewModel {
     private weak var coordinator: Coordinator?
     private weak var view: IProductView?
-    private let service: HayServiceable
-    internal let productId: Int
-    private let categoryName: String
-    private var viewData: Observable<ProductViewData>
-    private var loadingError = Observable<String>()
+    
+    private let service: HayServiceable?
     private let likeManager = LikeButtonManager.shared
     
+    internal let productId: Int
+    private let categoryName: String?
+    private var viewData: Observable<ProductViewData>
+    private var loadingError = Observable<String>()
+    
+
     // MARK: - Inits
     
-    init(service: HayServiceable, coordinator: Coordinator, categoryName: String, productId: Int) {
+    init(service: HayServiceable?, coordinator: Coordinator, categoryName: String?, productId: Int) {
         self.service = service
         self.coordinator = coordinator
         self.categoryName = categoryName
@@ -49,21 +52,10 @@ final class ProductViewModel {
     // MARK: - Fetching Data
     
     func fetchData() {
-        Task {
-            do {
-                async let categoriesResponse = try service.getCategories()
-                
-                let categories = try await categoriesResponse.categories
-                guard let category = categories.first(where: { $0.categoryName == categoryName }),
-                      let product = category.products.first(where: { $0.id == productId })
-                else {
-                    self.loadingError.value =  Constants.LoadingMessage.unknown
-                    return
-                }
-                self.viewData.value = ProductViewData(product: product)
-            } catch {
-                self.loadingError.value = error.localizedDescription
-            }
+        if categoryName != nil {
+            fetchDataFromServer()
+        } else {
+            fetchDataFromCoreData()
         }
     }
     
@@ -158,5 +150,39 @@ private extension ProductViewModel {
     var price: [String: String] {
         guard let product = viewData.value else { return [Constants.ProductModuleTitles.price: emptyData] }
         return [Constants.ProductModuleTitles.price.uppercased(): "£\(product.price)".lowercased()]
+    }
+    
+    func fetchDataFromServer() {
+        guard let service else {
+            loadingError.value = ErrorHandler.getErrorResponse(with: RequestProcessorError.serverError())
+            return
+        }
+        Task {
+            do {
+                async let categoriesResponse = try service.getCategories()
+                
+                let categories = try await categoriesResponse.categories
+                guard let category = categories.first(where: { $0.categoryName == categoryName }),
+                      let product = category.products.first(where: { $0.id == productId })
+                else {
+                    self.loadingError.value = Constants.LoadingMessage.unknown
+                    return
+                }
+                self.viewData.value = ProductViewData(product: product)
+            } catch {
+                self.loadingError.value = error.localizedDescription
+            }
+        }
+    }
+    
+    func fetchDataFromCoreData() {
+        CoreDataService.shared.fetchProduct(with: productId, completion: { [weak self] result in
+            switch result {
+            case .success(let product):
+                self?.viewData.value = ProductViewData(productCDO: product)
+            case .failure(let error):
+                self?.loadingError.value = error.localizedDescription
+            }
+        })
     }
 }

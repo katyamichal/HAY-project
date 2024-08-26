@@ -26,6 +26,15 @@ final class FavouriteCoordinator: Coordinator, IFavouriteCoordinator {
     
     func finish() {
     }
+  
+    // MARK: - Detail Coordinators
+
+    func showProductDetail(productId: Int) {
+        let productCoordinator = ProductCoordinator(service: nil, categoryName: nil, productId: productId, navigationController: navigationController)
+        productCoordinator.parentCoordinator = self
+        childCoordinators.append(productCoordinator)
+        productCoordinator.start()
+    }
 }
 
 private extension FavouriteCoordinator {

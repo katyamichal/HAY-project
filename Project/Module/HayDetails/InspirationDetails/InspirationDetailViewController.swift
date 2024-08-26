@@ -16,6 +16,7 @@ final class InspirationDetailViewController: UIViewController {
     private let viewModel: InspirationDetailViewModelProtocol
     private var inspirationDetailView: InspirationDetailView { return self.view as! InspirationDetailView }
     var id: UUID
+    
     // MARK: - Inits
     
     init(viewModel: InspirationDetailViewModelProtocol) {
@@ -69,7 +70,7 @@ extension InspirationDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sectionType = InspirationDetailSectionType.allCases[indexPath.section]
-      
+        
         switch sectionType {
         case .photoGalleryDescription:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCollectionCell.cellIdentifier, for: indexPath) as? GalleryCollectionCell else {
@@ -77,7 +78,7 @@ extension InspirationDetailViewController: UICollectionViewDataSource {
             }
             cell.update(with: viewModel.collectionName, descriptionText: viewModel.description, images: viewModel.imageCollection)
             return cell
-
+            
         case .products:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.cellIdentifier, for: indexPath) as? BasicCollectionViewCell else {
                 return UICollectionViewCell()
@@ -107,7 +108,7 @@ extension InspirationDetailViewController: IObserver {
 extension InspirationDetailViewController: UICollectionViewDelegate {}
 
 extension InspirationDetailViewController: InspirationDetailViewProtocol {
-
+    
 }
 
 // MARK: - Nav Bar Setup

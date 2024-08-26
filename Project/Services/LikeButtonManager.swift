@@ -15,7 +15,6 @@ final class LikeButtonManager {
     static let shared = LikeButtonManager()
     
     private let coreDataService = CoreDataService.shared
-  //  private let productFactory = ProductFactory.shared
     
     private init() {
         fetchFavouriteProducts()

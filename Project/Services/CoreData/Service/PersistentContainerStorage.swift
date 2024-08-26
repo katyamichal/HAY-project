@@ -10,13 +10,13 @@ import CoreData
 
 enum EntityType: Codable {
    case favourite
-   case backet
+   case basket
    
    var description: String {
        switch self {
        case .favourite:
            return "FavouriteProduct"
-       case .backet:
+       case .basket:
            return "BasketProduct"
        }
    }

@@ -249,8 +249,8 @@
             filePath = "Project/Module/Product/ProductViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "goBack()"
             landmarkType = "7">
             <Locations>
@@ -313,8 +313,8 @@
             filePath = "Project/Module/Product/ProductViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "goBack()"
             landmarkType = "7">
             <Locations>
@@ -475,7 +475,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
             endingLineNumber = "92"
-            landmarkName = "update(productName:price:image:)"
+            landmarkName = "update(productName:price:image:isFavourite:productId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -741,8 +741,8 @@
             filePath = "Project/Module/Product/ProductViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "changeStatus(with:)"
             landmarkType = "7">
             <Locations>
@@ -789,8 +789,8 @@
             filePath = "Project/Module/Product/ProductViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "changeStatus(with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1108,8 +1108,8 @@
             filePath = "Project/Module/InspirationDetails/InspirationDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "backButtonDidTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1220,8 +1220,8 @@
             filePath = "Project/Module/InspirationDetails/InspirationDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "backButtonDidTapped()"
             landmarkType = "7">
             <Locations>

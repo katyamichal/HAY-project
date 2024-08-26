@@ -64,7 +64,7 @@ final class InspirationDetailViewModel {
 
 extension InspirationDetailViewModel: InspirationDetailViewModelProtocol {
     // MARK: - Data For Gallery Cell
-
+    
     var imageCollection: [UIImage] {
         return [coverImage] + images
     }
@@ -78,7 +78,7 @@ extension InspirationDetailViewModel: InspirationDetailViewModelProtocol {
     }
     
     // MARK: - Data for Product Cell
-
+    
     var productCount: Int {
         return viewData.value?.products.count ?? 0
     }
@@ -116,7 +116,7 @@ extension InspirationDetailViewModel: InspirationDetailViewModelProtocol {
     }
     
     // MARK: - Basic Protocol Methods
-
+    
     func setupView(with view: InspirationDetailViewProtocol) {
         self.view = view
         fetchData()

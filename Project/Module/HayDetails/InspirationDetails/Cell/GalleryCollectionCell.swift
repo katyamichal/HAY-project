@@ -16,6 +16,9 @@ final class GalleryCollectionCell: UICollectionViewCell {
     // MARK: - Constants for constraints
     
     private let scrollViewHeight = Constants.Layout.height / 1.8
+    private let verticalStackSpacing: CGFloat = 30
+    private let verticalStackInset: CGFloat = 30
+    private let verticalStackBottomPadding: CGFloat = 40
     
     // MARK: - Inits
     
@@ -46,41 +49,34 @@ final class GalleryCollectionCell: UICollectionViewCell {
         return pageControl
     }()
     
-    private let verticalStackView: UIStackView = {
+    private lazy var verticalStackView: UIStackView = {
         var stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 30
+        stackView.spacing = verticalStackSpacing
         stackView.alignment = .center
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 30, left: 30, bottom: 40, right: 30)
+        stackView.layoutMargins = UIEdgeInsets(top: verticalStackInset, left: verticalStackInset, bottom: verticalStackBottomPadding, right: verticalStackInset)
         return stackView
     }()
     
-    private  let productNameLabel: UILabel = {
+    private lazy var productNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 23, weight: .regular)
+        label.font = Fonts.Titles.title
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .black
         return label
     }()
     
-    private let descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 13, weight: .light)
+        label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         label.textAlignment = .center
         return label
     }()
-    
-    
-    @objc
-    private func pageControlDidChange(_ sender: UIPageControl) {
-        let current = CGFloat(sender.currentPage)
-        scrollView.setContentOffset(CGPoint(x: current * (Constants.Layout.width), y: 0), animated: true)
-    }
     
     // MARK: - Public
     
@@ -92,7 +88,7 @@ final class GalleryCollectionCell: UICollectionViewCell {
     }
 }
 
-// MARK: - Setup' methods
+// MARK: - View setup methods
 
 private extension GalleryCollectionCell {
     func setupCell() {
@@ -101,7 +97,7 @@ private extension GalleryCollectionCell {
         setupConstraints()
         setupScrollView()
     }
-        
+    
     func setupViews() {
         contentView.addSubview(verticalStackView)
         verticalStackView.addArrangedSubview(productNameLabel)
@@ -109,7 +105,6 @@ private extension GalleryCollectionCell {
         contentView.addSubview(scrollView)
         contentView.addSubview(pageControl)
     }
-    
     
     func setupConstraints() {
         scrollView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
@@ -127,9 +122,9 @@ private extension GalleryCollectionCell {
     }
 }
 
+// MARK: - Scroll view gallery setups
 
 private extension GalleryCollectionCell {
-    
     func setupScrollView() {
         scrollView.frame = CGRect(x: .zero, y: .zero, width: Constants.Layout.width, height: scrollViewHeight)
         scrollView.isPagingEnabled = true
@@ -155,8 +150,15 @@ private extension GalleryCollectionCell {
             scrollView.addSubview(page)
         }
     }
+    
+    @objc
+    func pageControlDidChange(_ sender: UIPageControl) {
+        let current = CGFloat(sender.currentPage)
+        scrollView.setContentOffset(CGPoint(x: current * (Constants.Layout.width), y: 0), animated: true)
+    }
 }
 
+// MARK: - Scroll view Delegate
 
 extension GalleryCollectionCell: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

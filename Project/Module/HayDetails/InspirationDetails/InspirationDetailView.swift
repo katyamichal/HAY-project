@@ -14,9 +14,9 @@ enum InspirationDetailSectionType: CaseIterable {
 
 final class InspirationDetailView: UIView {
     // MARK: - Constants for constraints
-
+    
     // MARK: - Init
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -26,7 +26,7 @@ final class InspirationDetailView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     deinit {
         print("InspirationDetailView deinit")
     }
@@ -64,7 +64,7 @@ final class InspirationDetailView: UIView {
     }()
     
     // MARK: - Public methods
-
+    
     func setupCollectionViewDataSource(with dataSource: UICollectionViewDataSource) {
         collectionView.dataSource = dataSource
     }
@@ -93,27 +93,27 @@ private extension InspirationDetailView {
         setupViews()
         setupConstraints()
     }
-
+    
     func setupViews() {
         addSubview(errorLabel)
         addSubview(loadingIndicator)
         addSubview(collectionView)
     }
-
+    
     func setupConstraints() {
         collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
-
+    
     // MARK: - Collection layout
     
     func createCollectionView() -> UICollectionViewLayout {
         let config = UICollectionViewCompositionalLayoutConfiguration()
         let layout = UICollectionViewCompositionalLayout(sectionProvider: { [weak self] (sectionIndex, layoutEnviroment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let isWideView = layoutEnviroment.container.effectiveContentSize.width > 500
-
+            
             let sectionLayoutKind = InspirationDetailSectionType.allCases[sectionIndex]
             switch sectionLayoutKind {
             case .photoGalleryDescription:
@@ -122,12 +122,12 @@ private extension InspirationDetailView {
                 return self?.createProductsLayout(isWide: isWideView)
             }
         }, configuration: config)
-
+        
         return layout
     }
-
+    
     // MARK: Gallery Section
-
+    
     func createDescriptionLayout(isWide: Bool) -> NSCollectionLayoutSection {
         let height = Constants.Layout.headerHeight + 200
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(height))
@@ -138,7 +138,7 @@ private extension InspirationDetailView {
         let section = NSCollectionLayoutSection(group: group)
         return section
     }
-
+    
     func createProductsLayout(isWide: Bool) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(0.5),

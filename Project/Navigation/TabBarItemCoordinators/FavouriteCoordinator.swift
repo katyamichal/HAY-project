@@ -28,8 +28,8 @@ final class FavouriteCoordinator: Coordinator {
   
     // MARK: - Detail Coordinators
 
-    func showProductDetail(hayEndpoint: HayEndpoints, categoryName: String, productId: Int) {
-        let productCoordinator = ProductCoordinator(service: service, hayEndpoint: hayEndpoint, categoryName: categoryName, productId: productId, navigationController: navigationController)
+    func showProductDetail(hayEndpoint: ProductEndpoint, itemId: Int, productId: Int) {
+        let productCoordinator = ProductCoordinator(service: service, hayEndpoint: hayEndpoint, itemId: itemId, productId: productId, navigationController: navigationController)
         productCoordinator.parentCoordinator = self
         childCoordinators.append(productCoordinator)
         productCoordinator.start()

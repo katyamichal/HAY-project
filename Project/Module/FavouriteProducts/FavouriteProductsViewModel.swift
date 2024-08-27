@@ -28,6 +28,7 @@ final class FavouriteProductsViewModel {
     private weak var view: IFavouriteProductsView?
     
     private let likeManager = LikeButtonManager.shared
+  
     
     private var viewData: [FavouriteViewData] = []
     private var currentProduct: FavouriteViewData?
@@ -41,17 +42,18 @@ final class FavouriteProductsViewModel {
 
 extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
     func showDetail(at index: Int) {
-//        (coordinator as? FavouriteCoordinator)?.showProductDetail(hayEndpoint: viewData[index]., categoryName: String, productId: viewData[index].id)
+        let product = viewData[index]
+        (coordinator as? FavouriteCoordinator)?.showProductDetail(hayEndpoint: product.endpoint, itemId: product.itemIdentifier, productId: product.productId)
     }
     
     var productId: Int {
         guard let currentProduct else { return 0 }
-        return currentProduct.id
+        return currentProduct.productId
     }
     
     var isFavourite: Bool {
         guard let currentProduct else { return false }
-        if likeManager.favouriteProducts.value?.products.first(where: { $0.id == currentProduct.id }) != nil {
+        if likeManager.favouriteProducts.value?.products.first(where: { $0.productId == currentProduct.productId }) != nil {
             return true
         }
         return false
@@ -113,7 +115,7 @@ extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
             view?.updateViewHeader()
             return
         }
-        viewData = data.products.map({FavouriteViewData(id: $0.id, name: $0.productName, price: $0.price, image: $0.image)}).reversed()
+        viewData = data.products.map({FavouriteViewData(with: $0)})
     }
 }
 

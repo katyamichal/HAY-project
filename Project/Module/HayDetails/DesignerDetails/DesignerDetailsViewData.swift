@@ -33,6 +33,6 @@ extension DesignerDetailsViewData {
         self.designerQuotes = designer.designerQuotes
         self.designerImage = designer.designerImage
         self.collectionImages = designer.collectionImages
-        self.products = designer.products.map({ProductCDO(with: $0, type: .favourite)})
+        self.products = designer.products.map({ProductCDO(with: $0, endpoint: .designers, itemIdentifier: designer.id, type: .favourite)})
     }
 }

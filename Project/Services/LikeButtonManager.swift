@@ -25,9 +25,8 @@ final class LikeButtonManager {
         
         let product = ProductCDO(with: product, type: .favourite)
         
-        if let id = favouriteProducts.value?.products.firstIndex(where: {$0.id == product.id }) {
-            print(id)
-            deleteProduct(with: product.id, at: id)
+        if let id = favouriteProducts.value?.products.firstIndex(where: {$0.productId == product.productId }) {
+            deleteProduct(with: product.productId, at: id)
         } else {
             addfavouriteProduct(with: product)
         }

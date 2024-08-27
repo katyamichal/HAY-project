@@ -2,7 +2,7 @@
 //  FavouriteProduct+CoreDataClass.swift
 //  Project
 //
-//  Created by Catarina Polakowsky on 12.08.2024.
+//  Created by Catarina Polakowsky on 27.08.2024.
 //
 //
 

@@ -8,7 +8,9 @@
 import Foundation
 
 struct ProductViewData {
-    let id: Int
+    let endpoint: ProductEndpoint
+    let itemIdentifier: Int
+    let productId: Int
     let productName: String
     let image: String
     let imageCollection: [String]
@@ -21,8 +23,10 @@ struct ProductViewData {
 }
 
 extension ProductViewData: IProductCDO {
-    init(product: Product) {
-        self.id = product.id
+    init(product: Product, endpoint: ProductEndpoint, itemId: Int) {
+        self.productId = product.id
+        self.endpoint = endpoint
+        self.itemIdentifier = itemId
         self.productName = product.productName
         self.image = product.image
         self.imageCollection = product.imageCollection

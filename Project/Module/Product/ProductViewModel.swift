@@ -29,9 +29,9 @@ final class ProductViewModel {
     private let service: HayServiceable
     private let likeManager = LikeButtonManager.shared
     
-    private let hayEndpoint: HayEndpoints
+    private let hayEndpoint: ProductEndpoint
     let productId: Int
-    private let categoryName: String
+    private let itemId: Int
     
     private var viewData: Observable<ProductViewData>
     private var loadingError = Observable<String>()
@@ -39,11 +39,11 @@ final class ProductViewModel {
 
     // MARK: - Inits
     
-    init(service: HayServiceable, coordinator: Coordinator, hayEndpoint: HayEndpoints, categoryName: String, productId: Int) {
+    init(service: HayServiceable, coordinator: Coordinator, hayEndpoint: ProductEndpoint, itemId: Int, productId: Int) {
         self.service = service
         self.coordinator = coordinator
         self.hayEndpoint = hayEndpoint
-        self.categoryName = categoryName
+        self.itemId = itemId
         self.productId = productId
         self.viewData = Observable<ProductViewData>()
     }
@@ -79,7 +79,7 @@ extension ProductViewModel: IProductViewModel {
     }
     
     var isFavourite: Bool {
-        if likeManager.favouriteProducts.value?.products.first(where: { $0.id == viewData.value?.id }) != nil {
+        if likeManager.favouriteProducts.value?.products.first(where: { $0.productId == viewData.value?.productId }) != nil {
             return true
         }
         return false
@@ -159,13 +159,13 @@ private extension ProductViewModel {
                     async let categoriesResponse = try service.getCategories()
                     
                     let categories = try await categoriesResponse.categories
-                    guard let category = categories.first(where: { $0.categoryName == categoryName }),
+                    guard let category = categories.first(where: { $0.id == itemId }),
                           let product = category.products.first(where: { $0.id == productId })
                     else {
                         self.loadingError.value = Constants.LoadingMessage.unknown
                         return
                     }
-                    self.viewData.value = ProductViewData(product: product)
+                    self.viewData.value = ProductViewData(product: product, endpoint: .categories, itemId: itemId)
                 } catch {
                     self.loadingError.value = error.localizedDescription
                 }
@@ -177,13 +177,13 @@ private extension ProductViewModel {
                     
                     let designers = try await categoriesResponse.designers
                     
-                    guard let designer = designers.first(where: { $0.designerName == categoryName }),
+                    guard let designer = designers.first(where: { $0.id == itemId }),
                           let product = designer.products.first(where: { $0.id == productId })
                     else {
                         self.loadingError.value = Constants.LoadingMessage.unknown
                         return
                     }
-                    self.viewData.value = ProductViewData(product: product)
+                    self.viewData.value = ProductViewData(product: product, endpoint: .designers, itemId: itemId)
                 } catch {
                     self.loadingError.value = error.localizedDescription
                 }
@@ -194,13 +194,13 @@ private extension ProductViewModel {
                     async let categoriesResponse = try service.getInspiration()
                     
                     let inspiration = try await categoriesResponse.inspiration
-                    guard let inspirationFeed = inspiration.first(where: { $0.collectionName == categoryName }),
+                    guard let inspirationFeed = inspiration.first(where: { $0.id == itemId }),
                           let product = inspirationFeed.products.first(where: { $0.id == productId })
                     else {
                         self.loadingError.value = Constants.LoadingMessage.unknown
                         return
                     }
-                    self.viewData.value = ProductViewData(product: product)
+                    self.viewData.value = ProductViewData(product: product, endpoint: .inspiration, itemId: itemId)
                 } catch {
                     self.loadingError.value = error.localizedDescription
                 }

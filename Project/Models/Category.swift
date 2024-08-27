@@ -12,6 +12,7 @@ struct CategoryResponse: Codable {
 }
 
 struct Category: Codable {
+    let id: Int
     let categoryName: String
     let products: [Product]
 }

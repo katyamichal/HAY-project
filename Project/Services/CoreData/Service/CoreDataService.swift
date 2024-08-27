@@ -26,18 +26,12 @@ extension CoreDataService: ICoreDataService {
         }
         let newFavouriteProduct = FavouriteProduct(context: PersistantContainerStorage.persistentContainer.viewContext)
         
-        newFavouriteProduct.identifier = Int32(product.id)
+        newFavouriteProduct.identifier = Int32(product.productId)
+        newFavouriteProduct.endpoint = product.endpoint.description
+        newFavouriteProduct.itemIdentifier = Int16(product.itemIdentifier)
         newFavouriteProduct.name = product.productName
-        newFavouriteProduct.productDescription = product.description
-        newFavouriteProduct.price = Int64(product.price)
+        newFavouriteProduct.price = Int32(product.price)
         newFavouriteProduct.image = product.image
-        if let data = try? JSONSerialization.data(withJSONObject: product.imageCollection) {
-            newFavouriteProduct.imageCollection = data
-        }
-        newFavouriteProduct.material = product.material
-        newFavouriteProduct.size = product.size
-        newFavouriteProduct.colour = product.colour
-        
     }
     
     // MARK: - Fetching
@@ -60,15 +54,12 @@ extension CoreDataService: ICoreDataService {
             let favouriteProducts = try context.fetch(request)
             if let favouriteProduct = favouriteProducts.first {
                 let product = ProductCDO(
-                    id: Int(favouriteProduct.identifier),
+                    productId: Int(favouriteProduct.identifier),
+                    endpoint: ProductEndpoint.init(favouriteProduct.endpoint),
+                    itemIdentifier: Int(favouriteProduct.itemIdentifier),
                     productName: favouriteProduct.name,
-                    description: favouriteProduct.productDescription,
                     price: Int(favouriteProduct.price),
                     image: favouriteProduct.image,
-                    imageCollection: [],
-                    material: favouriteProduct.material,
-                    size: favouriteProduct.size,
-                    colour: favouriteProduct.colour,
                     typeName: .favourite
                 )
                 completion(.success(product))
@@ -103,16 +94,15 @@ private extension CoreDataService {
         do {
             let favouriteProducts = try context.fetch(request)
             let products = favouriteProducts.map { favouriteProduct in
-                ProductCDO(id: Int(favouriteProduct.identifier),
-                           productName: favouriteProduct.name,
-                           description: favouriteProduct.productDescription,
-                           price: Int(favouriteProduct.price),
-                           image: favouriteProduct.image,
-                           imageCollection: [],
-                           material: favouriteProduct.material,
-                           size: favouriteProduct.size,
-                           colour: favouriteProduct.colour,
-                           typeName: productType)
+                ProductCDO(
+                    productId: Int(favouriteProduct.identifier),
+                    endpoint: ProductEndpoint.init(favouriteProduct.endpoint),
+                    itemIdentifier: Int(favouriteProduct.itemIdentifier),
+                    productName: favouriteProduct.name,
+                    price: Int(favouriteProduct.price),
+                    image: favouriteProduct.image,
+                    typeName: .favourite
+                )
             }
             return products
         } catch {

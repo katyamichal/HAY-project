@@ -26,8 +26,8 @@ final class InspirationDetailCoordinator: Coordinator {
         showModule()
     }
     
-    func showDetail(categoryName: String, productId: Int) {
-        let productCoordinator = ProductCoordinator(service: service, hayEndpoint: .inspiration, categoryName: categoryName, productId: productId, navigationController: navigationController)
+    func showDetail(itemId: Int, productId: Int) {
+        let productCoordinator = ProductCoordinator(service: service, hayEndpoint: .inspiration, itemId: itemId, productId: productId, navigationController: navigationController)
         productCoordinator.parentCoordinator = self
         childCoordinators.append(productCoordinator)
         productCoordinator.start()

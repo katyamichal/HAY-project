@@ -66,7 +66,7 @@ final class InspirationDetailViewModel {
 extension InspirationDetailViewModel: InspirationDetailViewModelProtocol {
     func showDetail(at index: Int) {
         guard let data = viewData.value else { return }
-        (coordinator as? InspirationDetailCoordinator)?.showDetail(categoryName: data.collectionName, productId: data.products[index].id)
+        (coordinator as? InspirationDetailCoordinator)?.showDetail(itemId: data.id, productId: data.products[index].productId)
     }
     
     // MARK: - Data For Gallery Cell
@@ -91,7 +91,7 @@ extension InspirationDetailViewModel: InspirationDetailViewModelProtocol {
     
     var isFavourite: Bool {
         guard let currentProduct else { return false }
-        if likeManager.favouriteProducts.value?.products.first(where: { $0.id == currentProduct.id }) != nil {
+        if likeManager.favouriteProducts.value?.products.first(where: { $0.productId == currentProduct.productId }) != nil {
             return true
         }
         return false
@@ -99,7 +99,7 @@ extension InspirationDetailViewModel: InspirationDetailViewModelProtocol {
     
     var productId: Int {
         guard let currentProduct else { return 0 }
-        return currentProduct.id
+        return currentProduct.productId
     }
     
     var productName: String {

@@ -54,7 +54,7 @@ extension CategoryViewModel: ICategoryViewModel {
     
     var productId: Int {
         guard let currentProduct else { return 0 }
-        return currentProduct.id
+        return currentProduct.productId
     }
     
     func setCurrentProduct(at index: Int) {
@@ -65,7 +65,7 @@ extension CategoryViewModel: ICategoryViewModel {
 
     var isFavourite: Bool {
         guard let currentProduct else { return false }
-        if likeManager.favouriteProducts.value?.products.first(where: { $0.id == currentProduct.id }) != nil {
+        if likeManager.favouriteProducts.value?.products.first(where: { $0.productId == currentProduct.productId }) != nil {
             return true
         }
         return false
@@ -104,14 +104,14 @@ extension CategoryViewModel: ICategoryViewModel {
     
     func showDetail(with index: Int) {
         guard let product = viewData?.products[index] else {return}
-        (coordinator as? CategoryCoordinator)?.showDetail(with: product.id)
+        (coordinator as? CategoryCoordinator)?.showDetail(with: product.productId)
     }
 }
 
 extension CategoryViewModel: ILikeButton {
     func changeStatus(with id: Int) {
         defer { isUpdating = false }
-        guard let product = viewData?.products.first(where: { $0.id == id }) else { return }
+        guard let product = viewData?.products.first(where: { $0.productId == id }) else { return }
         isUpdating = true
         likeManager.changeProductStatus(with: product)
     }

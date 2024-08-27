@@ -2,7 +2,7 @@
 //  FavouriteProduct+CoreDataProperties.swift
 //  Project
 //
-//  Created by Catarina Polakowsky on 12.08.2024.
+//  Created by Catarina Polakowsky on 27.08.2024.
 //
 //
 
@@ -16,15 +16,13 @@ extension FavouriteProduct {
         return NSFetchRequest<FavouriteProduct>(entityName: "FavouriteProduct")
     }
 
-    @NSManaged public var colour: String
     @NSManaged public var identifier: Int32
     @NSManaged public var image: String
-    @NSManaged public var imageCollection: Data?
-    @NSManaged public var material: String
     @NSManaged public var name: String
-    @NSManaged public var price: Int64
-    @NSManaged public var productDescription: String
-    @NSManaged public var size: String
+    @NSManaged public var price: Int32
+    @NSManaged public var endpoint: String
+    @NSManaged public var itemIdentifier: Int16
+
 }
 
 extension FavouriteProduct : Identifiable {

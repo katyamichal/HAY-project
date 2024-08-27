@@ -6,58 +6,83 @@
 //
 
 import Foundation
+// MARK: - Protocol is a type if product is saved in CoreData Storage
+
+protocol IProductCDO {
+    var productId: Int { get }
+    var endpoint: ProductEndpoint { get }
+    var itemIdentifier: Int { get }
+    var productName: String { get }
+    var price: Int { get  }
+    var image: String { get  }
+}
+
+// MARK: - Type used to save data into CoreData Storage
 
 struct ProductCDO: Equatable, Entity {
-    let id: Int
+    let productId: Int
+    let endpoint: ProductEndpoint
+    let itemIdentifier: Int
     let productName: String
-    let description: String
     let price: Int
     let image: String
-    let imageCollection: [String]
-    let material: String
-    let size: String
-    let colour: String
     var typeName: EntityType
 }
 
+// MARK: - Initializer for DTO product fetched from a server
+
 extension ProductCDO {
-    init(with product: Product, type: EntityType) {
-        self.id = product.id
+    init(with product: Product, endpoint: ProductEndpoint, itemIdentifier: Int, type: EntityType) {
+        self.productId = product.id
+        self.endpoint = endpoint
+        self.itemIdentifier = itemIdentifier
         self.productName = product.productName
-        self.description = product.description
         self.price = product.price
         self.image = product.image
-        self.imageCollection = product.imageCollection
-        self.material = product.material
-        self.size = product.size
-        self.colour = product.colour
         self.typeName = type
     }
 }
+
+// MARK: - Initializer for CDO product fetched from Core Data Storage
 
 extension ProductCDO: IProductCDO {
     init(with product: IProductCDO, type: EntityType) {
-        self.id = product.id
+        self.productId = product.productId
+        self.endpoint = product.endpoint
+        self.itemIdentifier = product.itemIdentifier
         self.productName = product.productName
-        self.description = product.description
         self.price = product.price
         self.image = product.image
-        self.imageCollection = product.imageCollection
-        self.material = product.material
-        self.size = product.size
-        self.colour = product.colour
         self.typeName = type
     }
 }
 
-protocol IProductCDO {
-    var id: Int { get  }
-    var productName: String { get }
-    var description: String { get }
-    var price: Int { get  }
-    var image: String { get  }
-    var imageCollection: [String] { get }
-    var material: String { get }
-    var size: String { get }
-    var colour: String { get }
+// MARK: - Type of Endpoint to get data from server(if saved)
+
+enum ProductEndpoint {
+    case inspiration
+    case categories
+    case designers
+    
+    var description: String {
+        switch self {
+        case .categories: return "categories"
+        case .designers: return "designers"
+        case .inspiration: return "inspiration"
+        }
+    }
+}
+
+// MARK: - Initializer to transform string endpoint keeping in core data storage into ProductCDO
+
+extension ProductEndpoint {
+    init(_ value: String) {
+        switch value.lowercased() {
+        case "categories": self = .categories
+        case "designers": self = .designers
+        case "inspiration": self = .inspiration
+        default: self.init("none")
+            
+        }
+    }
 }

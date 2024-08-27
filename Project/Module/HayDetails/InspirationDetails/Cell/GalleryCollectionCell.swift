@@ -75,6 +75,7 @@ final class GalleryCollectionCell: UICollectionViewCell {
         label.font = Fonts.Subtitles.defaultFont
         label.textColor = .black
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -119,6 +120,7 @@ private extension GalleryCollectionCell {
         verticalStackView.topAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         verticalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         verticalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        verticalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     }
 }
 

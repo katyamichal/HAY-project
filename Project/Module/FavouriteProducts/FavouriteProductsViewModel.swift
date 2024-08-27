@@ -24,7 +24,7 @@ protocol IFavouriteProductsViewModel: AnyObject {
 }
 
 final class FavouriteProductsViewModel {
-    private weak var coordinator: IFavouriteCoordinator?
+    private weak var coordinator: Coordinator?
     private weak var view: IFavouriteProductsView?
     
     private let likeManager = LikeButtonManager.shared
@@ -34,14 +34,14 @@ final class FavouriteProductsViewModel {
     
     // MARK: - Init
 
-    init(coordinator: IFavouriteCoordinator) {
+    init(coordinator: Coordinator) {
         self.coordinator = coordinator
     }
 }
 
 extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
     func showDetail(at index: Int) {
-        (coordinator as? FavouriteCoordinator)?.showProductDetail(productId: viewData[index].id)
+//        (coordinator as? FavouriteCoordinator)?.showProductDetail(hayEndpoint: viewData[index]., categoryName: String, productId: viewData[index].id)
     }
     
     var productId: Int {

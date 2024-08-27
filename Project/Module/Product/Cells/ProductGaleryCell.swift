@@ -124,7 +124,7 @@ private extension ProductGaleryCell {
     }
     
     func setupScrollView() {
-        scrollView.frame = CGRect(x: .zero, y: .zero, width: Constants.Layout.width, height: Constants.Layout.height / 2)
+        scrollView.frame = CGRect(x: .zero, y: .zero, width: Constants.Layout.width, height: scrollViewHeight)
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false

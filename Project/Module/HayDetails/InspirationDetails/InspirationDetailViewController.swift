@@ -105,7 +105,15 @@ extension InspirationDetailViewController: IObserver {
     }
 }
 
-extension InspirationDetailViewController: UICollectionViewDelegate {}
+extension InspirationDetailViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let sectionType = InspirationDetailSectionType.allCases[indexPath.section]
+        switch sectionType {
+        case .photoGalleryDescription: break
+        case .products:  viewModel.showDetail(at: indexPath.item)
+        }
+    }
+}
 
 extension InspirationDetailViewController: InspirationDetailViewProtocol {
     

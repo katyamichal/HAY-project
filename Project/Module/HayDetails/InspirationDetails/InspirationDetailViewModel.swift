@@ -22,6 +22,7 @@ protocol InspirationDetailViewModelProtocol: AnyObject {
     func subscribe(_ observer: IObserver)
     func unsubscribe(_ observer: IObserver)
     func setCurrentProduct(at index: Int)
+    func showDetail(at index: Int)
     func goBack()
 }
 
@@ -63,6 +64,11 @@ final class InspirationDetailViewModel {
 }
 
 extension InspirationDetailViewModel: InspirationDetailViewModelProtocol {
+    func showDetail(at index: Int) {
+        guard let data = viewData.value else { return }
+        (coordinator as? InspirationDetailCoordinator)?.showDetail(categoryName: data.collectionName, productId: data.products[index].id)
+    }
+    
     // MARK: - Data For Gallery Cell
     
     var imageCollection: [UIImage] {

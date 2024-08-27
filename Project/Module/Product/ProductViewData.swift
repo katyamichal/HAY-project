@@ -18,9 +18,6 @@ struct ProductViewData {
     let colour: String
     let size: String
     let price: Int
-//    var isFavourite: Bool = false
-//    var inBasket: Bool = false
-   // var typeName: EntityType
 }
 
 extension ProductViewData: IProductCDO {
@@ -36,17 +33,4 @@ extension ProductViewData: IProductCDO {
         self.price = product.price
         self.link = Constants.Links.mainHay
     }
-    
-    init(productCDO: ProductCDO) {
-         self.id = productCDO.id
-         self.productName = productCDO.productName
-         self.image = productCDO.image
-         self.imageCollection = productCDO.imageCollection
-         self.description = productCDO.description
-         self.material = productCDO.material
-         self.colour = productCDO.colour
-         self.size = productCDO.size
-         self.price = productCDO.price
-         self.link = Constants.Links.mainHay
-     }
 }

@@ -47,7 +47,7 @@ private extension TabBarCoordinator {
         let favouriteNavigationController = UINavigationController()
         favouriteNavigationController.tabBarItem = UITabBarItem(title: "", image: favouriteImage, selectedImage: favouriteImage)
         
-        let favouriteCoordinator = FavouriteCoordinator(navigationController: favouriteNavigationController)
+        let favouriteCoordinator = FavouriteCoordinator(service: networkService, navigationController: favouriteNavigationController)
         favouriteCoordinator.parentCoordinator = self
         favouriteCoordinator.start()
         

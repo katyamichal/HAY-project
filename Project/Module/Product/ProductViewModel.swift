@@ -26,20 +26,23 @@ final class ProductViewModel {
     private weak var coordinator: Coordinator?
     private weak var view: IProductView?
     
-    private let service: HayServiceable?
+    private let service: HayServiceable
     private let likeManager = LikeButtonManager.shared
     
-    internal let productId: Int
-    private let categoryName: String?
+    private let hayEndpoint: HayEndpoints
+    let productId: Int
+    private let categoryName: String
+    
     private var viewData: Observable<ProductViewData>
     private var loadingError = Observable<String>()
     
 
     // MARK: - Inits
     
-    init(service: HayServiceable?, coordinator: Coordinator, categoryName: String?, productId: Int) {
+    init(service: HayServiceable, coordinator: Coordinator, hayEndpoint: HayEndpoints, categoryName: String, productId: Int) {
         self.service = service
         self.coordinator = coordinator
+        self.hayEndpoint = hayEndpoint
         self.categoryName = categoryName
         self.productId = productId
         self.viewData = Observable<ProductViewData>()
@@ -52,11 +55,7 @@ final class ProductViewModel {
     // MARK: - Fetching Data
     
     func fetchData() {
-        if categoryName != nil {
-            fetchDataFromServer()
-        } else {
-            fetchDataFromCoreData()
-        }
+        fetchDataFromServer()
     }
     
     // MARK: - Observable methods
@@ -153,36 +152,59 @@ private extension ProductViewModel {
     }
     
     func fetchDataFromServer() {
-        guard let service else {
-            loadingError.value = ErrorHandler.getErrorResponse(with: RequestProcessorError.serverError())
-            return
-        }
-        Task {
-            do {
-                async let categoriesResponse = try service.getCategories()
-                
-                let categories = try await categoriesResponse.categories
-                guard let category = categories.first(where: { $0.categoryName == categoryName }),
-                      let product = category.products.first(where: { $0.id == productId })
-                else {
-                    self.loadingError.value = Constants.LoadingMessage.unknown
-                    return
+        switch hayEndpoint {
+        case .categories:
+            Task {
+                do {
+                    async let categoriesResponse = try service.getCategories()
+                    
+                    let categories = try await categoriesResponse.categories
+                    guard let category = categories.first(where: { $0.categoryName == categoryName }),
+                          let product = category.products.first(where: { $0.id == productId })
+                    else {
+                        self.loadingError.value = Constants.LoadingMessage.unknown
+                        return
+                    }
+                    self.viewData.value = ProductViewData(product: product)
+                } catch {
+                    self.loadingError.value = error.localizedDescription
                 }
-                self.viewData.value = ProductViewData(product: product)
-            } catch {
-                self.loadingError.value = error.localizedDescription
+            }
+        case .designers:
+            Task {
+                do {
+                    async let categoriesResponse = try service.getDesigners()
+                    
+                    let designers = try await categoriesResponse.designers
+                    
+                    guard let designer = designers.first(where: { $0.designerName == categoryName }),
+                          let product = designer.products.first(where: { $0.id == productId })
+                    else {
+                        self.loadingError.value = Constants.LoadingMessage.unknown
+                        return
+                    }
+                    self.viewData.value = ProductViewData(product: product)
+                } catch {
+                    self.loadingError.value = error.localizedDescription
+                }
+            }
+        case .inspiration:
+            Task {
+                do {
+                    async let categoriesResponse = try service.getInspiration()
+                    
+                    let inspiration = try await categoriesResponse.inspiration
+                    guard let inspirationFeed = inspiration.first(where: { $0.collectionName == categoryName }),
+                          let product = inspirationFeed.products.first(where: { $0.id == productId })
+                    else {
+                        self.loadingError.value = Constants.LoadingMessage.unknown
+                        return
+                    }
+                    self.viewData.value = ProductViewData(product: product)
+                } catch {
+                    self.loadingError.value = error.localizedDescription
+                }
             }
         }
-    }
-    
-    func fetchDataFromCoreData() {
-        CoreDataService.shared.fetchProduct(with: productId, completion: { [weak self] result in
-            switch result {
-            case .success(let product):
-                self?.viewData.value = ProductViewData(productCDO: product)
-            case .failure(let error):
-                self?.loadingError.value = error.localizedDescription
-            }
-        })
     }
 }

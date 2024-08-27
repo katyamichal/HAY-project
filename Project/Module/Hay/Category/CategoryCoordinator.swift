@@ -36,7 +36,7 @@ final class CategoryCoordinator: Coordinator {
     }
     
     func showDetail(with productId: Int) {
-        let productCoordinator = ProductCoordinator(service: service, categoryName: viewData.categoryName, productId: productId, navigationController: navigationController)
+        let productCoordinator = ProductCoordinator(service: service, hayEndpoint: .categories, categoryName: viewData.categoryName, productId: productId, navigationController: navigationController)
         productCoordinator.parentCoordinator = self
         childCoordinators.append(productCoordinator)
         productCoordinator.start()

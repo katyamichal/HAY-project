@@ -36,7 +36,6 @@ final class LikeButtonManager {
 
 private extension LikeButtonManager {
     func fetchFavouriteProducts() {
-        defer { print(favouriteProducts.value?.products) }
         coreDataService.fetchProducts(productType: .favourite) { [weak self] result in
             switch result {
             case .success(let product):
@@ -45,7 +44,6 @@ private extension LikeButtonManager {
                 print("Error to fetch favourite products: \(error.localizedDescription)")
             }
         }
-
     }
     
     func addfavouriteProduct(with product: ProductCDO) {

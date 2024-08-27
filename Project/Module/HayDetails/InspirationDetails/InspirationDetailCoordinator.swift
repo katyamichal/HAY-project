@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 final class InspirationDetailCoordinator: Coordinator {
     
     var parentCoordinator: Coordinator?
@@ -25,11 +26,18 @@ final class InspirationDetailCoordinator: Coordinator {
         showModule()
     }
     
-    func finish() {}
+    func showDetail(categoryName: String, productId: Int) {
+        let productCoordinator = ProductCoordinator(service: service, hayEndpoint: .inspiration, categoryName: categoryName, productId: productId, navigationController: navigationController)
+        productCoordinator.parentCoordinator = self
+        childCoordinators.append(productCoordinator)
+        productCoordinator.start()
+    }
     
     func goBack() {
         navigationController.popToRootViewController(animated: true)
     }
+    
+    func finish() {}
 }
 
 private extension InspirationDetailCoordinator {

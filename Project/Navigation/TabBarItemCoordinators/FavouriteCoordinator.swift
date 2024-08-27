@@ -7,16 +7,15 @@
 
 import UIKit
 
-protocol IFavouriteCoordinator: AnyObject {
-    //func showProductDetail()
-}
-
-final class FavouriteCoordinator: Coordinator, IFavouriteCoordinator {
+final class FavouriteCoordinator: Coordinator {
     var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator] = []
+    
+    private let service: HayServiceable
     private let navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(service: HayServiceable, navigationController: UINavigationController) {
+        self.service = service
         self.navigationController = navigationController
     }
     
@@ -29,8 +28,8 @@ final class FavouriteCoordinator: Coordinator, IFavouriteCoordinator {
   
     // MARK: - Detail Coordinators
 
-    func showProductDetail(productId: Int) {
-        let productCoordinator = ProductCoordinator(service: nil, categoryName: nil, productId: productId, navigationController: navigationController)
+    func showProductDetail(hayEndpoint: HayEndpoints, categoryName: String, productId: Int) {
+        let productCoordinator = ProductCoordinator(service: service, hayEndpoint: hayEndpoint, categoryName: categoryName, productId: productId, navigationController: navigationController)
         productCoordinator.parentCoordinator = self
         childCoordinators.append(productCoordinator)
         productCoordinator.start()

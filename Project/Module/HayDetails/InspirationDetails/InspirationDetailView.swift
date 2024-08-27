@@ -122,7 +122,6 @@ private extension InspirationDetailView {
                 return self?.createProductsLayout(isWide: isWideView)
             }
         }, configuration: config)
-        
         return layout
     }
     

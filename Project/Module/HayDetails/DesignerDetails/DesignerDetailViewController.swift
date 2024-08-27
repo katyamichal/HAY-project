@@ -9,6 +9,11 @@ import UIKit
 
 enum DesignerDetailsSection: Int, CaseIterable {
     case designerInfo
+    case designerCollectionImagesPart1
+    case quote1
+    case designerCollectionImagesPart2
+    case quote2
+    case products
 }
 
 protocol IDesignerDetailView: AnyObject {
@@ -66,7 +71,6 @@ extension DesignerDetailViewController: IDesignerDetailView {
 }
 
 extension DesignerDetailViewController: UICollectionViewDataSource {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         DesignerDetailsSection.allCases.count
     }
@@ -74,19 +78,60 @@ extension DesignerDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let section = DesignerDetailsSection.allCases[section]
         switch section {
-        case .designerInfo:
-            return 1
+        case .designerInfo: return 1
+        case .quote1: return 1
+        case .quote2: return 1
+        case .designerCollectionImagesPart1: return viewModel.collectionImagesPart1.count
+        case .designerCollectionImagesPart2: return viewModel.collectionImagesPart2.count
+            
+        case .products: return viewModel.productsCount
         }
     }
-    
+    // TODO: - Fix hardcoding
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let section = DesignerDetailsSection.allCases[indexPath.section]
         switch section {
+            
         case .designerInfo:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerInfoCollectionCell.reuseIndentifier, for: indexPath) as? DesignerInfoCollectionCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerInfoCollectionCell.reuseIdentifier, for: indexPath) as? DesignerInfoCollectionCell else {
                 return UICollectionViewCell()
             }
-            cell.update(designerName: viewModel.designerName, designerImage: viewModel.designerImage, designerBio: viewModel.designerDescription)
+            cell.update(name: viewModel.collaborationName, designerImage: viewModel.designerImage, designerBio: viewModel.designerDescription)
+            return cell
+            
+        case .quote1:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseIdentifier, for: indexPath) as? TextCollectionCell else {
+                return UICollectionViewCell()
+            }
+            cell.update(quote: viewModel.designerQuotesPart1)
+            return cell
+            
+        case .quote2:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseIdentifier, for: indexPath) as? TextCollectionCell else {
+                return UICollectionViewCell()
+            }
+            cell.update(quote: viewModel.designerQuotesPart2)
+            return cell
+ 
+        case .designerCollectionImagesPart1:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerCollectionImages.reuseIdentifier, for: indexPath) as? DesignerCollectionImages else {
+                return UICollectionViewCell()
+            }
+            cell.update(with: viewModel.collectionImagesPart1[indexPath.item])
+            return cell
+
+        case .designerCollectionImagesPart2:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerCollectionImages.reuseIdentifier, for: indexPath) as? DesignerCollectionImages else {
+                return UICollectionViewCell()
+            }
+            cell.update(with: viewModel.collectionImagesPart2[indexPath.item])
+            return cell
+            
+        case .products:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerProductsCollectionCell.reuseIdentifier, for: indexPath) as? DesignerProductsCollectionCell else {
+                return UICollectionViewCell()
+            }
             return cell
         }
     }

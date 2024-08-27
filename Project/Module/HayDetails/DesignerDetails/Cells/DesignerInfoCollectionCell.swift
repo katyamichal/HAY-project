@@ -9,7 +9,7 @@ import UIKit
 
 final class DesignerInfoCollectionCell: UICollectionViewCell {
     
-    static var reuseIndentifier: String {
+    static var reuseIdentifier: String {
         return String(describing: DesignerInfoCollectionCell.self)
     }
     
@@ -17,7 +17,7 @@ final class DesignerInfoCollectionCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        setupCell()
     }
     
     @available(*, unavailable)
@@ -41,7 +41,7 @@ final class DesignerInfoCollectionCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var designerNameLabel: UILabel = {
+    private lazy var collaborationName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -71,22 +71,22 @@ final class DesignerInfoCollectionCell: UICollectionViewCell {
     
     // MARK: - Public
     
-    func update(designerName: String, designerImage: UIImage, designerBio: String) {
-        designerNameLabel.text = designerName
+    func update(name: String, designerImage: UIImage, designerBio: String) {
+        collaborationName.text = name
         disignerImageView.image = designerImage
         designerBioLabel.text = designerBio
     }
 }
 
 private extension DesignerInfoCollectionCell {
-    func setupView() {
+    func setupCell() {
         setupViews()
         setupConstraints()
     }
     
     func setupViews() {
         contentView.addSubview(stackView)
-        stackView.addArrangedSubview(designerNameLabel)
+        stackView.addArrangedSubview(collaborationName)
         stackView.addArrangedSubview(disignerImageView)
         stackView.addArrangedSubview(designerBioLabel)
     }

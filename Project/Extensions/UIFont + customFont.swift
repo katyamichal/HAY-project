@@ -9,12 +9,12 @@ import UIKit
 
 enum Fonts {
     enum Titles {
-        static let title = UIFont.cachedFont(name: "Avenir Light", size: 23)
+        static let title = UIFont.cachedFont(name: "Avenir Next Regular", size: 23)
     }
     
     enum Subtitles {
         static let largeFont = UIFont.cachedFont(name: "Georgia", size: 21)
-        static let defaultFont = UIFont.cachedFont(name: "Avenir", size: 16)
+        static let defaultFont = UIFont.cachedFont(name: "Avenir Next Regular", size: 16)
         static let secondaryFont = UIFont.cachedFont(name: "Georgia", size: 16)
     }
     

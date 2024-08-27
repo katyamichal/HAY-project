@@ -27,10 +27,24 @@ final class DesignerDetailsView: UIView {
     
     // MARK: - UI Elements
     
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .medium
+        activityIndicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        activityIndicator.center = self.center
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        return activityIndicator
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        collectionView.isHidden = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(DesignerInfoCollectionCell.self, forCellWithReuseIdentifier: DesignerInfoCollectionCell.reuseIndentifier)
+        collectionView.register(DesignerInfoCollectionCell.self, forCellWithReuseIdentifier: DesignerInfoCollectionCell.reuseIdentifier)
+        collectionView.register(TextCollectionCell.self, forCellWithReuseIdentifier: TextCollectionCell.reuseIdentifier)
+        collectionView.register(DesignerCollectionImages.self, forCellWithReuseIdentifier: DesignerCollectionImages.reuseIdentifier)
+        collectionView.register(DesignerProductsCollectionCell.self, forCellWithReuseIdentifier: DesignerProductsCollectionCell.reuseIdentifier)
         return collectionView
     }()
     
@@ -41,6 +55,8 @@ final class DesignerDetailsView: UIView {
     }
     
     func updateView() {
+        collectionView.isHidden = false
+        loadingIndicator.stopAnimating()
         collectionView.reloadData()
     }
 }
@@ -62,30 +78,76 @@ private extension DesignerDetailsView {
         collectionView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
-    
-    // MARK: - Collection Compositional Layout
+}
+
+// MARK: - Collection Compositional Layout
+
+private extension DesignerDetailsView {
 
     func createLayout() -> UICollectionViewLayout {
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.interSectionSpacing = 20
-        
+
         let layout = UICollectionViewCompositionalLayout(sectionProvider: { (sectionIndex, _) -> NSCollectionLayoutSection? in
             let sectionType = DesignerDetailsSection.allCases[sectionIndex]
             switch sectionType {
-            case .designerInfo: return self.generateDisegnerInfoGroupLayout()
+            case .designerInfo: return self.generateDisegnerInfoSectionLayout()
+            case .quote1, .quote2: return self.generateQuoteSectionLayout()
+            case .designerCollectionImagesPart1, .designerCollectionImagesPart2: return self.createDesignerCollectionImagesSectionLayout()
+            case .products: return self.createProductsSectionLayout()
             }
         }, configuration: config)
         return layout
     }
     
-    func generateDisegnerInfoGroupLayout() -> NSCollectionLayoutSection? {
+    func generateDisegnerInfoSectionLayout() -> NSCollectionLayoutSection? {
         let inset: CGFloat = 24
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 1)
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 1)
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: inset, bottom: 0, trailing: inset)
+        return section
+    }
+    
+    func generateQuoteSectionLayout() -> NSCollectionLayoutSection {
+        let inset: CGFloat = 24
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.4))
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: inset, bottom: 0, trailing: inset)
+        return section
+    }
+    
+    func createDesignerCollectionImagesSectionLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalWidth(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.interGroupSpacing = 20
+        return section
+    }
+    
+    func createProductsSectionLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalWidth(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.interGroupSpacing = 20
         return section
     }
 }

@@ -8,9 +8,17 @@
 import UIKit
 
 protocol IDesignerDetailsViewModel: AnyObject {
-    var designerName: String { get }
+    var collaborationName: String { get }
     var designerImage: UIImage { get }
     var designerDescription: String { get }
+    
+    var designerQuotesPart1: String { get }
+    var designerQuotesPart2: String { get }
+    
+    var collectionImagesPart1: [UIImage] { get }
+    var collectionImagesPart2: [UIImage] { get }
+    
+    var productsCount: Int { get }
     
     func setupView(view: IDesignerDetailView)
     func getData()
@@ -43,9 +51,12 @@ final class DesignerDetailsViewModel {
 // MARK: - IDesignerDetailsViewModel Protocol
 
 extension DesignerDetailsViewModel: IDesignerDetailsViewModel {
-    var designerName: String {
-        guard let designer = viewData.value else { return "" }
-        return designer.designerName
+ 
+    // MARK: - Section Info
+    
+    var collaborationName: String {
+        guard let data = viewData.value else { return emptyData }
+        return data.designerName + " X HAY: " + data.collectionName
     }
     
     var designerImage: UIImage {
@@ -54,10 +65,37 @@ extension DesignerDetailsViewModel: IDesignerDetailsViewModel {
     }
     
     var designerDescription: String {
-        guard let designer = viewData.value else { return "" }
-        return designer.designerInfo
+        viewData.value?.designerInfo ?? emptyData
     }
     
+    // MARK: - Images
+    
+    var collectionImagesPart1: [UIImage] {
+         Array<UIImage>(collectionImages[0..<collectionImages.count / 2])
+    }
+    
+    var collectionImagesPart2: [UIImage] {
+        Array<UIImage>(collectionImages[(collectionImages.count / 2)..<collectionImages.count])
+    }
+    
+    // MARK: - Quotes
+
+    var designerQuotesPart1: String {
+        designerQuotes.first ?? emptyData
+    }
+    
+    var designerQuotesPart2: String {
+        designerQuotes.last ?? emptyData
+    }
+
+    // MARK: - Products
+    
+    var productsCount: Int {
+        viewData.value?.products.count ?? 0
+    }
+    
+    // MARK: - Observer
+
     func subscribe(observer: IObserver) {
         viewData.subscribe(observer: observer)
     }
@@ -66,6 +104,8 @@ extension DesignerDetailsViewModel: IDesignerDetailsViewModel {
         viewData.unsubscribe(observer: observer)
     }
     
+    // MARK: - Fetching data from a server
+
     func getData() {
         Task {
             do {
@@ -83,5 +123,20 @@ extension DesignerDetailsViewModel: IDesignerDetailsViewModel {
     func setupView(view: IDesignerDetailView) {
         self.view = view
         self.view?.viewIsSetUp()
+    }
+}
+
+private extension DesignerDetailsViewModel {
+    var emptyData: String {
+        return "No data"
+    }
+    
+    var collectionImages: [UIImage] {
+        return viewData.value?.collectionImages.compactMap { UIImage(named: $0) } ?? []
+    }
+    
+    var designerQuotes: [String] {
+        guard let designer = viewData.value else { return [] }
+        return designer.designerQuotes
     }
 }

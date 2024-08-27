@@ -9,10 +9,10 @@ import UIKit
 
 
 enum TableSections: Int, CaseIterable {
-   case category1 = 0
-   case designer1
-   case category2
-   case designer2
+    case category1 = 0
+    case designer1
+    case category2
+    case designer2
 }
 
 protocol IHayViewController: AnyObject {
@@ -55,7 +55,7 @@ final class HayViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
     }
 }
 
@@ -96,9 +96,9 @@ extension HayViewController: UITableViewDataSource {
             hayViewModel.createCategory(with: cell, at: index)
             cell.update()
             return cell
-        
+            
             // TODO: - Separate logic into a concrete module
-
+            
         case .designer1, .designer2:
             let index = section == .designer1 ? indexPath.row : indexPath.row + 1
             guard index < viewData.categories.count else {
@@ -123,13 +123,14 @@ extension HayViewController: UITableViewDataSource {
 extension HayViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = TableSections.allCases[indexPath.section]
+        guard let designers = hayViewModel.viewData.value?.designers else { return }
         switch section {
         case .category1, .category2:
             break
-        case .designer1, .designer2:
-        print("Should show designer detail")
-            guard let id = hayViewModel.viewData.value?.designers[0].id else { return }
-            hayViewModel.showDesignerDetail(designerId: id)
+        case .designer1:
+            hayViewModel.showDesignerDetail(designerId: designers[0].id)
+        case .designer2:
+            hayViewModel.showDesignerDetail(designerId: designers[1].id)
         }
     }
     

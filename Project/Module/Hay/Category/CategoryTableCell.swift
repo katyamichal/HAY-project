@@ -112,8 +112,8 @@ extension CategoryTableCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let viewModel else { return UICollectionViewCell() }
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryProductCollectionCell.reuseIdentifier, for: indexPath) as? CategoryProductCollectionCell else {
+        guard let viewModel,
+              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryProductCollectionCell.reuseIdentifier, for: indexPath) as? CategoryProductCollectionCell else {
             return UICollectionViewCell()
         }
         

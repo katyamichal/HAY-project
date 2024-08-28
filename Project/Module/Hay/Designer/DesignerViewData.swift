@@ -11,7 +11,7 @@ struct DesignerViewData {
     let designerId: Int
     let designerName: String
     let collectionName: String
-    let product: [ProductCDO]
+    let products: [ProductCDO]
 }
 
 extension DesignerViewData {
@@ -19,6 +19,6 @@ extension DesignerViewData {
         self.designerId = designer.id
         self.designerName = designer.designerName
         self.collectionName = designer.collectionName
-        self.product = designer.products.map({ProductCDO(with: $0, endpoint: .designers, itemIdentifier: designer.id, type: .favourite)})
+        self.products = designer.products.map({ProductCDO(with: $0, endpoint: .designers, itemIdentifier: designer.id, type: .favourite)})
     }
 }

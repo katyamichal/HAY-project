@@ -5,20 +5,86 @@
 //  Created by Catarina Polakowsky on 16.08.2024.
 //
 
-import Foundation
+import UIKit
 
-protocol IDesignerViewModel: AnyObject {}
+protocol IDesignerViewModel: AnyObject {
+    var productCount: Int { get }
+    var productName: String { get }
+    var productPrice: String { get }
+    var productImage: UIImage { get }
+    var isFavourite: Bool { get }
+    var productId: Int { get }
+    func setCurrentProduct(at index: Int)
+    
+    func setupView(view: IDesignerView)
+}
 
 final class DesignerViewModel {
     private weak var coordinator: Coordinator?
     private weak var view: IDesignerView?
-    private let viewData: DesignerViewData
-    private let likeManager = LikeButtonManager.shared
+    private var viewData: DesignerViewData
     
-    init(coordinator: Coordinator? = nil, viewData: DesignerViewData) {
+    private var loadingError = Observable<String>()
+    private let likeManager = LikeButtonManager.shared
+   
+    private var currentProduct: ProductCDO?
+    
+    // MARK: - Init
+
+    init(coordinator: Coordinator, viewData: DesignerViewData) {
         self.coordinator = coordinator
         self.viewData = viewData
     }
 }
 
-extension DesignerViewModel: IDesignerViewModel {}
+// MARK: - IDesignerViewModel Protocol
+
+extension DesignerViewModel: IDesignerViewModel {
+    var productCount: Int {
+        return viewData.products.count
+    }
+    
+    var isFavourite: Bool {
+        guard let currentProduct else { return false }
+        if likeManager.favouriteProducts.value?.products.first(where: { $0.productId == currentProduct.productId }) != nil {
+            return true
+        }
+        return false
+    }
+    
+    var productId: Int {
+        guard let currentProduct else { return 0 }
+        return currentProduct.productId
+    }
+    
+    var productName: String {
+        guard let currentProduct else { return emptyData }
+        return currentProduct.productName
+    }
+    
+    var productPrice: String {
+        guard let currentProduct else { return emptyData }
+        return "£\(currentProduct.price)"
+    }
+    
+    var productImage: UIImage {
+        guard
+            let currentProduct,
+            let image = UIImage(named: currentProduct.image) else {
+            return UIImage()
+        }
+        return image
+    }
+    
+    func setCurrentProduct(at index: Int) {
+        currentProduct = viewData.products[index]
+    }
+    
+    func setupView(view: IDesignerView) {
+        self.view = view
+    }
+    
+    var emptyData: String {
+        return "No data"
+    }
+}

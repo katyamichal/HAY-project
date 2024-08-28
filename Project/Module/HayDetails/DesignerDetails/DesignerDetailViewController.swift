@@ -70,6 +70,8 @@ extension DesignerDetailViewController: IDesignerDetailView {
     }
 }
 
+// MARK: - Collection DataSource
+
 extension DesignerDetailViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         DesignerDetailsSection.allCases.count
@@ -84,58 +86,63 @@ extension DesignerDetailViewController: UICollectionViewDataSource {
         case .designerCollectionImagesPart1: return viewModel.collectionImagesPart1.count
         case .designerCollectionImagesPart2: return viewModel.collectionImagesPart2.count
             
-        case .products: return viewModel.productsCount
+        case .products: return viewModel.productCount
         }
     }
     // TODO: - Fix hardcoding
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let section = DesignerDetailsSection.allCases[indexPath.section]
+        
         switch section {
-            
         case .designerInfo:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerInfoCollectionCell.reuseIdentifier, for: indexPath) as? DesignerInfoCollectionCell else {
-                return UICollectionViewCell()
+            return dequeueAndConfigureCell(collectionView, indexPath: indexPath, identifier: DesignerInfoCollectionCell.reuseIdentifier) { (cell: DesignerInfoCollectionCell) in
+                cell.update(name: viewModel.collaborationName, designerImage: viewModel.designerImage, designerBio: viewModel.designerDescription)
             }
-            cell.update(name: viewModel.collaborationName, designerImage: viewModel.designerImage, designerBio: viewModel.designerDescription)
-            return cell
             
         case .quote1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseIdentifier, for: indexPath) as? TextCollectionCell else {
-                return UICollectionViewCell()
+            return dequeueAndConfigureCell(collectionView, indexPath: indexPath, identifier: TextCollectionCell.reuseIdentifier) { (cell: TextCollectionCell) in
+                cell.update(quote: viewModel.designerQuotesPart1)
             }
-            cell.update(quote: viewModel.designerQuotesPart1)
-            return cell
             
         case .quote2:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseIdentifier, for: indexPath) as? TextCollectionCell else {
-                return UICollectionViewCell()
+            return dequeueAndConfigureCell(collectionView, indexPath: indexPath, identifier: TextCollectionCell.reuseIdentifier) { (cell: TextCollectionCell) in
+                cell.update(quote: viewModel.designerQuotesPart2)
             }
-            cell.update(quote: viewModel.designerQuotesPart2)
-            return cell
- 
+            
         case .designerCollectionImagesPart1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerCollectionImages.reuseIdentifier, for: indexPath) as? DesignerCollectionImages else {
-                return UICollectionViewCell()
+            return dequeueAndConfigureCell(collectionView, indexPath: indexPath, identifier: DesignerCollectionImages.reuseIdentifier) { (cell: DesignerCollectionImages) in
+                cell.update(with: viewModel.collectionImagesPart1[indexPath.item])
             }
-            cell.update(with: viewModel.collectionImagesPart1[indexPath.item])
-            return cell
 
         case .designerCollectionImagesPart2:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerCollectionImages.reuseIdentifier, for: indexPath) as? DesignerCollectionImages else {
-                return UICollectionViewCell()
+            return dequeueAndConfigureCell(collectionView, indexPath: indexPath, identifier: DesignerCollectionImages.reuseIdentifier) { (cell: DesignerCollectionImages) in
+                cell.update(with: viewModel.collectionImagesPart2[indexPath.item])
             }
-            cell.update(with: viewModel.collectionImagesPart2[indexPath.item])
-            return cell
-            
+
         case .products:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerProductsCollectionCell.reuseIdentifier, for: indexPath) as? DesignerProductsCollectionCell else {
-                return UICollectionViewCell()
+            return dequeueAndConfigureCell(collectionView, indexPath: indexPath, identifier: DesignerProductsCollectionCell.reuseIdentifier) { (cell: DesignerProductsCollectionCell) in
+                viewModel.setCurrentProduct(at: indexPath.item)
+                cell.update(productName: viewModel.productName, price: viewModel.productPrice, image: viewModel.productImage, isFavourite: viewModel.isFavourite, productId: viewModel.productId)
             }
-            return cell
         }
     }
 }
+
+// MARK: - CollectionView Delegate
+
+extension DesignerDetailViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let section = DesignerDetailsSection.allCases[indexPath.section]
+        switch section {
+        case .products: viewModel.showDetail(at: indexPath.item)
+        default: break
+        }
+    }
+}
+
+
+// MARK: - Observer subscription
 
 extension DesignerDetailViewController: IObserver {
     func update<T>(with value: T) {
@@ -147,8 +154,19 @@ extension DesignerDetailViewController: IObserver {
     }
 }
 
+// MARK: - Private methods
+
 private extension DesignerDetailViewController {
     func setupCollectionViewDelegates() {
         designerDetailsView.setupDataSource(self)
+        designerDetailsView.setupCollectionDelegate(self)
+    }
+    
+    func dequeueAndConfigureCell<CellType: UICollectionViewCell>(_ collectionView: UICollectionView, indexPath: IndexPath, identifier: String, configure: (CellType) -> Void) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? CellType else {
+            return UICollectionViewCell()
+        }
+        configure(cell)
+        return cell
     }
 }

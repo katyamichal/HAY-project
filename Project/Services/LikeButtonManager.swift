@@ -38,7 +38,7 @@ private extension LikeButtonManager {
         coreDataService.fetchProducts(productType: .favourite) { [weak self] result in
             switch result {
             case .success(let product):
-                self?.favouriteProducts.value?.products = product
+                self?.favouriteProducts.value?.products = product.reversed()
             case .failure(let error):
                 print("Error to fetch favourite products: \(error.localizedDescription)")
             }

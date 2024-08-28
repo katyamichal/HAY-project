@@ -45,7 +45,7 @@ final class DesignerInfoCollectionCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.font = Fonts.Subtitles.secondaryFont
+        label.font = Fonts.Subtitles.largeFont
         label.textColor = .black
         label.textAlignment = .center
         return label

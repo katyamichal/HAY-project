@@ -90,6 +90,7 @@
 		4ECAA06D2C7DB19600BF1928 /* FavouriteProduct+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECAA06B2C7DB19600BF1928 /* FavouriteProduct+CoreDataProperties.swift */; };
 		4EDF6E642C7DC815007FAAEE /* TextCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E632C7DC815007FAAEE /* TextCollectionCell.swift */; };
 		4EDF6E662C7DD697007FAAEE /* DesignerCollectionImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E652C7DD697007FAAEE /* DesignerCollectionImages.swift */; };
+		4EDF6E682C7EF0E9007FAAEE /* QuoteSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E672C7EF0E9007FAAEE /* QuoteSupplementaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +179,7 @@
 		4ECAA06B2C7DB19600BF1928 /* FavouriteProduct+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteProduct+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4EDF6E632C7DC815007FAAEE /* TextCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCollectionCell.swift; sourceTree = "<group>"; };
 		4EDF6E652C7DD697007FAAEE /* DesignerCollectionImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerCollectionImages.swift; sourceTree = "<group>"; };
+		4EDF6E672C7EF0E9007FAAEE /* QuoteSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSupplementaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -532,6 +534,7 @@
 				4EB5B4CB2C6F67E600F6ED0C /* DesignerDetailsViewData.swift */,
 				4EB5B4C92C6F67DD00F6ED0C /* DesignerDetailsCoordinator.swift */,
 				4EB5B4CF2C71ECDB00F6ED0C /* Cells */,
+				4EDF6E672C7EF0E9007FAAEE /* QuoteSupplementaryView.swift */,
 			);
 			path = DesignerDetails;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				4E25A6BF2C494D9A00066DFD /* CoreDataService.swift in Sources */,
 				4EB5B4C82C6F67CD00F6ED0C /* DesignerDetailsView.swift in Sources */,
 				4E4D6C862C64B81100F47B5F /* LikeButtonManager.swift in Sources */,
+				4EDF6E682C7EF0E9007FAAEE /* QuoteSupplementaryView.swift in Sources */,
 				4E25A6742C3C33E900066DFD /* HayEndpoints.swift in Sources */,
 				4E5C23FE2C78CE8F004EC7BF /* InspirationDetailViewController.swift in Sources */,
 				4E25A6772C3C33E900066DFD /* RequestProcessorError.swift in Sources */,

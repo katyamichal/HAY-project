@@ -79,7 +79,7 @@ final class DesignerProductsCollectionCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var likeButton: LikeButton = {
+    private lazy var likeButton: LikeButton = {
         let button = LikeButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -87,10 +87,16 @@ final class DesignerProductsCollectionCell: UICollectionViewCell {
     
     // MARK: - Public
     
-    func update(productName: String, price: String, image: UIImage) {
+    func update(productName: String, price: String, image: UIImage, isFavourite: Bool, productId: Int) {
         nameLabel.text = productName
         pricelLabel.text = price
         productImageView.image = image
+        setupLikeButton(with: isFavourite, productId: productId)
+    }
+    
+    func setupLikeButton(with status: Bool, productId: Int) {
+        likeButton.isSelected = status
+        likeButton.productId = productId
     }
 }
 

@@ -28,6 +28,13 @@ final class DesignerDetailsCoordinator: Coordinator {
     func finish() {
         
     }
+    
+    func showProductDetail(hayEndpoint: ProductEndpoint, itemId: Int, productId: Int) {
+        let productCoordinator = ProductCoordinator(service: service, hayEndpoint: hayEndpoint, itemId: itemId, productId: productId, navigationController: navigationController)
+        productCoordinator.parentCoordinator = self
+        childCoordinators.append(productCoordinator)
+        productCoordinator.start()
+    }
 }
 
 private extension DesignerDetailsCoordinator {

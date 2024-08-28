@@ -37,11 +37,22 @@ final class DesignerDetailsView: UIView {
         return activityIndicator
     }()
     
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isHidden = true
+        label.numberOfLines = 0
+        label.font = Fonts.Subtitles.defaultFont
+        return label
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.isHidden = true
+        collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(DesignerInfoCollectionCell.self, forCellWithReuseIdentifier: DesignerInfoCollectionCell.reuseIdentifier)
+        collectionView.register(QuoteSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: QuoteSupplementaryView.reuseIdentifier)
         collectionView.register(TextCollectionCell.self, forCellWithReuseIdentifier: TextCollectionCell.reuseIdentifier)
         collectionView.register(DesignerCollectionImages.self, forCellWithReuseIdentifier: DesignerCollectionImages.reuseIdentifier)
         collectionView.register(DesignerProductsCollectionCell.self, forCellWithReuseIdentifier: DesignerProductsCollectionCell.reuseIdentifier)
@@ -54,21 +65,33 @@ final class DesignerDetailsView: UIView {
         collectionView.dataSource = dataSource
     }
     
+    func setupCollectionDelegate(_ delegate: UICollectionViewDelegate) {
+        collectionView.delegate = delegate
+    }
+    
     func updateView() {
         collectionView.isHidden = false
         loadingIndicator.stopAnimating()
         collectionView.reloadData()
     }
+    
+    func updateView(with error: String?) {
+        loadingIndicator.stopAnimating()
+        errorLabel.isHidden = false
+        errorLabel.text = error
+    }
 }
 
 private extension DesignerDetailsView {
     func setupView() {
-        backgroundColor = .systemBackground
+        backgroundColor = Colours.Main.hayBackground
         setupViews()
         setupConstraints()
     }
     
     func setupViews() {
+        addSubview(errorLabel)
+        addSubview(loadingIndicator)
         addSubview(collectionView)
     }
     
@@ -141,13 +164,12 @@ private extension DesignerDetailsView {
     func createProductsSectionLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalWidth(1.0))
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.6), heightDimension: .fractionalWidth(0.8))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        section.interGroupSpacing = 20
+        //section.interGroupSpacing = 8
         return section
     }
 }

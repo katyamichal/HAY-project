@@ -29,7 +29,6 @@ final class FavouriteProductsViewModel {
     
     private let likeManager = LikeButtonManager.shared
   
-    
     private var viewData: [FavouriteViewData] = []
     private var currentProduct: FavouriteViewData?
     

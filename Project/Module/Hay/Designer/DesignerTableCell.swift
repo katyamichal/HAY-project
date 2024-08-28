@@ -12,7 +12,7 @@ protocol IDesignerView: AnyObject {
 
 final class DesignerTableCell: UITableViewCell {
     
-    private var designerProduct: [Product] = []
+    var viewModel: IDesignerViewModel?
     
     // MARK: - Constants for constraints
     
@@ -144,7 +144,6 @@ final class DesignerTableCell: UITableViewCell {
         designerNameLabel.text = name
         collectionNameLabel.text = collectionName
         designerImageView.image = image
-        designerProduct = products
         headerLabel.text = sectionName
         updateCollectionView()
     }
@@ -202,15 +201,16 @@ private extension DesignerTableCell {
 
 extension DesignerTableCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return designerProduct.count
+        return viewModel?.productCount ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerProductsCollectionCell.reuseIdentifier, for: indexPath) as? DesignerProductsCollectionCell else {
+        guard let viewModel,
+              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerProductsCollectionCell.reuseIdentifier, for: indexPath) as? DesignerProductsCollectionCell else {
            return UICollectionViewCell()
         }
-        let product = designerProduct[indexPath.item]
-        cell.update(productName: product.productName, price: "£\(product.price)", image: UIImage(named: product.image)!)
+        viewModel.setCurrentProduct(at: indexPath.item)
+        cell.update(productName: viewModel.productName, price: viewModel.productPrice, image: viewModel.productImage, isFavourite: viewModel.isFavourite, productId: viewModel.productId)
         return cell
     }
 }

@@ -64,6 +64,7 @@ final class HayView: UIView {
 private extension HayView {
     func setupView() {
         backgroundColor = Colours.Main.hayBackground
+        tableView.backgroundColor = .clear
         setupViews()
         setupConstraints()
     }

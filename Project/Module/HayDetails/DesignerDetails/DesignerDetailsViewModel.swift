@@ -18,21 +18,36 @@ protocol IDesignerDetailsViewModel: AnyObject {
     var collectionImagesPart1: [UIImage] { get }
     var collectionImagesPart2: [UIImage] { get }
     
-    var productsCount: Int { get }
+    var productCount: Int { get }
+    var productName: String { get }
+    var productPrice: String { get }
+    var productImage: UIImage { get }
+    var isFavourite: Bool { get }
+    var productId: Int { get }
+    func setCurrentProduct(at index: Int)
     
     func setupView(view: IDesignerDetailView)
     func getData()
+    
     func subscribe(observer: IObserver)
     func unsubscibe(observer: IObserver)
+    
+    func showDetail(at index: Int)
 }
 
 final class DesignerDetailsViewModel {
     private weak var coordinator: Coordinator?
     private weak var view: IDesignerDetailView?
+    
     private let service: HayServiceable
-    private var viewData: Observable<DesignerDetailsViewData>
     private let likeManager = LikeButtonManager.shared
+
     private let designerId: Int
+    private var currentProduct: ProductCDO?
+    
+    private var loadingError = Observable<String>()
+    private var viewData: Observable<DesignerDetailsViewData>
+   
     
     // MARK: - Inits
 
@@ -51,12 +66,11 @@ final class DesignerDetailsViewModel {
 // MARK: - IDesignerDetailsViewModel Protocol
 
 extension DesignerDetailsViewModel: IDesignerDetailsViewModel {
- 
     // MARK: - Section Info
     
     var collaborationName: String {
         guard let data = viewData.value else { return emptyData }
-        return data.designerName + " X HAY: " + data.collectionName
+        return data.designerName + " x HAY: " + data.collectionName.lowercased()
     }
     
     var designerImage: UIImage {
@@ -89,9 +103,44 @@ extension DesignerDetailsViewModel: IDesignerDetailsViewModel {
     }
 
     // MARK: - Products
+    var productCount: Int {
+        return viewData.value?.products.count ?? 0
+    }
     
-    var productsCount: Int {
-        viewData.value?.products.count ?? 0
+    var isFavourite: Bool {
+        guard let currentProduct else { return false }
+        if likeManager.favouriteProducts.value?.products.first(where: { $0.productId == currentProduct.productId }) != nil {
+            return true
+        }
+        return false
+    }
+    
+    var productId: Int {
+        guard let currentProduct else { return 0 }
+        return currentProduct.productId
+    }
+    
+    var productName: String {
+        guard let currentProduct else { return emptyData }
+        return currentProduct.productName
+    }
+    
+    var productPrice: String {
+        guard let currentProduct else { return emptyData }
+        return "£\(currentProduct.price)"
+    }
+    
+    var productImage: UIImage {
+        guard
+            let currentProduct,
+            let image = UIImage(named: currentProduct.image) else {
+            return UIImage()
+        }
+        return image
+    }
+    
+    func setCurrentProduct(at index: Int) {
+        currentProduct = viewData.value?.products[index]
     }
     
     // MARK: - Observer
@@ -123,6 +172,11 @@ extension DesignerDetailsViewModel: IDesignerDetailsViewModel {
     func setupView(view: IDesignerDetailView) {
         self.view = view
         self.view?.viewIsSetUp()
+    }
+    
+    func showDetail(at index: Int) {
+        guard let data = viewData.value else { return }
+        (coordinator as? DesignerDetailsCoordinator)?.showProductDetail(hayEndpoint: .designers, itemId: data.designerId, productId: data.products[index].productId)
     }
 }
 

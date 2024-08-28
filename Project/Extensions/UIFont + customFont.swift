@@ -13,9 +13,9 @@ enum Fonts {
     }
     
     enum Subtitles {
-        static let largeFont = UIFont.cachedFont(name: "Georgia", size: 21)
-        static let defaultFont = UIFont.cachedFont(name: "Avenir Next Regular", size: 16)
-        static let secondaryFont = UIFont.cachedFont(name: "Georgia", size: 16)
+        static let largeFont = UIFont.cachedFont(name: "Avenir Next Regular", size: 19)
+        static let defaultFont = UIFont.cachedFont(name: "Avenir Next Regular", size: 14)
+        static let secondaryFont = UIFont.cachedFont(name: "Avenir Book", size: 16)
     }
     
     enum Buttons {

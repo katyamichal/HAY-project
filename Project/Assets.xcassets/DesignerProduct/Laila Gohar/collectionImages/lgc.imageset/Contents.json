@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "lgc.jpg",
-      "idiom" : "universal"
+      "filename" : "sobremesa-family_1390x800.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

@@ -7,14 +7,6 @@
 
 import UIKit
 
-
-enum TableSections: Int, CaseIterable {
-    case category1 = 0
-    case designer1
-    case category2
-    case designer2
-}
-
 protocol IHayViewController: AnyObject {
     func viewIsSetUp()
 }
@@ -67,75 +59,45 @@ extension HayViewController: IHayViewController {
     }
 }
 
+// MARK: - TableView Data Source
+
 extension HayViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return TableSections.allCases.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        let sectionType = TableSections(rawValue: section)!
+        return sectionType.sectionData(for: hayViewModel).numberOfRows
     }
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let viewData = hayViewModel.viewData.value else {
-            return UITableViewCell()
-        }
-        
-        let section = TableSections.allCases[indexPath.section]
-        
-        switch section {
-        case .category1, .category2:
-            let index = section == .category1 ? indexPath.row : indexPath.row + 1
-            guard index < viewData.categories.count else {
-                return UITableViewCell()
-            }
-            
-            let cell = tableView.dequeue(indexPath) as CategoryTableCell
-            hayViewModel.createCategory(with: cell, at: index)
-            cell.update()
-            return cell
-            
-            // TODO: - Separate logic into a concrete module
-            
-        case .designer1, .designer2:
-            let index = section == .designer1 ? indexPath.row : indexPath.row + 1
-            guard index < viewData.categories.count else {
-                return UITableViewCell()
-            }
-            let designers = viewData.designers
-            let cell = tableView.dequeue(indexPath) as DesignerTableCell
-            
-            
-            if section == .designer1 {
-                let designer = designers[indexPath.row]
-                cell.update(sectionName: Constants.LabelTitles.designerSection, name: designer.designerName, collectionName: designer.collectionName, image: UIImage(named: designer.designerImage)!, products: designer.products)
-            } else {
-                let designer = designers[indexPath.row + 1]
-                cell.update(sectionName: Constants.LabelTitles.designerSection, name: designer.designerName, collectionName: designer.collectionName, image: UIImage(named: designer.designerImage)!, products: designer.products)
-            }
-            return cell
-        }
+        let sectionType = TableSections(rawValue: indexPath.section)!
+        return sectionType.sectionData(for: hayViewModel).configureCell(for: tableView, at: indexPath, with: hayViewModel)
     }
 }
 
+// MARK: - TableView Delegate
+
 extension HayViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = TableSections.allCases[indexPath.section]
+        let section = TableSections(rawValue: indexPath.section)!
         guard let designers = hayViewModel.viewData.value?.designers else { return }
+        
         switch section {
         case .category1, .category2:
             break
-        case .designer1:
-            hayViewModel.showDesignerDetail(designerId: designers[0].id)
-        case .designer2:
-            hayViewModel.showDesignerDetail(designerId: designers[1].id)
+        case .designer1, .designer2:
+            let designerIndex = section.sectionIndex
+            guard designerIndex < designers.count else { return }
+            hayViewModel.showDesignerDetail(designerId: designers[designerIndex].id)
         }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {}
 }
+
+// MARK: - Observer Subscription
 
 extension HayViewController: IObserver {
     func update<T>(with value: T) {
@@ -149,6 +111,8 @@ extension HayViewController: IObserver {
         }
     }
 }
+
+// MARK: - Private methods
 
 private extension HayViewController {
     func setupHayView() {

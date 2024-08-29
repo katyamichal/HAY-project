@@ -91,6 +91,7 @@
 		4EDF6E642C7DC815007FAAEE /* TextCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E632C7DC815007FAAEE /* TextCollectionCell.swift */; };
 		4EDF6E662C7DD697007FAAEE /* DesignerCollectionImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E652C7DD697007FAAEE /* DesignerCollectionImages.swift */; };
 		4EDF6E682C7EF0E9007FAAEE /* QuoteSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E672C7EF0E9007FAAEE /* QuoteSupplementaryView.swift */; };
+		4EDF6E6A2C803912007FAAEE /* HayTableViewSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E692C803912007FAAEE /* HayTableViewSections.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -180,6 +181,7 @@
 		4EDF6E632C7DC815007FAAEE /* TextCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCollectionCell.swift; sourceTree = "<group>"; };
 		4EDF6E652C7DD697007FAAEE /* DesignerCollectionImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerCollectionImages.swift; sourceTree = "<group>"; };
 		4EDF6E672C7EF0E9007FAAEE /* QuoteSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSupplementaryView.swift; sourceTree = "<group>"; };
+		4EDF6E692C803912007FAAEE /* HayTableViewSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HayTableViewSections.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 				4E25A6542C3C33BE00066DFD /* HayTableView.swift */,
 				4E25A6552C3C33BE00066DFD /* HayViewModel.swift */,
 				4E25A6522C3C33BE00066DFD /* HayViewData.swift */,
+				4EDF6E692C803912007FAAEE /* HayTableViewSections.swift */,
 				4E25A68A2C3C347D00066DFD /* Header */,
 				4E25A68B2C3C348500066DFD /* Category */,
 				4E25A68C2C3C349900066DFD /* Designer */,
@@ -633,6 +636,7 @@
 				4E4D6CBD2C6DDE1500F47B5F /* UIFont + customFont.swift in Sources */,
 				4EB5B4CA2C6F67DD00F6ED0C /* DesignerDetailsCoordinator.swift in Sources */,
 				4EB5B4CC2C6F67E600F6ED0C /* DesignerDetailsViewData.swift in Sources */,
+				4EDF6E6A2C803912007FAAEE /* HayTableViewSections.swift in Sources */,
 				4E25A6C22C4951E600066DFD /* FavouriteProductsView.swift in Sources */,
 				4E25A6B32C46791500066DFD /* ProductViewData.swift in Sources */,
 				4EB5B4BF2C6F620800F6ED0C /* DesignerViewData.swift in Sources */,

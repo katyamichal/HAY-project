@@ -7,7 +7,8 @@
 import UIKit
 
 protocol IDesignerView: AnyObject {
-    
+    func updateTableCell(sectionName: String, name: String, collectionName: String, image: UIImage)
+    func updateCollectionView()
 }
 
 final class DesignerTableCell: UITableViewCell {
@@ -140,12 +141,18 @@ final class DesignerTableCell: UITableViewCell {
     
     // MARK: - Public
     
-    func update(sectionName: String, name: String, collectionName: String, image: UIImage, products: [Product]) {
+    func update() {
+        viewModel?.setupView(view: self)
+    }
+}
+
+extension DesignerTableCell: IDesignerView {
+    
+    func updateTableCell(sectionName: String, name: String, collectionName: String, image: UIImage) {
         designerNameLabel.text = name
         collectionNameLabel.text = collectionName
         designerImageView.image = image
         headerLabel.text = sectionName
-        updateCollectionView()
     }
     
     func updateCollectionView() {
@@ -217,4 +224,8 @@ extension DesignerTableCell: UICollectionViewDataSource {
 
 // MARK: - Collection Delegate
 
-extension DesignerTableCell: UICollectionViewDelegate {}
+extension DesignerTableCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel?.showDetail(at: indexPath.item)
+    }
+}

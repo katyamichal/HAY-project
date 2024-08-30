@@ -6,11 +6,6 @@
 
 import UIKit
 
-enum ServiceResponse {
-    case success
-    case failure
-}
-
 final class HayViewModel {
     private weak var coordinator: Coordinator?
     private weak var view: IHayViewController?
@@ -31,11 +26,15 @@ final class HayViewModel {
     deinit {
         print("MainViewModel deinit")
     }
-
+    
+    // MARK: - View Setup
+    
     func setupView(with view: IHayViewController) {
         self.view = view
         self.view?.viewIsSetUp()
     }
+    
+    // MARK: - Observable Subscription
     
     func subscribe(observer: IObserver) {
         viewData.subscribe(observer: observer)
@@ -63,18 +62,24 @@ final class HayViewModel {
         }
     }
     
-    // MARK: - Initializinf TableView modules
-
-    func createCategory(with cell: UITableViewCell, at index: Int) {
+    // MARK: - Initializing TableView modules
+    
+    func createCategory(with cell: CategoryTableCell, at index: Int) {
         guard let categoryData = viewData.value?.categories[index] else { return }
         (coordinator as? HayCoordinator)?.showCategoryCoordinator(cell: cell, viewData: categoryData)
-       // print((coordinator as? HayCoordinator)?.childCoordinators)
     }
     
     func createInspiration(with view: Header) {
         guard let inspiration = viewData.value?.inspiration else { return }
         (coordinator as? HayCoordinator)?.showInspiration(view: view, viewData: inspiration)
     }
+    
+    func createDesigner(with cell: DesignerTableCell, at index: Int) {
+        guard let designerData = viewData.value?.designers[index] else { return }
+        (coordinator as? HayCoordinator)?.showDesignerModule(cell: cell, viewData: designerData)
+    }
+    
+    // MARK: - Show Detail methods
     
     func showDesignerDetail(designerId: Int) {
         (coordinator as? HayCoordinator)?.showDesignerDetail(designerId)

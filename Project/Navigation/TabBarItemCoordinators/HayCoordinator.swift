@@ -28,11 +28,20 @@ final class HayCoordinator: Coordinator {
         childCoordinators.append(first!)
     }
     
-    func showCategoryCoordinator(cell: UITableViewCell, viewData: Category) {
-        let categoryCoordinator = CategoryCoordinator(service: networkService, cell: cell as! CategoryTableCell, viewData: CategoryViewData.init(with: viewData), navigationController: navigationController)
+    func showCategoryCoordinator(cell: CategoryTableCell, viewData: Category) {
+        let categoryViewData = CategoryViewData.init(with: viewData)
+        let categoryCoordinator = CategoryCoordinator(service: networkService, cell: cell, viewData: categoryViewData, navigationController: navigationController)
         categoryCoordinator.parentCoordinator = self
         childCoordinators.append(categoryCoordinator)
         categoryCoordinator.start()
+    }
+    
+    func showDesignerModule(cell: DesignerTableCell, viewData: Designer) {
+        let designerViewData = DesignerViewData(with: viewData)
+        let designerCoordinator = DesignerCoordinator(service: networkService, cell: cell, viewData: designerViewData, navigationController: navigationController)
+        designerCoordinator.parentCoordinator = self
+        childCoordinators.append(designerCoordinator)
+        designerCoordinator.start()
     }
     
     func showInspiration(view: Header, viewData: [InspirationFeed]) {

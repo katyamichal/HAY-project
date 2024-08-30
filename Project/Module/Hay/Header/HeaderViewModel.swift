@@ -13,7 +13,6 @@ protocol IHeaderViewModel: AnyObject {
 }
 
 final  class HeaderViewModel {
-    
     private weak var coordinator: Coordinator?
     private weak var view: IHeaderView?
     private var viewData: HeaderViewData

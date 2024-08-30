@@ -20,7 +20,7 @@ protocol IDesignerDetailView: AnyObject {
     func viewIsSetUp()
 }
 
-final class DesignerDetailViewController: UIViewController, IDesignerView {
+final class DesignerDetailViewController: UIViewController {
     
     private var designerDetailsView: DesignerDetailsView { return self.view as! DesignerDetailsView }
     private let viewModel: IDesignerDetailsViewModel

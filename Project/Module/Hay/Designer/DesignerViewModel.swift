@@ -17,6 +17,8 @@ protocol IDesignerViewModel: AnyObject {
     func setCurrentProduct(at index: Int)
     
     func setupView(view: IDesignerView)
+    
+    func showDetail(at index: Int)
 }
 
 final class DesignerViewModel {
@@ -82,8 +84,16 @@ extension DesignerViewModel: IDesignerViewModel {
     
     func setupView(view: IDesignerView) {
         self.view = view
+        self.view?.updateTableCell(sectionName: Constants.LabelTitles.designerSection, name: viewData.designerName, collectionName: viewData.collectionName, image: UIImage(named: viewData.designerImage) ?? UIImage())
+        self.view?.updateCollectionView()
     }
     
+    func showDetail(at index: Int) {
+        (coordinator as? DesignerCoordinator)?.showProductDetail(with: viewData.designerId, productId: viewData.products[index].productId)
+    }
+}
+
+private extension DesignerViewModel {
     var emptyData: String {
         return "No data"
     }

@@ -30,10 +30,17 @@ final class DesignerCoordinator: Coordinator {
     func finish() {
         
     }
+    
+    func showProductDetail(with itemId: Int, productId: Int) {
+        let productCoordinator = ProductCoordinator(service: service, hayEndpoint: .designers, itemId: itemId, productId: productId, navigationController: navigationController)
+        productCoordinator.parentCoordinator = self
+        childCoordinators.append(productCoordinator)
+        productCoordinator.start()
+    }
 }
 
 private extension DesignerCoordinator {
     func showModule() {
-       // cell.viewModel = DesignerViewModel(coordinator: self, viewData: viewData)
+        cell.viewModel = DesignerViewModel(coordinator: self, viewData: viewData)
     }
 }

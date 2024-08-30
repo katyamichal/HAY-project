@@ -67,12 +67,12 @@ extension HayViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionType = TableSections(rawValue: section)!
+        guard let sectionType = TableSections(rawValue: section) else { return 0 }
         return sectionType.sectionData(for: hayViewModel).numberOfRows
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sectionType = TableSections(rawValue: indexPath.section)!
+        guard let sectionType = TableSections(rawValue: indexPath.section) else { return UITableViewCell() }
         return sectionType.sectionData(for: hayViewModel).configureCell(for: tableView, at: indexPath, with: hayViewModel)
     }
 }

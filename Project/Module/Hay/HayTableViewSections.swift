@@ -84,9 +84,8 @@ struct DesignerSection: TableSectionProtocol {
         }
         
         let cell = tableView.dequeue(indexPath) as DesignerTableCell
-        let designer = viewData.designers[sectionIndex]
-        cell.update(sectionName: Constants.LabelTitles.designerSection, name: designer.designerName, collectionName: designer.collectionName, image: UIImage(named: designer.designerImage)!, products: designer.products)
-        
+        viewModel.createDesigner(with: cell, at: sectionIndex)
+        cell.update()
         return cell
     }
 }

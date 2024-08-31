@@ -144,6 +144,10 @@ final class DesignerTableCell: UITableViewCell {
     func update() {
         viewModel?.setupView(view: self)
     }
+    
+    func finishPreviousDesignerModule() {
+        viewModel?.finish()
+    }
 }
 
 extension DesignerTableCell: IDesignerView {

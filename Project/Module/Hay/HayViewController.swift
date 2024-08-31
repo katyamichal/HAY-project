@@ -73,6 +73,7 @@ extension HayViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let sectionType = TableSections(rawValue: indexPath.section) else { return UITableViewCell() }
+        
         return sectionType.sectionData(for: hayViewModel).configureCell(for: tableView, at: indexPath, with: hayViewModel)
     }
 }
@@ -95,6 +96,12 @@ extension HayViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {}
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let sectionType = TableSections(rawValue: indexPath.section) else { return }
+        
+        sectionType.sectionData(for: hayViewModel).dequeueCellModule(for: tableView, at: indexPath, with: hayViewModel)
+    }
 }
 
 // MARK: - Observer Subscription

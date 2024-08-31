@@ -32,6 +32,7 @@ final class CategoryCoordinator: Coordinator {
     }
     
     func leave() {
+        
         parentCoordinator?.finish()
     }
     

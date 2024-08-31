@@ -22,7 +22,6 @@ extension FavouriteProduct {
     @NSManaged public var price: Int32
     @NSManaged public var endpoint: String
     @NSManaged public var itemIdentifier: Int16
-
 }
 
 extension FavouriteProduct : Identifiable {

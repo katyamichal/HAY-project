@@ -28,7 +28,11 @@ final class DesignerCoordinator: Coordinator {
     }
     
     func finish() {
-        
+        navigationController.popToRootViewController(animated: true)
+    }
+    
+    func leave() {
+        parentCoordinator?.finish()
     }
     
     func showProductDetail(with itemId: Int, productId: Int) {

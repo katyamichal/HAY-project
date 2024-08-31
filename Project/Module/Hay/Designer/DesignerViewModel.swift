@@ -19,6 +19,7 @@ protocol IDesignerViewModel: AnyObject {
     func setupView(view: IDesignerView)
     
     func showDetail(at index: Int)
+    func finish()
 }
 
 final class DesignerViewModel {
@@ -42,6 +43,10 @@ final class DesignerViewModel {
 // MARK: - IDesignerViewModel Protocol
 
 extension DesignerViewModel: IDesignerViewModel {
+    func finish() {
+        (coordinator as? DesignerCoordinator)?.leave()
+    }
+    
     var productCount: Int {
         return viewData.products.count
     }

@@ -28,6 +28,8 @@ final class HayCoordinator: Coordinator {
         childCoordinators.append(first!)
     }
     
+    // MARK: - Show Submodules
+
     func showCategoryCoordinator(cell: CategoryTableCell, viewData: Category) {
         let categoryViewData = CategoryViewData.init(with: viewData)
         let categoryCoordinator = CategoryCoordinator(service: networkService, cell: cell, viewData: categoryViewData, navigationController: navigationController)

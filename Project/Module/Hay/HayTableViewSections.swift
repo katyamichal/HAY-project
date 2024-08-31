@@ -10,6 +10,7 @@ import UIKit
 protocol TableSectionProtocol {
     var numberOfRows: Int { get }
     func configureCell(for tableView: UITableView, at indexPath: IndexPath, with viewModel: HayViewModel) -> UITableViewCell
+    func dequeueCellModule(for tableView: UITableView, at indexPath: IndexPath, with viewModel: HayViewModel)
 }
 
 extension TableSectionProtocol {
@@ -68,6 +69,16 @@ struct CategorySection: TableSectionProtocol {
         cell.update()
         return cell
     }
+    
+    func dequeueCellModule(for tableView: UITableView, at indexPath: IndexPath, with viewModel: HayViewModel) {
+        guard let viewData = viewModel.viewData.value,
+                sectionIndex < viewData.designers.count
+        else { return }
+        
+        let cell = tableView.dequeue(indexPath) as CategoryTableCell
+        cell.finishPreviousCategoryModule()
+    }
+
 }
 
 // MARK: - Category Section
@@ -84,8 +95,18 @@ struct DesignerSection: TableSectionProtocol {
         }
         
         let cell = tableView.dequeue(indexPath) as DesignerTableCell
+        cell.finishPreviousDesignerModule()
         viewModel.createDesigner(with: cell, at: sectionIndex)
         cell.update()
         return cell
+    }
+    
+    func dequeueCellModule(for tableView: UITableView, at indexPath: IndexPath, with viewModel: HayViewModel) {
+        guard let viewData = viewModel.viewData.value,
+                sectionIndex < viewData.designers.count
+        else { return }
+        
+        let cell = tableView.dequeue(indexPath) as DesignerTableCell
+        cell.finishPreviousDesignerModule()
     }
 }

@@ -21,6 +21,7 @@ protocol ICategoryViewModel: AnyObject {
     func setCurrentProduct(at index: Int)
     func subscribe(observer: IObserver)
     
+    
     func finish()
 }
 

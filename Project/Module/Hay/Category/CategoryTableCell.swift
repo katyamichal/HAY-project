@@ -85,9 +85,13 @@ final class CategoryTableCell: UITableViewCell {
         viewModel?.subscribe(observer: self)
     }
     
+    func finishPreviousCategoryModule() {
+        viewModel?.finish()
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
-        viewModel?.finish()
+        headerLabel.text = nil
     }
 }
 

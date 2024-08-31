@@ -139,7 +139,6 @@ private extension InspirationDetailViewController {
         navigationItem.leftBarButtonItem = leftBarButton
     }
    
-    #warning("Ask avout the order of actions")
     @objc
     func backButtonDidTapped() {
         viewModel.goBack()

@@ -67,6 +67,7 @@ final class HayViewModel {
     func createCategory(with cell: CategoryTableCell, at index: Int) {
         guard let categoryData = viewData.value?.categories[index] else { return }
         (coordinator as? HayCoordinator)?.showCategoryCoordinator(cell: cell, viewData: categoryData)
+        print(coordinator?.childCoordinators.count)
     }
     
     func createInspiration(with view: Header) {

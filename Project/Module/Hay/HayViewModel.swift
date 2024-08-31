@@ -64,10 +64,9 @@ final class HayViewModel {
     
     // MARK: - Initializing TableView modules
     
-    func createCategory(with cell: CategoryTableCell, at index: Int) {
+    func createCategory(with cell: CategoryTableCell, at index: Int, with indexPath: IndexPath) {
         guard let categoryData = viewData.value?.categories[index] else { return }
-        (coordinator as? HayCoordinator)?.showCategoryCoordinator(cell: cell, viewData: categoryData)
-        print(coordinator?.childCoordinators.count)
+        (coordinator as? HayCoordinator)?.showCategoryCoordinator(cell: cell, at: indexPath, viewData: categoryData)
     }
     
     func createInspiration(with view: Header) {
@@ -75,9 +74,9 @@ final class HayViewModel {
         (coordinator as? HayCoordinator)?.showInspiration(view: view, viewData: inspiration)
     }
     
-    func createDesigner(with cell: DesignerTableCell, at index: Int) {
+    func createDesigner(with cell: DesignerTableCell, at index: Int, with indexPath: IndexPath) {
         guard let designerData = viewData.value?.designers[index] else { return }
-        (coordinator as? HayCoordinator)?.showDesignerModule(cell: cell, viewData: designerData)
+        (coordinator as? HayCoordinator)?.showDesignerModule(cell: cell, at: indexPath, viewData: designerData)
     }
     
     // MARK: - Show Detail methods

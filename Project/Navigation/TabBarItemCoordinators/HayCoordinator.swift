@@ -10,8 +10,13 @@ import UIKit
 final class HayCoordinator: Coordinator {
     var parentCoordinator: Coordinator?
     var childCoordinators: [Coordinator] = []
+    
+    // MARK: coordinators of tableView that are reuse with cellForRowAt method
+    var subCoordinators: [IndexPath: Coordinator] = [:]
+    
     private let navigationController: UINavigationController
     private let networkService: HayServiceable
+   
     
     init(navigationController: UINavigationController, networkService: HayServiceable) {
         self.navigationController = navigationController
@@ -22,27 +27,31 @@ final class HayCoordinator: Coordinator {
        showModule()
     }
     
-    func finish() {
-        let first = childCoordinators.first
-        childCoordinators.removeAll()
-        childCoordinators.append(first!)
+    func finish() {}
+    
+    func removeSubCoordinator(at indexPath: IndexPath) {
+        subCoordinators[indexPath] = nil
     }
     
     // MARK: - Show Submodules
 
-    func showCategoryCoordinator(cell: CategoryTableCell, viewData: Category) {
+    func showCategoryCoordinator(cell: CategoryTableCell, at indexPath: IndexPath, viewData: Category) {
         let categoryViewData = CategoryViewData.init(with: viewData)
-        let categoryCoordinator = CategoryCoordinator(service: networkService, cell: cell, viewData: categoryViewData, navigationController: navigationController)
+        let categoryCoordinator = CategoryCoordinator(service: networkService, cell: cell, viewData: categoryViewData, navigationController: navigationController, indexPath: indexPath)
         categoryCoordinator.parentCoordinator = self
-        childCoordinators.append(categoryCoordinator)
+        subCoordinators[indexPath] = categoryCoordinator
         categoryCoordinator.start()
     }
     
-    func showDesignerModule(cell: DesignerTableCell, viewData: Designer) {
+    func showDesignerModule(cell: DesignerTableCell, at indexPath: IndexPath, viewData: Designer) {
         let designerViewData = DesignerViewData(with: viewData)
-        let designerCoordinator = DesignerCoordinator(service: networkService, cell: cell, viewData: designerViewData, navigationController: navigationController)
+        let designerCoordinator = DesignerCoordinator(service: networkService, cell: cell, viewData: designerViewData, navigationController: navigationController, indexPath: indexPath)
+        
         designerCoordinator.parentCoordinator = self
-        childCoordinators.append(designerCoordinator)
+        
+        subCoordinators[indexPath] = designerCoordinator
+ 
+        
         designerCoordinator.start()
     }
     

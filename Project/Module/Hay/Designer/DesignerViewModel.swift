@@ -32,6 +32,8 @@ final class DesignerViewModel {
    
     private var currentProduct: ProductCDO?
     
+  
+    
     // MARK: - Init
 
     init(coordinator: Coordinator, viewData: DesignerViewData) {

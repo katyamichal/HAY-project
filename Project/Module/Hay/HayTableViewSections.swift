@@ -65,7 +65,7 @@ struct CategorySection: TableSectionProtocol {
         }
   
         let cell = tableView.dequeue(indexPath) as CategoryTableCell
-        viewModel.createCategory(with: cell, at: sectionIndex)
+        viewModel.createCategory(with: cell, at: sectionIndex, with: indexPath)
         cell.update()
         return cell
     }
@@ -96,7 +96,7 @@ struct DesignerSection: TableSectionProtocol {
         
         let cell = tableView.dequeue(indexPath) as DesignerTableCell
         cell.finishPreviousDesignerModule()
-        viewModel.createDesigner(with: cell, at: sectionIndex)
+        viewModel.createDesigner(with: cell, at: sectionIndex, with: indexPath)
         cell.update()
         return cell
     }

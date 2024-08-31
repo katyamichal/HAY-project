@@ -31,7 +31,7 @@ final class CategoryViewModel {
     private var viewData: CategoryViewData?
     private let likeManager = LikeButtonManager.shared
     private var currentProduct: IProductCDO?
-    
+
     private var isUpdating: Bool = false
     
     init(coordinator: Coordinator, viewData: CategoryViewData) {

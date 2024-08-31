@@ -20,8 +20,7 @@ protocol ICategoryViewModel: AnyObject {
     func showDetail(with index: Int)
     func setCurrentProduct(at index: Int)
     func subscribe(observer: IObserver)
-    
-    
+    func unsubscribe(observer: IObserver)
     func finish()
 }
 
@@ -31,7 +30,7 @@ final class CategoryViewModel {
     private var viewData: CategoryViewData?
     private let likeManager = LikeButtonManager.shared
     private var currentProduct: IProductCDO?
-
+    
     private var isUpdating: Bool = false
     
     init(coordinator: Coordinator, viewData: CategoryViewData) {
@@ -41,35 +40,38 @@ final class CategoryViewModel {
 }
 
 extension CategoryViewModel: ICategoryViewModel {
-    func finish() {
-        (coordinator as? CategoryCoordinator)?.leave()
-    }
+    
+    // MARK: - Like Buttin Managing
     
     var likeButtonIsUpdating: Bool {
         isUpdating
     }
     
-    func subscribe(observer: IObserver) {
-          likeManager.favouriteProducts.subscribe(observer: observer)
-    }
-    
-    var productId: Int {
-        guard let currentProduct else { return 0 }
-        return currentProduct.productId
-    }
-    
-    func setCurrentProduct(at index: Int) {
-        currentProduct = viewData?.products[index]
-    }
-    
-    // MARK: - Computed properties for a single product
-
     var isFavourite: Bool {
         guard let currentProduct else { return false }
         if likeManager.favouriteProducts.value?.products.first(where: { $0.productId == currentProduct.productId }) != nil {
             return true
         }
         return false
+    }
+    
+    func subscribe(observer: IObserver) {
+        likeManager.favouriteProducts.subscribe(observer: observer)
+    }
+    
+    func unsubscribe(observer: IObserver) {
+        likeManager.favouriteProducts.unsubscribe(observer: observer)
+    }
+    
+    // MARK: - Computed properties for a single product
+    
+    func setCurrentProduct(at index: Int) {
+        currentProduct = viewData?.products[index]
+    }
+    
+    var productId: Int {
+        guard let currentProduct else { return 0 }
+        return currentProduct.productId
     }
     
     var productName: String {
@@ -91,6 +93,8 @@ extension CategoryViewModel: ICategoryViewModel {
         return image
     }
     
+    // MARK: - View Settings
+    
     var numberOfItemInSection: Int {
         guard let viewData else { return 0 }
         return viewData.products.count
@@ -103,11 +107,21 @@ extension CategoryViewModel: ICategoryViewModel {
         view.updateData()
     }
     
+    // MARK: - Cell Cycle
+    
+    func finish() {
+        (coordinator as? CategoryCoordinator)?.leave()
+    }
+    
+    // MARK: - Navigation Managing
+    
     func showDetail(with index: Int) {
         guard let product = viewData?.products[index] else {return}
         (coordinator as? CategoryCoordinator)?.showDetail(with: product.productId)
     }
 }
+
+// MARK: - Like Button Delegate
 
 extension CategoryViewModel: ILikeButton {
     func changeStatus(with id: Int) {

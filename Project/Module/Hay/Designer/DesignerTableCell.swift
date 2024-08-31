@@ -12,7 +12,7 @@ protocol IDesignerView: AnyObject {
 }
 
 final class DesignerTableCell: UITableViewCell {
-    
+    var id: UUID
     var viewModel: IDesignerViewModel?
     
     // MARK: - Constants for constraints
@@ -35,6 +35,7 @@ final class DesignerTableCell: UITableViewCell {
     // MARK: - Inits
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        id = UUID()
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
     }
@@ -84,7 +85,7 @@ final class DesignerTableCell: UITableViewCell {
         return label
     }()
     
-    lazy var descriptionStackView: UIStackView = {
+    private lazy var descriptionStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -107,7 +108,7 @@ final class DesignerTableCell: UITableViewCell {
         return imageView
     }()
     
-    lazy var designerStackView: UIStackView = {
+    private lazy var designerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -119,7 +120,7 @@ final class DesignerTableCell: UITableViewCell {
     
     // MARK: - Collection View
     
-    lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let itemWidth: CGFloat = Constants.Layout.width * 0.5
         let itemHeight: CGFloat = Constants.Layout.width * 0.7
         let itemSpacing: CGFloat = 16
@@ -143,10 +144,12 @@ final class DesignerTableCell: UITableViewCell {
     
     func update() {
         viewModel?.setupView(view: self)
+        viewModel?.subscribe(observer: self)
     }
     
     func finishPreviousDesignerModule() {
         viewModel?.finish()
+        viewModel?.unsubscribe(observer: self)
     }
 }
 
@@ -161,6 +164,48 @@ extension DesignerTableCell: IDesignerView {
     
     func updateCollectionView() {
         collectionView.reloadData()
+    }
+}
+
+// MARK: - Collection Data Source
+
+extension DesignerTableCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel?.productCount ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let viewModel,
+              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerProductsCollectionCell.reuseIdentifier, for: indexPath) as? DesignerProductsCollectionCell else {
+           return UICollectionViewCell()
+        }
+        viewModel.setCurrentProduct(at: indexPath.item)
+        if viewModel.likeButtonIsUpdating {
+            cell.setupLikeButton(with: viewModel.isFavourite, productId: viewModel.productId)
+        } else {
+            cell.update(productName: viewModel.productName, price: viewModel.productPrice, image: viewModel.productImage, isFavourite: viewModel.isFavourite, productId: viewModel.productId)
+        }
+        if let delegate = viewModel as? ILikeButton {
+            cell.setupLikeButtonDelegate(delegate)
+        }
+
+        return cell
+    }
+}
+
+// MARK: - Collection Delegate
+
+extension DesignerTableCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel?.showDetail(at: indexPath.item)
+    }
+}
+
+extension DesignerTableCell: IObserver {
+    func update<T>(with value: T) {
+        if value is LikeProducts {
+            collectionView.reloadData()
+        }
     }
 }
 
@@ -205,31 +250,5 @@ private extension DesignerTableCell {
         collectionView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: collectionViewBottomMargin).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: designerStackView.leadingAnchor, constant: collectionViewLeadingMargin).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-    }
-}
-
-// MARK: - Collection Data Source
-
-extension DesignerTableCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.productCount ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let viewModel,
-              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerProductsCollectionCell.reuseIdentifier, for: indexPath) as? DesignerProductsCollectionCell else {
-           return UICollectionViewCell()
-        }
-        viewModel.setCurrentProduct(at: indexPath.item)
-        cell.update(productName: viewModel.productName, price: viewModel.productPrice, image: viewModel.productImage, isFavourite: viewModel.isFavourite, productId: viewModel.productId)
-        return cell
-    }
-}
-
-// MARK: - Collection Delegate
-
-extension DesignerTableCell: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel?.showDetail(at: indexPath.item)
     }
 }

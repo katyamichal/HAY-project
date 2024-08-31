@@ -104,6 +104,18 @@ final class BasicCollectionViewCell: UICollectionViewCell {
         likeButton.isSelected = status
         likeButton.productId = productId
     }
+   
+    // MARK: - Prepare for Reuse
+
+    override func prepareForReuse() {
+        nameLabel.text = nil
+        pricelLabel.text = nil
+        productImageView.image = nil
+        likeButton.delegate = nil
+        likeButton.isSelected = false
+        likeButton.productId = nil
+        super.prepareForReuse()
+    }
 }
 // MARK: - Setup methods
 

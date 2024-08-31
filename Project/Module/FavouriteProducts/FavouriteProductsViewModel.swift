@@ -16,6 +16,9 @@ protocol IFavouriteProductsViewModel: AnyObject {
     var headerFont: UIFont { get }
     var isFavourite: Bool { get }
     var productId: Int { get }
+    var likeButtonIsUpdating: Bool { get }
+    func subscribe(observer: IObserver)
+    func unsubscribe(observer: IObserver)
     
     func setupView(with view: IFavouriteProductsView)
     func getData()
@@ -28,26 +31,26 @@ final class FavouriteProductsViewModel {
     private weak var view: IFavouriteProductsView?
     
     private let likeManager = LikeButtonManager.shared
-  
+    
     private var viewData: [FavouriteViewData] = []
     private var currentProduct: FavouriteViewData?
+    private var isUpdating: Bool = false
     
     // MARK: - Init
-
+    
     init(coordinator: Coordinator) {
         self.coordinator = coordinator
     }
 }
 
+// MARK: - IFavouriteProductsViewModel Protocol
+
 extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
-    func showDetail(at index: Int) {
-        let product = viewData[index]
-        (coordinator as? FavouriteCoordinator)?.showProductDetail(hayEndpoint: product.endpoint, itemId: product.itemIdentifier, productId: product.productId)
-    }
     
-    var productId: Int {
-        guard let currentProduct else { return 0 }
-        return currentProduct.productId
+    // MARK: - Like Buttin Managing
+    
+    var likeButtonIsUpdating: Bool {
+        isUpdating
     }
     
     var isFavourite: Bool {
@@ -58,39 +61,32 @@ extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
         return false
     }
     
+    func subscribe(observer: IObserver) {
+        likeManager.favouriteProducts.subscribe(observer: observer)
+    }
+    
+    func unsubscribe(observer: IObserver) {
+        likeManager.favouriteProducts.unsubscribe(observer: observer)
+    }
+    
+    // MARK: - Navigation Managing
+    
+    func showDetail(at index: Int) {
+        let product = viewData[index]
+        (coordinator as? FavouriteCoordinator)?.showProductDetail(hayEndpoint: product.endpoint, itemId: product.itemIdentifier, productId: product.productId)
+    }
+    
+    
+    
+    
+    // MARK: - View Settings
+    
     var headerFont: UIFont {
         (viewData.count == 0) ? Fonts.Subtitles.defaultFont : Fonts.Subtitles.largeFont
-    }
-
-    var emptyData: String {
-        Constants.EmptyData.noData
     }
     
     var headerTitle: String {
         (viewData.count == 0) ?  Constants.EmptyData.noFavouriteProduct : "favourite".uppercased()
-    }
-    
-    func setCurrentProduct(at index: Int) {
-        currentProduct = viewData[index]
-    }
-    
-    var productName: String {
-        guard let currentProduct else { return emptyData }
-        return currentProduct.name
-    }
-    
-    var price: String {
-        guard let currentProduct else { return emptyData }
-        return "£\(currentProduct.price)"
-    }
-    
-    var image: UIImage {
-        guard 
-            let currentProduct,
-            let image = UIImage(named: currentProduct.image) else {
-            return UIImage()
-        }
-        return image
     }
     
     var count: Int {
@@ -101,9 +97,37 @@ extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
         self.view = view
     }
     
-    func subscribe(observer: IObserver) {
-        likeManager.favouriteProducts.subscribe(observer: observer)
+    // MARK: - Computed properties for a single product
+    
+    var productId: Int {
+        guard let currentProduct else { return 0 }
+        return currentProduct.productId
     }
+    
+    var productName: String {
+        guard let currentProduct else { return emptyData }
+        return currentProduct.productName
+    }
+    
+    var price: String {
+        guard let currentProduct else { return emptyData }
+        return "£\(currentProduct.price)"
+    }
+    
+    var image: UIImage {
+        guard
+            let currentProduct,
+            let image = UIImage(named: currentProduct.image) else {
+            return UIImage()
+        }
+        return image
+    }
+    
+    func setCurrentProduct(at index: Int) {
+        currentProduct = viewData[index]
+    }
+    
+    // MARK: - Fetching Data
     
     func getData() {
         defer {
@@ -118,3 +142,21 @@ extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
     }
 }
 
+// MARK: - Like Button Delegate
+
+extension FavouriteProductsViewModel: ILikeButton {
+    func changeStatus(with id: Int) {
+        defer { isUpdating = false }
+        guard let product = viewData.first(where: { $0.productId == id }) else { return }
+        isUpdating = true
+        likeManager.changeProductStatus(with: product)
+    }
+}
+
+// MARK: - Private
+
+private extension FavouriteProductsViewModel {
+    var emptyData: String {
+        Constants.EmptyData.noData
+    }
+}

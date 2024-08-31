@@ -87,6 +87,7 @@ final class CategoryTableCell: UITableViewCell {
     
     func finishPreviousCategoryModule() {
         viewModel?.finish()
+        viewModel?.unsubscribe(observer: self)
     }
     
     override func prepareForReuse() {
@@ -146,7 +147,7 @@ extension CategoryTableCell: UICollectionViewDelegate {
 
 extension CategoryTableCell: IObserver {
     func update<T>(with value: T) {
-        if value is Products {
+        if value is LikeProducts {
             collectionView.reloadData()
         }
     }

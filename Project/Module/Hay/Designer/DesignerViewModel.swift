@@ -14,10 +14,14 @@ protocol IDesignerViewModel: AnyObject {
     var productImage: UIImage { get }
     var isFavourite: Bool { get }
     var productId: Int { get }
+    
+    var likeButtonIsUpdating: Bool { get }
+    
     func setCurrentProduct(at index: Int)
     
     func setupView(view: IDesignerView)
-    
+    func subscribe(observer: IObserver)
+    func unsubscribe(observer: IObserver)
     func showDetail(at index: Int)
     func finish()
 }
@@ -32,7 +36,7 @@ final class DesignerViewModel {
    
     private var currentProduct: ProductCDO?
     
-  
+    private var isUpdating: Bool = false
     
     // MARK: - Init
 
@@ -45,12 +49,11 @@ final class DesignerViewModel {
 // MARK: - IDesignerViewModel Protocol
 
 extension DesignerViewModel: IDesignerViewModel {
-    func finish() {
-        (coordinator as? DesignerCoordinator)?.leave()
-    }
     
-    var productCount: Int {
-        return viewData.products.count
+    // MARK: - Like Buttin Managing
+    
+    var likeButtonIsUpdating: Bool {
+        isUpdating
     }
     
     var isFavourite: Bool {
@@ -61,6 +64,15 @@ extension DesignerViewModel: IDesignerViewModel {
         return false
     }
     
+    func subscribe(observer: IObserver) {
+        likeManager.favouriteProducts.subscribe(observer: observer)
+    }
+    
+    func unsubscribe(observer: IObserver) {
+        likeManager.favouriteProducts.unsubscribe(observer: observer)
+    }
+    
+    // MARK: - Computed properties for a single product
     var productId: Int {
         guard let currentProduct else { return 0 }
         return currentProduct.productId
@@ -89,16 +101,43 @@ extension DesignerViewModel: IDesignerViewModel {
         currentProduct = viewData.products[index]
     }
     
+    // MARK: - View Settings
+    
     func setupView(view: IDesignerView) {
         self.view = view
         self.view?.updateTableCell(sectionName: Constants.LabelTitles.designerSection, name: viewData.designerName, collectionName: viewData.collectionName, image: UIImage(named: viewData.designerImage) ?? UIImage())
         self.view?.updateCollectionView()
     }
     
+    var productCount: Int {
+        return viewData.products.count
+    }
+    
+    // MARK: - Cell Cycle
+
+    func finish() {
+        (coordinator as? DesignerCoordinator)?.leave()
+    }
+    
+    // MARK: - Navigation Managing
+
     func showDetail(at index: Int) {
         (coordinator as? DesignerCoordinator)?.showProductDetail(with: viewData.designerId, productId: viewData.products[index].productId)
     }
 }
+
+// MARK: - Like Button Delegate
+
+extension DesignerViewModel: ILikeButton {
+    func changeStatus(with id: Int) {
+        defer { isUpdating = false }
+        guard let product = viewData.products.first(where: { $0.productId == id }) else { return }
+        isUpdating = true
+        likeManager.changeProductStatus(with: product)
+    }
+}
+
+// MARK: - Private
 
 private extension DesignerViewModel {
     var emptyData: String {

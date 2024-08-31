@@ -6,12 +6,13 @@
 //
 
 import Foundation
-struct Products {
+
+struct LikeProducts {
     var products: [ProductCDO]
 }
 
 final class LikeButtonManager {
-    var favouriteProducts = Observable(Products(products: []))
+    var favouriteProducts = Observable(LikeProducts(products: []))
     static let shared = LikeButtonManager()
     
     private let coreDataService = CoreDataService.shared

@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct FavouriteViewData {
+struct FavouriteViewData: IProductCDO {
     let productId: Int
     let endpoint: ProductEndpoint
     let itemIdentifier: Int
-    let name: String
+    let productName: String
     let price: Int
     let image: String
     var typeName: EntityType
@@ -22,7 +22,7 @@ extension FavouriteViewData {
         self.productId = productCDO.productId
         self.endpoint = productCDO.endpoint
         self.itemIdentifier = productCDO.itemIdentifier
-        self.name = productCDO.productName
+        self.productName = productCDO.productName
         self.price = productCDO.price
         self.image = productCDO.image
         self.typeName = .favourite

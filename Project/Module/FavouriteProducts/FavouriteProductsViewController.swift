@@ -75,7 +75,17 @@ extension FavouriteProductsViewController: UICollectionViewDataSource {
            return UICollectionViewCell()
         }
         viewModel.setCurrentProduct(at: indexPath.row)
-        cell.update(productName: viewModel.productName, price: viewModel.price, image: viewModel.image, isFavourite: viewModel.isFavourite, productId: viewModel.productId)
+        
+        if viewModel.likeButtonIsUpdating {
+            cell.setupLikeButton(with: viewModel.isFavourite, productId: viewModel.productId)
+        } else {
+            cell.update(productName: viewModel.productName, price: viewModel.price, image: viewModel.image, isFavourite: viewModel.isFavourite, productId: viewModel.productId)
+        }
+        
+        if let delegate = viewModel as? ILikeButton {
+            cell.setupLikeButtonDelegate(delegate)
+        }
+        
         return cell
     }
 }
@@ -89,7 +99,7 @@ extension FavouriteProductsViewController: UICollectionViewDelegate {
 
 extension FavouriteProductsViewController: IObserver {
     func update<T>(with value: T) {
-        if value is Products {
+        if value is LikeProducts {
             viewModel.getData()
         }
     }

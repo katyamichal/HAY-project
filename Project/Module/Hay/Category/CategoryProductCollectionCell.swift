@@ -97,6 +97,18 @@ final class CategoryProductCollectionCell: UICollectionViewCell {
         likeButton.isSelected = status
         likeButton.productId = productId
     }
+    
+    // MARK: - Prepare for reuse
+    
+    override func prepareForReuse() {
+        nameLabel.text = nil
+        pricelLabel.text = nil
+        productImageView.image = nil
+        likeButton.delegate = nil
+        likeButton.isSelected = false
+        likeButton.productId = nil
+        super.prepareForReuse()
+    }
 }
 
 private extension CategoryProductCollectionCell {

@@ -94,9 +94,25 @@ final class DesignerProductsCollectionCell: UICollectionViewCell {
         setupLikeButton(with: isFavourite, productId: productId)
     }
     
+    func setupLikeButtonDelegate(_ delegate: ILikeButton) {
+        likeButton.delegate = delegate
+    }
+    
     func setupLikeButton(with status: Bool, productId: Int) {
         likeButton.isSelected = status
         likeButton.productId = productId
+    }
+    
+    // MARK: - Prepare for Reuse
+    
+    override func prepareForReuse() {
+        nameLabel.text = nil
+        pricelLabel.text = nil
+        productImageView.image = nil
+        likeButton.delegate = nil
+        likeButton.isSelected = false
+        likeButton.productId = nil
+        super.prepareForReuse()
     }
 }
 

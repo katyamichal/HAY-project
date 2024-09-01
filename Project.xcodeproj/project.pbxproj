@@ -92,6 +92,7 @@
 		4EDF6E662C7DD697007FAAEE /* DesignerCollectionImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E652C7DD697007FAAEE /* DesignerCollectionImages.swift */; };
 		4EDF6E682C7EF0E9007FAAEE /* QuoteSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E672C7EF0E9007FAAEE /* QuoteSupplementaryView.swift */; };
 		4EDF6E6A2C803912007FAAEE /* HayTableViewSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E692C803912007FAAEE /* HayTableViewSections.swift */; };
+		4EFA9A882C8456540051E52A /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA9A872C8456530051E52A /* LabelFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -182,6 +183,7 @@
 		4EDF6E652C7DD697007FAAEE /* DesignerCollectionImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignerCollectionImages.swift; sourceTree = "<group>"; };
 		4EDF6E672C7EF0E9007FAAEE /* QuoteSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSupplementaryView.swift; sourceTree = "<group>"; };
 		4EDF6E692C803912007FAAEE /* HayTableViewSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HayTableViewSections.swift; sourceTree = "<group>"; };
+		4EFA9A872C8456530051E52A /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +345,7 @@
 				4E25A6792C3C33F000066DFD /* BigHeaderButton.swift */,
 				4E25A67B2C3C33F000066DFD /* BuyButton.swift */,
 				4E25A67A2C3C33F000066DFD /* LikeButton.swift */,
+				4EFA9A872C8456530051E52A /* LabelFactory.swift */,
 			);
 			path = CustomUIElements;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				4E25A6A92C466C2500066DFD /* Cells */,
 				4E25A6A32C466B1900066DFD /* ProductViewController.swift */,
 				4E25A6A52C466B4800066DFD /* ProductView.swift */,
+				4E25A6AE2C466F1A00066DFD /* ProductActionView.swift */,
 				4E25A6A72C466B9C00066DFD /* ProductViewModel.swift */,
 				4E25A6B22C46791500066DFD /* ProductViewData.swift */,
 				4E25A6B02C4672F100066DFD /* ProductCoordinator.swift */,
@@ -404,7 +408,6 @@
 			children = (
 				4E25A6AA2C466C4700066DFD /* ProductGaleryCell.swift */,
 				4E25A6AC2C466D3200066DFD /* ProductInfoCell.swift */,
-				4E25A6AE2C466F1A00066DFD /* ProductActionView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				4E25A64E2C3C33AE00066DFD /* HayTabBarController.swift in Sources */,
 				4E25A6782C3C33E900066DFD /* Endpoint.swift in Sources */,
 				4EB5B4C42C6F677200F6ED0C /* DesignerDetailViewController.swift in Sources */,
+				4EFA9A882C8456540051E52A /* LabelFactory.swift in Sources */,
 				4E25A6832C3C33F800066DFD /* UIColor + customColor.swift in Sources */,
 				4E25A67C2C3C33F000066DFD /* BigHeaderButton.swift in Sources */,
 				4E25A6A42C466B1900066DFD /* ProductViewController.swift in Sources */,

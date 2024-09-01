@@ -103,7 +103,7 @@ extension ProducViewController: UITableViewDataSource {
         switch section {
         case .productImages:
             let cell = tableView.dequeue(indexPath) as ProductGaleryCell
-            cell.update(productName: viewModel.productName, description: viewModel.description, images: viewModel.images)
+            cell.update(name: viewModel.productName, description: viewModel.description, images: viewModel.images)
             return cell
             
         case .productInfo:

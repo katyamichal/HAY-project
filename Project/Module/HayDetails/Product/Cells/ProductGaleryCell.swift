@@ -61,7 +61,7 @@ final class ProductGaleryCell: UITableViewCell {
         return stackView
     }()
     
-    private lazy var productNameLabel: UILabel = {
+    private lazy var productName: UILabel = {
         let label = UILabel()
         label.font = Fonts.Subtitles.largeFont
         label.numberOfLines = 0
@@ -70,17 +70,16 @@ final class ProductGaleryCell: UITableViewCell {
         return label
     }()
     
-    private lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
+    private lazy var descriptionLabel: Label = {
+        let label = Label(style: .description)
         label.textAlignment = .center
-        label.textColor = .black
         return label
     }()
     
-    func update(productName: String, description: String, images: [UIImage]) {
-        productNameLabel.text = productName
+    // MARK: - Public
+
+    func update(name: String, description: String, images: [UIImage]) {
+        productName.text = name
         descriptionLabel.text = description
         configureViews(with: images, detail: description)
         if images.count == 1 {
@@ -101,7 +100,7 @@ private extension ProductGaleryCell {
     
     func setupViews() {
         contentView.addSubview(verticalStackView)
-        verticalStackView.addArrangedSubview(productNameLabel)
+        verticalStackView.addArrangedSubview(productName)
         verticalStackView.addArrangedSubview(descriptionLabel)
         contentView.addSubview(scrollView)
         contentView.addSubview(pageControl)

@@ -51,11 +51,13 @@ final class BasicCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
-        label.textColor = .black
+    private lazy var nameLabel: Label = {
+        let label = Label(style: .productName)
+        return label
+    }()
+    
+    private lazy var pricelLabel: Label = {
+        let label = Label(style: .description)
         return label
     }()
     
@@ -63,14 +65,6 @@ final class BasicCollectionViewCell: UICollectionViewCell {
         let button = BuyButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-    }()
-    
-    private lazy var pricelLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
-        label.textColor = .black
-        return label
     }()
     
     private lazy var productImageView: UIImageView = {

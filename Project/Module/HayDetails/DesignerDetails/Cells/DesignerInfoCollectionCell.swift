@@ -59,12 +59,8 @@ final class DesignerInfoCollectionCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var designerBioLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
-        label.textColor = .black
+    private lazy var designerBioLabel: Label = {
+        let label = Label(style: .description)
         label.textAlignment = .center
         return label
     }()

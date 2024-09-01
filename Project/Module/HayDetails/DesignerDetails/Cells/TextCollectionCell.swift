@@ -12,9 +12,9 @@ final class TextCollectionCell: UICollectionViewCell {
     static var reuseIdentifier: String {
         String(describing: TextCollectionCell.self)
     }
-
+    
     // MARK: - Init
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCell()
@@ -31,17 +31,14 @@ final class TextCollectionCell: UICollectionViewCell {
     
     // MARK: - UI Element
     
-    private lazy var designerTextLabel: UILabel = {
-        let label = UILabel()
+    private lazy var designerTextLabel: Label = {
+        let label = Label(style: .description)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
-        label.textColor = .black
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-        
+    
     // MARK: - Public
     
     func update(quote: String) {

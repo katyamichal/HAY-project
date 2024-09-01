@@ -39,12 +39,10 @@ final class HayView: UIView {
     
     private(set) var tableView = HayTableView()
     
-    private lazy var errorLabel: UILabel = {
-        let label = UILabel()
+    private lazy var errorLabel: Label = {
+        let label = Label(style: .description)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
         return label
     }()
     

@@ -65,20 +65,16 @@ final class GalleryCollectionCell: UICollectionViewCell {
         label.font = Fonts.Titles.title
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.textColor = .black
         return label
     }()
     
-    private lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
-        label.textColor = .black
+    private lazy var descriptionLabel: Label = {
+        let label = Label(style: .description)
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    
+
     // MARK: - Public
     
     func update(with collectionName: String, descriptionText: String, images: [UIImage]) {

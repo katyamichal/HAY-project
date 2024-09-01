@@ -43,12 +43,10 @@ final class InspirationDetailView: UIView {
         return activityIndicator
     }()
     
-    private lazy var errorLabel: UILabel = {
-        let label = UILabel()
+    private lazy var errorLabel: Label = {
+        let label = Label(style: .description)
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         label.isHidden = true
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
         return label
     }()
     

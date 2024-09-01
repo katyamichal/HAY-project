@@ -52,22 +52,13 @@ final class DesignerProductsCollectionCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
-        label.textColor = .black
+    private lazy var nameLabel: Label = {
+        let label = Label(style: .productName)
         return label
     }()
     
-    private lazy var pricelLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .label
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
-        label.textColor = .black
+    private lazy var pricelLabel: Label = {
+        let label = Label(style: .description)
         return label
     }()
     

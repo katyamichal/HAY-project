@@ -51,22 +51,16 @@ final class CategoryProductCollectionCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
-        label.textColor = .black
+    private lazy var nameLabel: Label = {
+        let label = Label(style: .productName)
         return label
     }()
     
-    private lazy var pricelLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = Fonts.Subtitles.defaultFont
-        label.textColor = .black
+    private lazy var pricelLabel: Label = {
+        let label = Label(style: .description)
         return label
     }()
-    
+
     private lazy var productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

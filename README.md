@@ -52,8 +52,9 @@ HAY Project — это iOS-приложение, разработанное дл
 ## HAY Tabs
 
 ### HAY
-![SimulatorScreenRecording-iPhone15Pro-2024-08-28at19 28 44-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/bef192d3-d59e-4f92-966a-22719fd9bcf1)
-![header-ezgif com-video-to-gif-converter-3](https://github.com/user-attachments/assets/3dafca5f-4763-440e-9ecf-6981d305300a) ![main](https://github.com/katyamichal/HAY/assets/124366801/00a6ad54-585e-4ed7-8f39-abe59383c717)
+![SimulatorScreenRecording-iPhone15Pro-2024-09-02at13 50 32-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/284a29a7-1c87-48c2-8f2b-c4cfbbb44d30) ![SimulatorScreenRecording-iPhone15Pro-2024-08-28at19 28 44-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/bef192d3-d59e-4f92-966a-22719fd9bcf1)
+![header-ezgif com-video-to-gif-converter-3](https://github.com/user-attachments/assets/3dafca5f-4763-440e-9ecf-6981d305300a) 
+
 
 ### HAY Designer Details
 ![SimulatorScreenRecording-iPhone15Pro-2024-08-28at19 51 06-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2b7da14d-b961-4e0b-b50b-9ce44b040043)

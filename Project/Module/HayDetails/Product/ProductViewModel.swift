@@ -26,21 +26,20 @@ final class ProductViewModel {
     private weak var coordinator: Coordinator?
     private weak var view: IProductView?
     
-    private let service: HayServiceable
     private let likeManager = LikeButtonManager.shared
+    private let productFetchService: ProductFetchService
     
     private let hayEndpoint: ProductEndpoint
-    let productId: Int
     private let itemId: Int
+    let productId: Int
     
     private var viewData: Observable<ProductViewData>
     private var loadingError = Observable<String>()
     
-
     // MARK: - Inits
     
-    init(service: HayServiceable, coordinator: Coordinator, hayEndpoint: ProductEndpoint, itemId: Int, productId: Int) {
-        self.service = service
+    init(service: ProductFetchService, coordinator: Coordinator, hayEndpoint: ProductEndpoint, itemId: Int, productId: Int) {
+        self.productFetchService = service
         self.coordinator = coordinator
         self.hayEndpoint = hayEndpoint
         self.itemId = itemId
@@ -55,11 +54,21 @@ final class ProductViewModel {
     // MARK: - Fetching Data
     
     func fetchData() {
-        fetchDataFromServer()
-    }
+         Task {
+             do {
+                 if let productViewData = try await productFetchService.fetchProduct(itemId: itemId, productId: productId) {
+                     self.viewData.value = productViewData
+                 } else {
+                     self.loadingError.value = Constants.LoadingMessage.unknown
+                 }
+             } catch {
+                 self.loadingError.value = error.localizedDescription
+             }
+         }
+     }
     
     // MARK: - Observable methods
-
+    
     func subscribe(observer: IObserver) {
         viewData.subscribe(observer: observer)
         loadingError.subscribe(observer: observer)
@@ -74,9 +83,8 @@ final class ProductViewModel {
 // MARK: - ViewModel Protocol
 
 extension ProductViewModel: IProductViewModel {
-    var buttonTitle: String {
-        return Constants.LabelTitles.addBasketButtonName
-    }
+
+    // MARK: - Like Buttin Managing
     
     var isFavourite: Bool {
         if likeManager.favouriteProducts.value?.products.first(where: { $0.productId == viewData.value?.productId }) != nil {
@@ -85,16 +93,7 @@ extension ProductViewModel: IProductViewModel {
         return false
     }
     
-    var images: [UIImage] {
-        guard let product = viewData.value else { return [] }
-        return  (product.imageCollection + [product.image]).map { imageName in
-            UIImage(named: imageName) ?? UIImage()
-        }
-    }
-    
-    var productInfo: [[String: String]]  {
-        [material, colour, size, price]
-    }
+    // MARK: - Computed properties for a single product
     
     var description: String {
         guard let product = viewData.value else { return emptyData }
@@ -106,16 +105,36 @@ extension ProductViewModel: IProductViewModel {
         return product.productName.uppercased()
     }
     
+    var images: [UIImage] {
+        guard let product = viewData.value else { return [] }
+        return  (product.imageCollection + [product.image]).map { imageName in
+            UIImage(named: imageName) ?? UIImage() }
+    }
+    
+    var productInfo: [[String: String]]  {
+        [material, colour, size, price]
+    }
+    
+    // MARK: - View Setups
+    
     func setupView(with view: IProductView) {
         self.view = view
         self.view?.viewIsSetUp()
     }
+    
+    var buttonTitle: String {
+        return Constants.LabelTitles.addBasketButtonName
+    }
+    
+    // MARK: - Navigation
     
     func goBack() {
         view?.unsubscribe()
         (coordinator as? ProductCoordinator)?.finish()
     }
 }
+
+// MARK: - Like Button Delegate
 
 extension ProductViewModel: ILikeButton {
     func changeStatus(with id: Int) {
@@ -125,8 +144,9 @@ extension ProductViewModel: ILikeButton {
     }
 }
 
+// MARK: - Private
+
 private extension ProductViewModel {
-    
     var emptyData: String {
         Constants.EmptyData.noData
     }
@@ -149,64 +169,5 @@ private extension ProductViewModel {
     var price: [String: String] {
         guard let product = viewData.value else { return [Constants.ProductModuleTitles.price: emptyData] }
         return [Constants.ProductModuleTitles.price.uppercased(): "£\(product.price)".lowercased()]
-    }
-    
-    // TODO: - Refactor
-
-    func fetchDataFromServer() {
-        switch hayEndpoint {
-        case .categories:
-            Task {
-                do {
-                    async let categoriesResponse = try service.getCategories()
-                    
-                    let categories = try await categoriesResponse.categories
-                    guard let category = categories.first(where: { $0.id == itemId }),
-                          let product = category.products.first(where: { $0.id == productId })
-                    else {
-                        self.loadingError.value = Constants.LoadingMessage.unknown
-                        return
-                    }
-                    self.viewData.value = ProductViewData(product: product, endpoint: .categories, itemId: itemId)
-                } catch {
-                    self.loadingError.value = error.localizedDescription
-                }
-            }
-        case .designers:
-            Task {
-                do {
-                    async let categoriesResponse = try service.getDesigners()
-                    
-                    let designers = try await categoriesResponse.designers
-                    
-                    guard let designer = designers.first(where: { $0.id == itemId }),
-                          let product = designer.products.first(where: { $0.id == productId })
-                    else {
-                        self.loadingError.value = Constants.LoadingMessage.unknown
-                        return
-                    }
-                    self.viewData.value = ProductViewData(product: product, endpoint: .designers, itemId: itemId)
-                } catch {
-                    self.loadingError.value = error.localizedDescription
-                }
-            }
-        case .inspiration:
-            Task {
-                do {
-                    async let categoriesResponse = try service.getInspiration()
-                    
-                    let inspiration = try await categoriesResponse.inspiration
-                    guard let inspirationFeed = inspiration.first(where: { $0.id == itemId }),
-                          let product = inspirationFeed.products.first(where: { $0.id == productId })
-                    else {
-                        self.loadingError.value = Constants.LoadingMessage.unknown
-                        return
-                    }
-                    self.viewData.value = ProductViewData(product: product, endpoint: .inspiration, itemId: itemId)
-                } catch {
-                    self.loadingError.value = error.localizedDescription
-                }
-            }
-        }
     }
 }

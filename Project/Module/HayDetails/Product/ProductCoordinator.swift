@@ -35,9 +35,20 @@ final class ProductCoordinator: Coordinator {
 
 private extension ProductCoordinator {
     func showModule() {
-        let viewModel = ProductViewModel(service: service, coordinator: self, hayEndpoint: hayEndpoint, itemId: itemId, productId: productId)
+        let viewModel = ProductViewModel(service: createProductFetchService(for: hayEndpoint), coordinator: self, hayEndpoint: hayEndpoint, itemId: itemId, productId: productId)
         let viewController = ProducViewController(viewModel: viewModel)
         viewModel.subscribe(observer: viewController)
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func createProductFetchService(for endpoint: ProductEndpoint) -> ProductFetchService {
+        switch endpoint {
+        case .categories:
+            return CategoriesFetchService(service: service)
+        case .designers:
+            return DesignersFetchService(service: service)
+        case .inspiration:
+            return InspirationFetchService(service: service)
+        }
     }
 }

@@ -93,6 +93,7 @@
 		4EDF6E682C7EF0E9007FAAEE /* QuoteSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E672C7EF0E9007FAAEE /* QuoteSupplementaryView.swift */; };
 		4EDF6E6A2C803912007FAAEE /* HayTableViewSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E692C803912007FAAEE /* HayTableViewSections.swift */; };
 		4EFA9A882C8456540051E52A /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA9A872C8456530051E52A /* LabelFactory.swift */; };
+		4EFA9A8A2C8466E10051E52A /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA9A892C8466E10051E52A /* DataFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -184,6 +185,7 @@
 		4EDF6E672C7EF0E9007FAAEE /* QuoteSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSupplementaryView.swift; sourceTree = "<group>"; };
 		4EDF6E692C803912007FAAEE /* HayTableViewSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HayTableViewSections.swift; sourceTree = "<group>"; };
 		4EFA9A872C8456530051E52A /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
+		4EFA9A892C8466E10051E52A /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,6 +490,7 @@
 				4E25A66F2C3C33E900066DFD /* HayEndpoints.swift */,
 				4E25A6702C3C33E900066DFD /* HayServices.swift */,
 				4E25A6722C3C33E900066DFD /* RequestProcessorError.swift */,
+				4EFA9A892C8466E10051E52A /* DataFetcher.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				4EDF6E642C7DC815007FAAEE /* TextCollectionCell.swift in Sources */,
 				4E25A6A02C45595800066DFD /* HeaderCoordinator.swift in Sources */,
 				4E25A66C2C3C33DE00066DFD /* Designer.swift in Sources */,
+				4EFA9A8A2C8466E10051E52A /* DataFetcher.swift in Sources */,
 				4E25A6622C3C33CB00066DFD /* CategoryTableCell.swift in Sources */,
 				4E25A6CE2C4A3B6300066DFD /* FavouriteViewData.swift in Sources */,
 				4E25A6332C3C332E00066DFD /* AppDelegate.swift in Sources */,

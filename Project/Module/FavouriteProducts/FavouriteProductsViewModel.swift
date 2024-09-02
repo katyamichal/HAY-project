@@ -76,9 +76,6 @@ extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
         (coordinator as? FavouriteCoordinator)?.showProductDetail(hayEndpoint: product.endpoint, itemId: product.itemIdentifier, productId: product.productId)
     }
     
-    
-    
-    
     // MARK: - View Settings
     
     var headerFont: UIFont {

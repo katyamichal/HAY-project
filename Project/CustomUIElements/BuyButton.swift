@@ -31,7 +31,7 @@ class BuyButton: UIButton {
         let configuration = UIImage.SymbolConfiguration(font: largeFont)
         let buttonImage = UIImage(systemName: "bag", withConfiguration: configuration)
         self.setImage(buttonImage, for: .normal)
-        self.backgroundColor = Colours.Text.selectedColour
+        self.backgroundColor = Colours.Text.selectedColour.withAlphaComponent(0.9)
         self.layer.cornerRadius = 18
         self.tintColor = .white
     }

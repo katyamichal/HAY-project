@@ -6,7 +6,7 @@
 //
 
 import Foundation
-// MARK: - Protocol is a type if product is saved in CoreData Storage
+// MARK: - Protocol is a type of product is saved in CoreData Storage
 
 protocol IProductCDO {
     var productId: Int { get }

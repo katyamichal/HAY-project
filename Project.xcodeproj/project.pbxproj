@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -65,7 +65,6 @@
 		4E25A6CC2C4A363400066DFD /* ArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25A6CB2C4A363400066DFD /* ArrayDataSource.swift */; };
 		4E25A6CE2C4A3B6300066DFD /* FavouriteViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E25A6CD2C4A3B6300066DFD /* FavouriteViewData.swift */; };
 		4E4D6C842C6379A800F47B5F /* PersistentContainerStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6C832C6379A800F47B5F /* PersistentContainerStorage.swift */; };
-		4E4D6C862C64B81100F47B5F /* LikeButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6C852C64B81100F47B5F /* LikeButtonManager.swift */; };
 		4E4D6C882C6A094D00F47B5F /* ProductCDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6C872C6A094C00F47B5F /* ProductCDO.swift */; };
 		4E4D6CBD2C6DDE1500F47B5F /* UIFont + customFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6CBC2C6DDE1400F47B5F /* UIFont + customFont.swift */; };
 		4E5C23FA2C78CCBB004EC7BF /* InspirationDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C23F92C78CCBB004EC7BF /* InspirationDetailCoordinator.swift */; };
@@ -155,7 +154,6 @@
 		4E25A6CB2C4A363400066DFD /* ArrayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayDataSource.swift; sourceTree = "<group>"; };
 		4E25A6CD2C4A3B6300066DFD /* FavouriteViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewData.swift; sourceTree = "<group>"; };
 		4E4D6C832C6379A800F47B5F /* PersistentContainerStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainerStorage.swift; sourceTree = "<group>"; };
-		4E4D6C852C64B81100F47B5F /* LikeButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButtonManager.swift; sourceTree = "<group>"; };
 		4E4D6C872C6A094C00F47B5F /* ProductCDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCDO.swift; sourceTree = "<group>"; };
 		4E4D6CBC2C6DDE1400F47B5F /* UIFont + customFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + customFont.swift"; sourceTree = "<group>"; };
 		4E5C23F92C78CCBB004EC7BF /* InspirationDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationDetailCoordinator.swift; sourceTree = "<group>"; };
@@ -183,6 +181,10 @@
 		4EFA9A872C8456530051E52A /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		4EFA9A892C8466E10051E52A /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		4ECD02B52C9C1A9F0070BB9C /* UIElementManagers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UIElementManagers; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4E25A62C2C3C332E00066DFD /* Frameworks */ = {
@@ -328,7 +330,7 @@
 		4E25A68E2C3C34B600066DFD /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				4E4D6C852C64B81100F47B5F /* LikeButtonManager.swift */,
+				4ECD02B52C9C1A9F0070BB9C /* UIElementManagers */,
 				4E4D6C972C6A0F8F00F47B5F /* Network */,
 				4E25A6B82C494B8800066DFD /* CoreData */,
 			);
@@ -567,6 +569,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				4ECD02B52C9C1A9F0070BB9C /* UIElementManagers */,
+			);
 			name = Project;
 			productName = Project;
 			productReference = 4E25A62F2C3C332E00066DFD /* Project.app */;
@@ -691,7 +696,6 @@
 				4E25A67E2C3C33F000066DFD /* BuyButton.swift in Sources */,
 				4E25A6BF2C494D9A00066DFD /* CoreDataService.swift in Sources */,
 				4EB5B4C82C6F67CD00F6ED0C /* DesignerDetailsView.swift in Sources */,
-				4E4D6C862C64B81100F47B5F /* LikeButtonManager.swift in Sources */,
 				4EDF6E682C7EF0E9007FAAEE /* QuoteSupplementaryView.swift in Sources */,
 				4E25A6742C3C33E900066DFD /* HayEndpoints.swift in Sources */,
 				4E5C23FE2C78CE8F004EC7BF /* InspirationDetailViewController.swift in Sources */,

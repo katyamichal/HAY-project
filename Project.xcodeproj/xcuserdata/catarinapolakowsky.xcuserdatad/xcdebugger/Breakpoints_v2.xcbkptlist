@@ -66,53 +66,6 @@
             endingLineNumber = "48"
             landmarkName = "value"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "FF003D01-B2F5-44B1-B7D4-BE9AF804B2C2 - 571b029d6461e29a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.Observable.subscribe(observer: Project.IObserver) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Observer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "57">
-               </Location>
-               <Location
-                  uuid = "FF003D01-B2F5-44B1-B7D4-BE9AF804B2C2 - 91f1bd6614006629"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.Observable.value.didset : Swift.Optional&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Observer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "160">
-               </Location>
-               <Location
-                  uuid = "FF003D01-B2F5-44B1-B7D4-BE9AF804B2C2 - 5a721dcd45ba8263"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.Observable.value.didset : Swift.Optional&lt;ViewData&gt;"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Observer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "160">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -129,98 +82,6 @@
             endingLineNumber = "46"
             landmarkName = "value"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "2A38B352-94CF-41AF-98FE-4B9010AC6CF2 - a0068fee2319736d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.Observable.init() -&gt; Project.Observable&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Observer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "67">
-               </Location>
-               <Location
-                  uuid = "2A38B352-94CF-41AF-98FE-4B9010AC6CF2 - d1967aa9f128e70b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.Observable.value.getter : Swift.Optional&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Observer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "26">
-               </Location>
-               <Location
-                  uuid = "2A38B352-94CF-41AF-98FE-4B9010AC6CF2 - edad07b639657303"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.Observable.value.setter : Swift.Optional&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "2A38B352-94CF-41AF-98FE-4B9010AC6CF2 - 1658803ecc873870"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.Observable.value.modify : Swift.Optional&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Observer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "2A38B352-94CF-41AF-98FE-4B9010AC6CF2 - 979633f727568203"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.Observable.value.modify : Swift.Optional&lt;&#x3c4;_0_0&gt; with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "17">
-               </Location>
-               <Location
-                  uuid = "2A38B352-94CF-41AF-98FE-4B9010AC6CF2 - a0068fee2319736d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.Observable.init() -&gt; Project.Observable&lt;&#x3c4;_0_0&gt;"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Observer.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -237,38 +98,6 @@
             endingLineNumber = "116"
             landmarkName = "goBack()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "07B83925-3FA1-4DCA-A2FA-1D48D9E18319 - 155d4b2049859a8f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.ProductViewModel.goBack() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "230">
-               </Location>
-               <Location
-                  uuid = "07B83925-3FA1-4DCA-A2FA-1D48D9E18319 - 155d4b2049859a8f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.ProductViewModel.goBack() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "293">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -301,38 +130,6 @@
             endingLineNumber = "114"
             landmarkName = "goBack()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B30F7312-9B4C-414C-BF17-76BE4AE57000 - 155d4b2049859a6c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.ProductViewModel.goBack() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "115">
-               </Location>
-               <Location
-                  uuid = "B30F7312-9B4C-414C-BF17-76BE4AE57000 - 155d4b2049859a6c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.ProductViewModel.goBack() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "62">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -349,38 +146,6 @@
             endingLineNumber = "131"
             landmarkName = "changeStatus(with:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FFD74213-F3CB-4CA8-B53B-C2F494E862FD - fdcca5fcdc6a6005"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.CategoryViewModel.changeStatus(with: Swift.Int) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Hay/Category/CategoryViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "114"
-                  endingLineNumber = "114"
-                  offsetFromSymbolStart = "1697">
-               </Location>
-               <Location
-                  uuid = "FFD74213-F3CB-4CA8-B53B-C2F494E862FD - fdcca5fcdc6a6005"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.CategoryViewModel.changeStatus(with: Swift.Int) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Hay/Category/CategoryViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "114"
-                  endingLineNumber = "114"
-                  offsetFromSymbolStart = "1378">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -393,8 +158,8 @@
             filePath = "Project/Module/Hay/Category/CategoryTableCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -413,38 +178,6 @@
             endingLineNumber = "57"
             landmarkName = "updateView()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A2343E2D-D094-44E0-9DA4-6A92D4DA8A20 - d727142709326f98"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.FavouriteProductsViewController.updateView() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/FavouriteProducts/FavouriteProductsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "43">
-               </Location>
-               <Location
-                  uuid = "A2343E2D-D094-44E0-9DA4-6A92D4DA8A20 - d727142709326f98"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.FavouriteProductsViewController.updateView() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/FavouriteProducts/FavouriteProductsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "22">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -493,83 +226,6 @@
             endingLineNumber = "29"
             landmarkName = "changeProductStatus(with:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "EC2CFB0D-7B88-4F24-877F-EA34766A381F - d1121971159532bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.LikeButtonManager.changeProductStatus(with: Project.Product) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Service/LikeButtonManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "1553">
-               </Location>
-               <Location
-                  uuid = "EC2CFB0D-7B88-4F24-877F-EA34766A381F - d1121971159532bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.LikeButtonManager.changeProductStatus(with: Project.Product) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Service/LikeButtonManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "494">
-               </Location>
-               <Location
-                  uuid = "EC2CFB0D-7B88-4F24-877F-EA34766A381F - d1121971159532bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.LikeButtonManager.changeProductStatus(with: Project.Product) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Service/LikeButtonManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "935">
-               </Location>
-               <Location
-                  uuid = "EC2CFB0D-7B88-4F24-877F-EA34766A381F - da2d2a308c766e5e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Project.ProductCDO) -&gt; Swift.Bool in Project.LikeButtonManager.changeProductStatus(with: Project.Product) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Service/LikeButtonManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "31">
-               </Location>
-               <Location
-                  uuid = "EC2CFB0D-7B88-4F24-877F-EA34766A381F - d1121971159532bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.LikeButtonManager.changeProductStatus(with: Project.Product) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Service/LikeButtonManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "483">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -634,53 +290,6 @@
             endingLineNumber = "102"
             landmarkName = "update(with:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BD8CEAB9-AAB3-4A45-9037-0A501C8FCD65 - 9c992c0d6ff2c4bf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.FavouriteProductsViewController.update&lt;&#x3c4;_0_0&gt;(with: &#x3c4;_0_0) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/FavouriteProducts/FavouriteProductsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "154">
-               </Location>
-               <Location
-                  uuid = "BD8CEAB9-AAB3-4A45-9037-0A501C8FCD65 - 9c992c0d6ff2c4bf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.FavouriteProductsViewController.update&lt;&#x3c4;_0_0&gt;(with: &#x3c4;_0_0) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/FavouriteProducts/FavouriteProductsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "81">
-               </Location>
-               <Location
-                  uuid = "BD8CEAB9-AAB3-4A45-9037-0A501C8FCD65 - 9c992c0d6ff2c55c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.FavouriteProductsViewController.update&lt;&#x3c4;_0_0&gt;(with: &#x3c4;_0_0) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/FavouriteProducts/FavouriteProductsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "87"
-                  endingLineNumber = "87"
-                  offsetFromSymbolStart = "81">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -713,38 +322,6 @@
             endingLineNumber = "124"
             landmarkName = "changeStatus(with:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F45C45A3-D004-4F68-ACE7-187C86738EDA - 963b7ea17179e3e0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.ProductViewModel.material.getter : Swift.Dictionary&lt;Swift.String, Swift.String&gt;"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "1418">
-               </Location>
-               <Location
-                  uuid = "F45C45A3-D004-4F68-ACE7-187C86738EDA - 610bf72ba7428e9b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.ProductViewModel.changeStatus(with: Swift.Int) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "1114">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -777,38 +354,6 @@
             endingLineNumber = "164"
             landmarkName = "setupActions()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5F5AEC40-2506-4051-8CFB-988531142F0B - 8297719a213914d2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.ProducViewController.backToMainView() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "153"
-                  endingLineNumber = "153"
-                  offsetFromSymbolStart = "25">
-               </Location>
-               <Location
-                  uuid = "5F5AEC40-2506-4051-8CFB-988531142F0B - ae5ddcdd3b8eb05e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.ProducViewController.setupActions() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "153"
-                  endingLineNumber = "153"
-                  offsetFromSymbolStart = "225">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -855,8 +400,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
-            landmarkName = "didSelectedLikeButton()"
-            landmarkType = "7">
+            landmarkName = "LikeButton"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -889,38 +434,6 @@
             endingLineNumber = "78"
             landmarkName = "getData()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "83AEA24A-22F3-4338-8077-499D539D4968 - 57eb1fcf59defbaa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Project.DesignerDetailsViewModel.getData() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/DesignerDetails/DesignerDetailsViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "874">
-               </Location>
-               <Location
-                  uuid = "83AEA24A-22F3-4338-8077-499D539D4968 - ffa706586f9e44ef"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in Project.DesignerDetailsViewModel.getData() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/DesignerDetails/DesignerDetailsViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -937,53 +450,6 @@
             endingLineNumber = "89"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0D162D4C-7794-4EB4-ACCB-9708A8A6D374 - 421a65d30fa9dd64"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.DesignerDetailViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/DesignerDetails/DesignerDetailViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "867">
-               </Location>
-               <Location
-                  uuid = "0D162D4C-7794-4EB4-ACCB-9708A8A6D374 - 421a65d30fa9dd64"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.DesignerDetailViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/DesignerDetails/DesignerDetailViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "539">
-               </Location>
-               <Location
-                  uuid = "0D162D4C-7794-4EB4-ACCB-9708A8A6D374 - 421a65d30fa9dd64"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.DesignerDetailViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/DesignerDetails/DesignerDetailViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "543">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1096,38 +562,6 @@
             endingLineNumber = "140"
             landmarkName = "goBack()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A482CB1F-A3A9-4271-AEDE-6B6464769133 - d3bc6d54fda84f1d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.InspirationDetailViewModel.setCurrentProduct(at: Swift.Int) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/InspirationDetails/InspirationDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "142"
-                  endingLineNumber = "142"
-                  offsetFromSymbolStart = "138">
-               </Location>
-               <Location
-                  uuid = "A482CB1F-A3A9-4271-AEDE-6B6464769133 - 9621ed641cd0b565"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.InspirationDetailViewModel.goBack() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/InspirationDetails/InspirationDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "140"
-                  endingLineNumber = "140"
-                  offsetFromSymbolStart = "115">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1144,38 +578,6 @@
             endingLineNumber = "139"
             landmarkName = "goBack()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "EF6D46CA-1D26-44CA-94CF-B658BD2C191B - 203eba9ccccde394"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.InspirationDetailViewModel.unsubscribe(Project.IObserver) -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/InspirationDetails/InspirationDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "234">
-               </Location>
-               <Location
-                  uuid = "EF6D46CA-1D26-44CA-94CF-B658BD2C191B - 9621ed641cd0b565"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.InspirationDetailViewModel.goBack() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/InspirationDetails/InspirationDetailViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "140"
-                  endingLineNumber = "140"
-                  offsetFromSymbolStart = "115">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1192,53 +594,6 @@
             endingLineNumber = "136"
             landmarkName = "backButtonDidTapped()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "4B7D43C7-7160-485E-991C-F7E604BDE5D9 - 9f5ef4068526c4ab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.InspirationDetailViewController.backButtonDidTapped() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/InspirationDetails/InspirationDetailViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "135"
-                  endingLineNumber = "135"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  uuid = "4B7D43C7-7160-485E-991C-F7E604BDE5D9 - 9f5ef4068526c4ab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.InspirationDetailViewController.backButtonDidTapped() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/InspirationDetails/InspirationDetailViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "135"
-                  endingLineNumber = "135"
-                  offsetFromSymbolStart = "25">
-               </Location>
-               <Location
-                  uuid = "4B7D43C7-7160-485E-991C-F7E604BDE5D9 - 9f5ef4068526c4ab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Project.InspirationDetailViewController.backButtonDidTapped() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/InspirationDetails/InspirationDetailViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "135"
-                  endingLineNumber = "135"
-                  offsetFromSymbolStart = "29">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1287,38 +642,6 @@
             endingLineNumber = "200"
             landmarkName = "fetchDataFromServer()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "870F1E5B-E615-4024-9FA4-E6B0712313A0 - a7c58f97f7e6f0d0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "198"
-                  endingLineNumber = "198"
-                  offsetFromSymbolStart = "808">
-               </Location>
-               <Location
-                  uuid = "870F1E5B-E615-4024-9FA4-E6B0712313A0 - 91ee1af287efd82c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Project.Product) -&gt; Swift.Bool in closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "198"
-                  endingLineNumber = "198"
-                  offsetFromSymbolStart = "31">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1335,68 +658,6 @@
             endingLineNumber = "198"
             landmarkName = "fetchDataFromServer()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1725985E-5C7C-4A8F-A16B-B06A18820D2E - a556c51989b5484"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "196"
-                  endingLineNumber = "196"
-                  offsetFromSymbolStart = "207">
-               </Location>
-               <Location
-                  uuid = "1725985E-5C7C-4A8F-A16B-B06A18820D2E - d11dfd368249029d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) suspend resume partial function for closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "196"
-                  endingLineNumber = "196"
-                  offsetFromSymbolStart = "81">
-               </Location>
-               <Location
-                  uuid = "1725985E-5C7C-4A8F-A16B-B06A18820D2E - a7c58f97f7e6f096"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "196"
-                  endingLineNumber = "196"
-                  offsetFromSymbolStart = "249">
-               </Location>
-               <Location
-                  uuid = "1725985E-5C7C-4A8F-A16B-B06A18820D2E - 116e56fb005f764b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(8) suspend resume partial function for closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "196"
-                  endingLineNumber = "196"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1413,143 +674,6 @@
             endingLineNumber = "196"
             landmarkName = "fetchDataFromServer()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "3C7F7D3F-D054-407E-83D6-314EB8224373 - a556c51989b5746"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "194"
-                  endingLineNumber = "194"
-                  offsetFromSymbolStart = "118">
-               </Location>
-               <Location
-                  uuid = "3C7F7D3F-D054-407E-83D6-314EB8224373 - 3134aad5c3421f62"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "194"
-                  endingLineNumber = "194"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  uuid = "3C7F7D3F-D054-407E-83D6-314EB8224373 - 4aa7c41a1ea1bb70"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "194"
-                  endingLineNumber = "194"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "3C7F7D3F-D054-407E-83D6-314EB8224373 - e416e7586a0d279e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(9) suspend resume partial function for closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "194"
-                  endingLineNumber = "194"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  uuid = "3C7F7D3F-D054-407E-83D6-314EB8224373 - 1e31a50ff436dbc2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #1 @Sendable () async throws -&gt; Project.Inspiration in closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "194"
-                  endingLineNumber = "194"
-                  offsetFromSymbolStart = "45">
-               </Location>
-               <Location
-                  uuid = "3C7F7D3F-D054-407E-83D6-314EB8224373 - 213b14b3e8da0096"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for implicit closure #1 @Sendable () async throws -&gt; Project.Inspiration in closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "194"
-                  endingLineNumber = "194"
-                  offsetFromSymbolStart = "42">
-               </Location>
-               <Location
-                  uuid = "3C7F7D3F-D054-407E-83D6-314EB8224373 - 7409e9a91c7c3db"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for implicit closure #1 @Sendable () async throws -&gt; Project.Inspiration in closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "194"
-                  endingLineNumber = "194"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  uuid = "3C7F7D3F-D054-407E-83D6-314EB8224373 - b1050dbe58d37c94"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for implicit closure #1 @Sendable () async throws -&gt; Project.Inspiration in closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "194"
-                  endingLineNumber = "194"
-                  offsetFromSymbolStart = "39">
-               </Location>
-               <Location
-                  uuid = "3C7F7D3F-D054-407E-83D6-314EB8224373 - f8f8f92090d7d695"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for implicit closure #1 @Sendable () async throws -&gt; Project.Inspiration in closure #3 @Sendable () async -&gt; () in Project.ProductViewModel.fetchDataFromServer() -&gt; ()"
-                  moduleName = "Project"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/catarinapolakowsky/Desktop/Project/Project/Module/Product/ProductViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "194"
-                  endingLineNumber = "194"
-                  offsetFromSymbolStart = "42">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1582,6 +706,22 @@
             endingLineNumber = "13"
             landmarkName = "ICategoryViewModel"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6AF4831F-1CDF-4A20-8BB1-6E2FCE9C3B03"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Project/Navigation/TabBar/TabBarCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "showTabBarFlow()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

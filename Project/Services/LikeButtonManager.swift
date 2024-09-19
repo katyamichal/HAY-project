@@ -23,9 +23,7 @@ final class LikeButtonManager {
     }
     
     func changeProductStatus(with product: IProductCDO) {
-        
         let product = ProductCDO(with: product, type: .favourite)
-        
         if let id = favouriteProducts.value?.products.firstIndex(where: {$0.productId == product.productId }) {
             deleteProduct(with: product.productId, at: id)
         } else {

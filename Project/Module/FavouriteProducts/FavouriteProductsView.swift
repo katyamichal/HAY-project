@@ -38,7 +38,7 @@ final class FavouriteProductsView: UIView {
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.backgroundColor = Colours.Main.hayBackground
         collection.showsVerticalScrollIndicator = false
-        collection.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.cellIdentifier)
+        collection.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.reuseIdentifier)
         return collection
     }()
     

@@ -55,7 +55,7 @@ final class DesignerDetailsView: UIView {
         collectionView.register(QuoteSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: QuoteSupplementaryView.reuseIdentifier)
         collectionView.register(TextCollectionCell.self, forCellWithReuseIdentifier: TextCollectionCell.reuseIdentifier)
         collectionView.register(DesignerCollectionImages.self, forCellWithReuseIdentifier: DesignerCollectionImages.reuseIdentifier)
-        collectionView.register(DesignerProductsCollectionCell.self, forCellWithReuseIdentifier: DesignerProductsCollectionCell.reuseIdentifier)
+        collectionView.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.reuseIdentifier)
         return collectionView
     }()
     

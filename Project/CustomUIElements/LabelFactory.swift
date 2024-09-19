@@ -30,7 +30,7 @@ class Label: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: -
+    // MARK: - Methods to create labels
     
     func createTitleLabel(text: String?) {
         self.numberOfLines = 0

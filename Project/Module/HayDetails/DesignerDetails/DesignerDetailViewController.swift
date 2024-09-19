@@ -121,7 +121,7 @@ extension DesignerDetailViewController: UICollectionViewDataSource {
             }
 
         case .products:
-            return dequeueAndConfigureCell(collectionView, indexPath: indexPath, identifier: DesignerProductsCollectionCell.reuseIdentifier) { (cell: DesignerProductsCollectionCell) in
+            return dequeueAndConfigureCell(collectionView, indexPath: indexPath, identifier: BasicCollectionViewCell.reuseIdentifier) { (cell: BasicCollectionViewCell) in
                 viewModel.setCurrentProduct(at: indexPath.item)
                 cell.update(productName: viewModel.productName, price: viewModel.productPrice, image: viewModel.productImage, isFavourite: viewModel.isFavourite, productId: viewModel.productId)
             }

@@ -136,7 +136,7 @@ final class DesignerTableCell: UITableViewCell {
         collection.showsHorizontalScrollIndicator = false
         collection.dataSource = self
         collection.delegate = self
-        collection.register(DesignerProductsCollectionCell.self, forCellWithReuseIdentifier: DesignerProductsCollectionCell.reuseIdentifier)
+        collection.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.reuseIdentifier)
         return collection
     }()
     
@@ -176,7 +176,7 @@ extension DesignerTableCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let viewModel,
-              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DesignerProductsCollectionCell.reuseIdentifier, for: indexPath) as? DesignerProductsCollectionCell else {
+              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.reuseIdentifier, for: indexPath) as? BasicCollectionViewCell else {
            return UICollectionViewCell()
         }
         viewModel.setCurrentProduct(at: indexPath.item)

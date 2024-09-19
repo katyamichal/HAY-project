@@ -57,7 +57,7 @@ final class InspirationDetailView: UIView {
         collection.backgroundColor = .clear
         collection.isHidden = true
         collection.register(GalleryCollectionCell.self, forCellWithReuseIdentifier: GalleryCollectionCell.cellIdentifier)
-        collection.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.cellIdentifier)
+        collection.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.reuseIdentifier)
         return collection
     }()
     

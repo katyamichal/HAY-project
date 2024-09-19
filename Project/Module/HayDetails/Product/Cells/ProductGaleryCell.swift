@@ -44,7 +44,7 @@ final class ProductGaleryCell: UITableViewCell {
         let pageControl = UIPageControl()
         pageControl.pageIndicatorTintColor = .white
         pageControl.translatesAutoresizingMaskIntoConstraints = false
-        pageControl.currentPageIndicatorTintColor = Colours.Text.selectedColour
+        pageControl.currentPageIndicatorTintColor = .black
         pageControl.addTarget(self, action: #selector(pageControlDidChange(_:)), for: .valueChanged)
         return pageControl
     }()

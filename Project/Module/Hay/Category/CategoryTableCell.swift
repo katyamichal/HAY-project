@@ -65,6 +65,7 @@ final class CategoryTableCell: UITableViewCell {
     private lazy var collectionView: UICollectionView = {
         let itemWidth: CGFloat = Constants.Layout.width * 0.6
         let itemHeight: CGFloat = Constants.Layout.width * 0.8
+        
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         layout.scrollDirection = .horizontal
@@ -76,7 +77,7 @@ final class CategoryTableCell: UITableViewCell {
         collection.delegate = self
         collection.dataSource = self
         collection.backgroundColor = .clear
-        collection.register(CategoryProductCollectionCell.self, forCellWithReuseIdentifier: CategoryProductCollectionCell.reuseIdentifier)
+        collection.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.reuseIdentifier)
         return collection
     }()
     
@@ -118,7 +119,7 @@ extension CategoryTableCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let viewModel,
-              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryProductCollectionCell.reuseIdentifier, for: indexPath) as? CategoryProductCollectionCell else {
+              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.reuseIdentifier, for: indexPath) as? BasicCollectionViewCell else {
             return UICollectionViewCell()
         }
         

@@ -80,7 +80,7 @@ extension InspirationDetailViewController: UICollectionViewDataSource {
             return cell
             
         case .products:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.cellIdentifier, for: indexPath) as? BasicCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.reuseIdentifier, for: indexPath) as? BasicCollectionViewCell else {
                 return UICollectionViewCell()
             }
             viewModel.setCurrentProduct(at: indexPath.row)

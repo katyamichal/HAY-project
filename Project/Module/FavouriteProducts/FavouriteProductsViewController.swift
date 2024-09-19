@@ -71,7 +71,7 @@ extension FavouriteProductsViewController: UICollectionViewDataSource {
     }
  
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.cellIdentifier, for: indexPath) as? BasicCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicCollectionViewCell.reuseIdentifier, for: indexPath) as? BasicCollectionViewCell else {
            return UICollectionViewCell()
         }
         viewModel.setCurrentProduct(at: indexPath.row)

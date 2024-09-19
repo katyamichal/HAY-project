@@ -52,7 +52,7 @@ final class FavouriteProductsView: UIView {
     
     // MARK: - Public
     
-    func setupCollectionViewdelegate(_ delegate: UICollectionViewDelegate) {
+    func setupCollectionViewDelegate(_ delegate: UICollectionViewDelegate) {
         collectionView.delegate = delegate
     }
     
@@ -75,7 +75,7 @@ final class FavouriteProductsView: UIView {
 
 private extension FavouriteProductsView {
     func setupView() {
-        self.backgroundColor = Colours.Main.hayBackground
+        backgroundColor = Colours.Main.hayBackground
         setupViews()
         setupConstraints()
     }

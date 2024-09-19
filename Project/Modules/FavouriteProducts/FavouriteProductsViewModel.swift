@@ -17,6 +17,7 @@ protocol IFavouriteProductsViewModel: AnyObject {
     var isFavourite: Bool { get }
     var productId: Int { get }
     var likeButtonIsUpdating: Bool { get }
+    
     func subscribe(observer: IObserver)
     func unsubscribe(observer: IObserver)
     

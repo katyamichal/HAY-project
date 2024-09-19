@@ -43,6 +43,7 @@ private extension TabBarCoordinator {
         hayCoordinator.parentCoordinator = self
         hayCoordinator.start()
         
+        
         let favouriteImage = UIImage(systemName: TabBarImageView.favourite.rawValue)
         let favouriteNavigationController = UINavigationController()
         favouriteNavigationController.tabBarItem = UITabBarItem(title: "", image: favouriteImage, selectedImage: favouriteImage)
@@ -51,10 +52,21 @@ private extension TabBarCoordinator {
         favouriteCoordinator.parentCoordinator = self
         favouriteCoordinator.start()
         
+        
+        let basketImage = UIImage(systemName: TabBarImageView.basket.rawValue)
+        let basketNavigationController = UINavigationController()
+        basketNavigationController.tabBarItem = UITabBarItem(title: "", image: basketImage, selectedImage: basketImage)
+        
+        let basketCoordinator = BasketCoordinator(service: networkService, navigationController: basketNavigationController)
+        basketCoordinator.parentCoordinator = self
+        basketCoordinator.start()
+        
+        
         childCoordinators.append(hayCoordinator)
         childCoordinators.append(favouriteCoordinator)
+        childCoordinators.append(basketCoordinator)
         
-        let tabBarControllers = [hayNavigationController, favouriteNavigationController]
+        let tabBarControllers = [hayNavigationController, favouriteNavigationController, basketNavigationController]
         tabBarController = HayTabBarController(tabBarControllers: tabBarControllers)
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()

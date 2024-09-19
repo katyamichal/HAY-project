@@ -52,6 +52,8 @@ final class FavouriteProductsViewController: UIViewController {
     }
 }
 
+// MARK: - IFavouriteProductsView Protocol
+
 extension FavouriteProductsViewController: IFavouriteProductsView {
     func updateView() {
         favouriteView.updateCollectionView()
@@ -62,7 +64,7 @@ extension FavouriteProductsViewController: IFavouriteProductsView {
     }
 }
 
-// MARK: - UICollectionViewDataSource and Delegate
+// MARK: - UICollectionViewDataSource
 
 extension FavouriteProductsViewController: UICollectionViewDataSource {
     
@@ -90,12 +92,15 @@ extension FavouriteProductsViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 
 extension FavouriteProductsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.showDetail(at: indexPath.row)
     }
 }
+
+// MARK: - Observer
 
 extension FavouriteProductsViewController: IObserver {
     func update<T>(with value: T) {
@@ -105,9 +110,11 @@ extension FavouriteProductsViewController: IObserver {
     }
 }
 
+// MARK: - Private methods
+
 private extension FavouriteProductsViewController {
     func setupCollectionViewDelegate() {
-        favouriteView.setupCollectionViewdelegate(self)
+        favouriteView.setupCollectionViewDelegate(self)
         favouriteView.setupCollectionViewDataSource(self)
     }
 }

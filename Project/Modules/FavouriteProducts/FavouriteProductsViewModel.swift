@@ -32,6 +32,7 @@ final class FavouriteProductsViewModel {
     private weak var view: IFavouriteProductsView?
     
     private let likeManager = LikeButtonManager.shared
+    private let buyButtonManager = BuyButtonManager.shared
     
     private var viewData: [FavouriteViewData] = []
     private var currentProduct: FavouriteViewData?
@@ -48,7 +49,7 @@ final class FavouriteProductsViewModel {
 
 extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
     
-    // MARK: - Like Buttin Managing
+    // MARK: - Like Button Managing
     
     var likeButtonIsUpdating: Bool {
         isUpdating
@@ -68,13 +69,6 @@ extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
     
     func unsubscribe(observer: IObserver) {
         likeManager.favouriteProducts.unsubscribe(observer: observer)
-    }
-    
-    // MARK: - Navigation Managing
-    
-    func showDetail(at index: Int) {
-        let product = viewData[index]
-        (coordinator as? FavouriteCoordinator)?.showProductDetail(hayEndpoint: product.endpoint, itemId: product.itemIdentifier, productId: product.productId)
     }
     
     // MARK: - View Settings
@@ -133,10 +127,17 @@ extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
             view?.updateViewHeader()
         }
         guard let data = likeManager.favouriteProducts.value else {
-            view?.updateViewHeader()
+//            view?.updateViewHeader()
             return
         }
         viewData = data.products.map({FavouriteViewData(with: $0)})
+    }
+    
+    // MARK: - Navigation Managing
+    
+    func showDetail(at index: Int) {
+        let product = viewData[index]
+        (coordinator as? FavouriteCoordinator)?.showProductDetail(hayEndpoint: product.endpoint, itemId: product.itemIdentifier, productId: product.productId)
     }
 }
 
@@ -150,6 +151,16 @@ extension FavouriteProductsViewModel: ILikeButton {
         likeManager.changeProductStatus(with: product)
     }
 }
+
+// MARK: - Buy Button Delegate
+
+extension FavouriteProductsViewModel: IBuyButton {
+    func changeProductCount(with id: Int) {
+        guard let product = viewData.first(where: { $0.productId == id }) else { return }
+        buyButtonManager.changeProductStatus(with: product)
+    }
+}
+
 
 // MARK: - Private
 

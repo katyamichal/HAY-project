@@ -10,10 +10,7 @@ import Foundation
 import UIKit
 
 final class OrderInfoTableCell: UITableViewCell {
-    
-    var onOrderButtonTapped: (()->())?
-    
-    
+
     // MARK: - Inits
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -21,9 +18,11 @@ final class OrderInfoTableCell: UITableViewCell {
         setupCell()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     deinit {
         print("OrderInfoTableCell deinit")
     }
@@ -31,7 +30,7 @@ final class OrderInfoTableCell: UITableViewCell {
     
     // MARK: - UI Elements
     
-    private let separatorLineView: UIView = {
+    private lazy var separatorLineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .black
@@ -39,7 +38,7 @@ final class OrderInfoTableCell: UITableViewCell {
     }()
     
     
-    private let verticalStackView: UIStackView = {
+    private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
@@ -50,7 +49,7 @@ final class OrderInfoTableCell: UITableViewCell {
     }()
     
     
-    private let subtotalLabel: UILabel = {
+    private lazy var subtotalLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -60,7 +59,7 @@ final class OrderInfoTableCell: UITableViewCell {
     }()
     
     
-    private let deliveryLabel: UILabel = {
+    private lazy var deliveryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .label
@@ -71,7 +70,7 @@ final class OrderInfoTableCell: UITableViewCell {
     }()
     
     
-    private let totalStackView: UIStackView = {
+    private lazy var totalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
@@ -83,7 +82,7 @@ final class OrderInfoTableCell: UITableViewCell {
     }()
     
     
-    private let totalLabel: UILabel = {
+    private lazy var totalLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -94,7 +93,7 @@ final class OrderInfoTableCell: UITableViewCell {
     }()
     
     
-    private let pricelLabel: UILabel = {
+    private lazy var pricelLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .label
@@ -112,22 +111,16 @@ final class OrderInfoTableCell: UITableViewCell {
         button.setTitle("Place your order", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .light)
         button.backgroundColor = .black
-        button.addTarget(self, action: #selector(orderButtonTapped), for: .touchUpInside)
+      //  button.addTarget(self, action: #selector(orderButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    @objc
-    private func orderButtonTapped() {
-        onOrderButtonTapped?()
-    }
-    
-    
     // MARK: - Public
     
-    func update(orderInfo: [Int]) {
-        subtotalLabel.text = "Subtotal  £\(orderInfo[0])"
-        deliveryLabel.text = "Delivery £\(orderInfo[1])"
-        pricelLabel.text = "£\(orderInfo[2])"
+    func update(subtotal: String, delivery: String, total: String) {
+        subtotalLabel.text = subtotal
+        deliveryLabel.text = delivery
+        pricelLabel.text = total
     }
 }
 

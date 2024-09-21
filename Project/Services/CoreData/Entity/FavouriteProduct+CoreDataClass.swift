@@ -2,9 +2,9 @@
 //  FavouriteProduct+CoreDataClass.swift
 //  Project
 //
-//  Created by Catarina Polakowsky on 18.07.2024.
+//  Created by Catarina Polakowsky on 20.09.2024.
 //
-//
+
 
 import Foundation
 import CoreData

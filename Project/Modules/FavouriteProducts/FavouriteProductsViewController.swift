@@ -88,6 +88,9 @@ extension FavouriteProductsViewController: UICollectionViewDataSource {
             cell.setupLikeButtonDelegate(delegate)
         }
         
+        if let delegate = viewModel as? IBuyButton {
+            cell.setupBuyButtonDelegate(delegate)
+        }
         return cell
     }
 }

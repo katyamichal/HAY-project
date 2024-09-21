@@ -57,23 +57,19 @@ extension ProductCDO: IProductCDO {
     }
 }
 
-// MARK: - Type of Endpoint to get data from server(if saved)
+// MARK: - Enum for Product Endpoints used for server data fetching
 
-enum ProductEndpoint {
+enum ProductEndpoint: String {
     case inspiration
     case categories
     case designers
     
     var description: String {
-        switch self {
-        case .categories: return "categories"
-        case .designers: return "designers"
-        case .inspiration: return "inspiration"
-        }
+        return self.rawValue
     }
 }
 
-// MARK: - Initializer to transform string endpoint keeping in core data storage into ProductCDO
+// MARK: - Initializer for transforming a String into ProductEndpoint
 
 extension ProductEndpoint {
     init(_ value: String) {
@@ -84,5 +80,33 @@ extension ProductEndpoint {
         default: self.init("none")
             
         }
+    }
+}
+
+protocol IBasketProductCDO: IProductCDO {
+    var count: Int { get }
+}
+
+struct BasketProductCDO: IBasketProductCDO {
+    let productId: Int
+    let endpoint: ProductEndpoint
+    let itemIdentifier: Int
+    let productName: String
+    let price: Int
+    let image: String
+    var typeName: EntityType = .basket
+    var count: Int
+}
+
+extension BasketProductCDO {
+    init(with productCDO: IProductCDO, count: Int) {
+        self.productId = productCDO.productId
+        self.endpoint = productCDO.endpoint
+        self.itemIdentifier = productCDO.itemIdentifier
+        self.productName = productCDO.productName
+        self.price = productCDO.price
+        self.image = productCDO.image
+        self.typeName = .basket
+        self.count = count
     }
 }

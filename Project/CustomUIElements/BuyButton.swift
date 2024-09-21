@@ -5,10 +5,15 @@
 //  Created by Catarina Polakowsky on 08.07.2024.
 //
 
-
 import UIKit
 
+protocol IBuyButton: AnyObject {
+    func changeProductCount(with id: Int)
+}
 class BuyButton: UIButton {
+    weak var delegate: IBuyButton?
+    var productId: Int?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupButton()
@@ -20,7 +25,7 @@ class BuyButton: UIButton {
     }
     
     deinit {
-        print("Buy deinit")
+        print("BuyButton deinit")
     }
     
     // MARK: - setup methods
@@ -34,5 +39,12 @@ class BuyButton: UIButton {
         self.backgroundColor = Colours.Text.selectedColour.withAlphaComponent(0.9)
         self.layer.cornerRadius = 18
         self.tintColor = .white
+        self.addTarget(self, action: #selector(didSelectedBuyButton), for: .touchUpInside)
+    }
+    
+    @objc
+    func didSelectedBuyButton() {
+        guard let productId else { return }
+        delegate?.changeProductCount(with: productId)
     }
 }

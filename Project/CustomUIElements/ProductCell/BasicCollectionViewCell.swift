@@ -88,6 +88,7 @@ final class BasicCollectionViewCell: UICollectionViewCell {
         pricelLabel.text = price
         productImageView.image = image
         setupLikeButton(with: isFavourite, productId: productId)
+        buyButton.productId = productId
     }
     
     func setupLikeButtonDelegate(_ delegate: ILikeButton) {
@@ -97,6 +98,10 @@ final class BasicCollectionViewCell: UICollectionViewCell {
     func setupLikeButton(with status: Bool, productId: Int) {
         likeButton.isSelected = status
         likeButton.productId = productId
+    }
+    
+    func setupBuyButtonDelegate(_ delegate: IBuyButton) {
+        buyButton.delegate = delegate
     }
    
     // MARK: - Prepare for Reuse
@@ -108,6 +113,7 @@ final class BasicCollectionViewCell: UICollectionViewCell {
         likeButton.delegate = nil
         likeButton.isSelected = false
         likeButton.productId = nil
+        buyButton.productId = nil
         super.prepareForReuse()
     }
 }

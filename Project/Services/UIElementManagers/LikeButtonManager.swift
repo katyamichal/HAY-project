@@ -27,7 +27,7 @@ final class LikeButtonManager {
         if let id = favouriteProducts.value?.products.firstIndex(where: {$0.productId == product.productId }) {
             deleteProduct(with: product.productId, at: id)
         } else {
-            addfavouriteProduct(with: product)
+            addFavouriteProduct(with: product)
         }
     }
 }
@@ -36,22 +36,22 @@ private extension LikeButtonManager {
     func fetchFavouriteProducts() {
         coreDataService.fetchProducts(productType: .favourite) { [weak self] result in
             switch result {
-            case .success(let product):
-                self?.favouriteProducts.value?.products = product.reversed()
+            case .success(let products):
+                self?.favouriteProducts.value?.products = products as? [ProductCDO] ?? []
             case .failure(let error):
                 print("Error to fetch favourite products: \(error.localizedDescription)")
             }
         }
     }
     
-    func addfavouriteProduct(with product: ProductCDO) {
-        coreDataService.add(product)
+    func addFavouriteProduct(with product: ProductCDO) {
+        coreDataService.add(productType: .favourite, product: product)
         favouriteProducts.value?.products.append(product)
         print("Product add to favorites")
     }
     
     func deleteProduct(with id: Int, at index: Int) {
-        coreDataService.deleteProduct(with: id)
+        coreDataService.deleteProduct(productType: .favourite, id: id)
         favouriteProducts.value?.products.remove(at: index)
         print("Product removed from favorites")
     }

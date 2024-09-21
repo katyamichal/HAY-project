@@ -26,7 +26,7 @@ class LikeButton: UIButton {
     }
     
     deinit {
-        print("Like buttn deinit")
+        print("LikeButton deinit")
     }
     
     // MARK: -  Setup Methods

@@ -9,17 +9,8 @@ import CoreData
 
 
 enum EntityType: Codable {
-   case favourite
-   case basket
-   
-   var description: String {
-       switch self {
-       case .favourite:
-           return "FavouriteProduct"
-       case .basket:
-           return "BasketProduct"
-       }
-   }
+    case favourite
+    case basket
 }
 
 enum PersistantContainerStorage {

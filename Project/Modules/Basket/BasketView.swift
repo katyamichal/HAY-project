@@ -14,6 +14,12 @@ enum BasketTableSection: CaseIterable {
 
 final class BasketView: UIView {
     
+    // MARK: - Constants for constraints
+    
+    private let headerTopPadding: CGFloat = 40.0
+    private let headerSidePadding: CGFloat = 20.0
+    private let headerBottomPadding: CGFloat = 10.0
+    
     // MARK: - Inits
     
     override init(frame: CGRect) {
@@ -35,8 +41,6 @@ final class BasketView: UIView {
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 22, weight: .light)
-        label.textColor = .label
         label.numberOfLines = 0
         label.textColor = .black
         return label
@@ -62,7 +66,16 @@ final class BasketView: UIView {
     func setupTableViewDataSource(_ dataSource: UITableViewDataSource) {
         tableView.dataSource = dataSource
     }
-
+    
+    func updateTableView() {
+        tableView.isHidden = false
+        tableView.reloadData()
+    }
+    
+    func updateHeader(with title: String, and font: UIFont) {
+        headerLabel.text = title
+        headerLabel.font = font
+    }
 }
 // MARK: - Setup methods
 
@@ -79,11 +92,11 @@ private extension BasketView {
     }
     
     func setupConstraints() {
-        headerLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
-        headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        headerLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: headerTopPadding).isActive = true
+        headerLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: headerSidePadding).isActive = true
+        headerLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -headerSidePadding).isActive = true
         
-        tableView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 30).isActive = true
+        tableView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: headerBottomPadding).isActive = true
         tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true

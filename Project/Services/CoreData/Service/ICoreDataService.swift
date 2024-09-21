@@ -8,11 +8,10 @@
 import Foundation
 
 protocol ICoreDataService: AnyObject {
-    associatedtype T: Entity
-    func add(_ product: T)
-    func fetchProducts(productType: EntityType, completion: @escaping (Result<[T], Error>) -> Void)
-    func fetchProduct(with id: Int, completion: @escaping (Result<T, Error>) -> Void)
-    func deleteProduct(with id: Int)
+    func add(productType: EntityType,product: IProductCDO, count: Int?)
+    func fetchProducts(productType: EntityType, completion: @escaping (Result<[IProductCDO], Error>) -> Void)
+    func updateBasketCount(with id: Int)
+    func deleteProduct(productType: EntityType, id: Int)
 }
 
 protocol Entity {

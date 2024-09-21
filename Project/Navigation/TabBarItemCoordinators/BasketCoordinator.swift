@@ -42,6 +42,7 @@ private extension BasketCoordinator {
     func showModule() {
         let viewModel = BasketViewModel(coordinator: self)
         let viewController = BasketViewController(viewModel: viewModel)
+        viewModel.subscribe(observer: viewController)
         navigationController.pushViewController(viewController, animated: true)
     }
 }

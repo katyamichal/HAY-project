@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct BasketViewData: IBasketProductCDO {
+struct BasketViewData: IProductCDO {
+    var isFavourite: Bool
     let productId: Int
     let endpoint: ProductEndpoint
     let itemIdentifier: Int
@@ -19,7 +20,7 @@ struct BasketViewData: IBasketProductCDO {
 }
 
 extension BasketViewData {
-    init(with productCDO: IBasketProductCDO) {
+    init(with productCDO: BasketProductCDO) {
         self.productId = productCDO.productId
         self.endpoint = productCDO.endpoint
         self.itemIdentifier = productCDO.itemIdentifier
@@ -28,5 +29,6 @@ extension BasketViewData {
         self.image = productCDO.image
         self.typeName = .basket
         self.count = productCDO.count
+        self.isFavourite = productCDO.isFavourite
     }
 }

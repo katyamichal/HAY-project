@@ -13,8 +13,9 @@ protocol IProductCDO {
     var endpoint: ProductEndpoint { get }
     var itemIdentifier: Int { get }
     var productName: String { get }
-    var price: Int { get  }
-    var image: String { get  }
+    var price: Int { get }
+    var image: String { get }
+    var isFavourite: Bool { get }
 }
 
 // MARK: - Type used to save data into CoreData Storage
@@ -26,6 +27,7 @@ struct ProductCDO: Equatable, Entity {
     let productName: String
     let price: Int
     let image: String
+    var isFavourite: Bool
     var typeName: EntityType
 }
 
@@ -39,6 +41,7 @@ extension ProductCDO {
         self.productName = product.productName
         self.price = product.price
         self.image = product.image
+        self.isFavourite = false
         self.typeName = type
     }
 }
@@ -53,6 +56,7 @@ extension ProductCDO: IProductCDO {
         self.productName = product.productName
         self.price = product.price
         self.image = product.image
+        self.isFavourite = product.isFavourite
         self.typeName = type
     }
 }
@@ -83,11 +87,7 @@ extension ProductEndpoint {
     }
 }
 
-protocol IBasketProductCDO: IProductCDO {
-    var count: Int { get }
-}
-
-struct BasketProductCDO: IBasketProductCDO {
+struct BasketProductCDO: IProductCDO {
     let productId: Int
     let endpoint: ProductEndpoint
     let itemIdentifier: Int
@@ -95,6 +95,7 @@ struct BasketProductCDO: IBasketProductCDO {
     let price: Int
     let image: String
     var typeName: EntityType = .basket
+    var isFavourite: Bool
     var count: Int
 }
 
@@ -107,6 +108,7 @@ extension BasketProductCDO {
         self.price = productCDO.price
         self.image = productCDO.image
         self.typeName = .basket
+        self.isFavourite = productCDO.isFavourite
         self.count = count
     }
 }

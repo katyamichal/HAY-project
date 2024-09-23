@@ -26,27 +26,23 @@ extension CoreDataService: ICoreDataService {
         
         switch productType {
         case .favourite:
-            let newProduct = FavouriteProduct(context: context)
+            let newProduct = HayProduct(context: context)
             newProduct.identifier = Int16(product.productId)
             newProduct.endpoint = product.endpoint.description
             newProduct.itemIdentifier = Int16(product.itemIdentifier)
             newProduct.name = product.productName
             newProduct.price = Int32(product.price)
             newProduct.image = product.image
+            newProduct.isFavourite = true
             
         case .basket:
             guard let count = count else {
                 print("Error: Count is required for basket products")
                 return
             }
-            let newProduct = BasketProduct(context: context)
-            newProduct.identifier = Int16(product.productId)
-            newProduct.endpoint = product.endpoint.description
-            newProduct.itemIdentifier = Int16(product.itemIdentifier)
-            newProduct.name = product.productName
-            newProduct.price = Int32(product.price)
-            newProduct.image = product.image
-            newProduct.count = Int16(count)
+            let newBasketProduct = Basket(context: context)
+            newBasketProduct.productId = Int16(product.productId)
+            newBasketProduct.count = Int16(1)
         }
     }
     
@@ -68,11 +64,12 @@ extension CoreDataService: ICoreDataService {
         let context = PersistantContainerStorage.persistentContainer.viewContext
         
         let request: NSFetchRequest<NSFetchRequestResult>
+        
         switch productType {
         case .favourite:
-            request = FavouriteProduct.fetchRequest()
+            request = HayProduct.fetchRequest()
         case .basket:
-            request = BasketProduct.fetchRequest()
+            request = Basket.fetchRequest()
         }
         
         request.predicate = NSPredicate(format: "identifier == %d", id)
@@ -84,19 +81,20 @@ extension CoreDataService: ICoreDataService {
             print("Error deleting product: \(error.localizedDescription)")
         }
     }
+    
     // MARK: - Update Basket Product
-
+#warning("use a closure to pass an operation of add up or take off")
     func updateBasketCount(with id: Int) {
         defer {
             PersistantContainerStorage.saveContext()
         }
         let context = PersistantContainerStorage.persistentContainer.viewContext
-        let request: NSFetchRequest<NSFetchRequestResult> = BasketProduct.fetchRequest()
-        request.predicate = NSPredicate(format: "identifier == %d", id)
+        let request: NSFetchRequest<NSFetchRequestResult> = Basket.fetchRequest()
+        request.predicate = NSPredicate(format: "productId == %d", id)
         
         do {
-            let products = try context.fetch(request) as? [BasketProduct]
-            let product = products?.first(where: {$0.identifier == id})
+            let products = try context.fetch(request) as? [Basket]
+            let product = products?.first(where: {$0.productId == id})
             product?.count += 1
         } catch let error as NSError {
             print("Error update product count: \(error.localizedDescription)")
@@ -113,7 +111,7 @@ private extension CoreDataService {
         
         switch productType {
         case .favourite:
-            let request = FavouriteProduct.fetchRequest()
+            let request = HayProduct.fetchRequest()
             let products = try context.fetch(request)
             return products.map { product in
                 ProductCDO(
@@ -123,24 +121,37 @@ private extension CoreDataService {
                     productName: product.name,
                     price: Int(product.price),
                     image: product.image,
+                    isFavourite: product.isFavourite,
                     typeName: .favourite
                 )
             }
             
         case .basket:
-            let request = BasketProduct.fetchRequest()
-            let products = try context.fetch(request)
-            return products.map { product in
-                BasketProductCDO(
-                    productId: Int(product.identifier),
-                    endpoint: ProductEndpoint(product.endpoint),
-                    itemIdentifier: Int(product.itemIdentifier),
-                    productName: product.name,
-                    price: Int(product.price),
-                    image: product.image,
-                    typeName: .basket,
-                    count: Int(product.count)
-                )
+            let request = Basket.fetchRequest()
+            let basketProducts = try context.fetch(request)
+
+            let productIds = basketProducts.map { $0.productId }
+
+            if !productIds.isEmpty {
+                let hayRequest = HayProduct.fetchRequest()
+                hayRequest.predicate = NSPredicate(format: "identifier IN %@", productIds)
+                
+                let products = try context.fetch(hayRequest)
+                return products.map { product in
+                    BasketProductCDO(
+                        productId: Int(product.identifier),
+                        endpoint: ProductEndpoint(product.endpoint),
+                        itemIdentifier: Int(product.itemIdentifier),
+                        productName: product.name,
+                        price: Int(product.price),
+                        image: product.image,
+                        typeName: .basket,
+                        isFavourite: product.isFavourite,
+                        count: Int(basketProducts.first(where: { $0.productId == product.identifier })?.count ?? 0 )
+                    )
+                }
+            } else {
+                return []
             }
         }
     }

@@ -20,6 +20,7 @@ struct ProductViewData {
     let colour: String
     let size: String
     let price: Int
+    var isFavourite: Bool
 }
 
 extension ProductViewData: IProductCDO {
@@ -36,5 +37,6 @@ extension ProductViewData: IProductCDO {
         self.size = product.size
         self.price = product.price
         self.link = Constants.Links.mainHay
+        self.isFavourite = false
     }
 }

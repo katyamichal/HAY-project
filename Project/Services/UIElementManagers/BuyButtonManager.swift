@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct BasketProducts {
     var products: [BasketProductCDO]
 }
@@ -44,15 +45,18 @@ private extension BuyButtonManager {
     }
     
     func addBasketProduct(with product: IProductCDO) {
-        coreDataService.add(productType: .basket, product: product, count: 1)
+        coreDataService.add(productType: .basket, product: product)
          let product = BasketProductCDO(with: product, count: 1)
         basketProducts.value?.products.append(product)
         print("Product add to basketProducts")
     }
     
     func changeProductCount(with id: Int, at index: Int) {
+        defer {
+            fetchBasketProducts()
+        }
         coreDataService.updateBasketCount(with: id)
-        basketProducts.value?.products[index].count += 1
-        print("Product removed from basketProducts")
+        
+        print("Product update of basketProducts")
     }
 }

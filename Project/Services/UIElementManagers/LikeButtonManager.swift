@@ -8,7 +8,7 @@
 import Foundation
 
 struct LikeProducts {
-    var products: [ProductCDO]
+    var products: [any IProductCDO]
 }
 
 final class LikeButtonManager {

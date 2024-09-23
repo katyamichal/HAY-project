@@ -8,6 +8,8 @@
 import Foundation
 
 struct FavouriteViewData: IProductCDO {
+    var isFavourite: Bool
+    
     let productId: Int
     let endpoint: ProductEndpoint
     let itemIdentifier: Int
@@ -26,5 +28,6 @@ extension FavouriteViewData {
         self.price = productCDO.price
         self.image = productCDO.image
         self.typeName = .favourite
+        self.isFavourite = productCDO.isFavourite
     }
 }

@@ -50,11 +50,11 @@
 		4E4D6C882C6A094D00F47B5F /* ProductCDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6C872C6A094C00F47B5F /* ProductCDO.swift */; };
 		4E4D6CBD2C6DDE1500F47B5F /* UIFont + customFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4D6CBC2C6DDE1400F47B5F /* UIFont + customFont.swift */; };
 		4E5C24072C79BE54004EC7BF /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5C24062C79BE54004EC7BF /* ErrorHandler.swift */; };
+		4EC4218A2CA160FC000630F2 /* HayProduct+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC421872CA160FC000630F2 /* HayProduct+CoreDataProperties.swift */; };
+		4EC4218B2CA160FC000630F2 /* HayProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC421862CA160FC000630F2 /* HayProduct+CoreDataClass.swift */; };
+		4EC4218E2CA1614D000630F2 /* Basket+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC4218C2CA1614D000630F2 /* Basket+CoreDataClass.swift */; };
+		4EC4218F2CA1614D000630F2 /* Basket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC4218D2CA1614D000630F2 /* Basket+CoreDataProperties.swift */; };
 		4ECD031F2C9C38C80070BB9C /* BasketCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD031E2C9C38C80070BB9C /* BasketCoordinator.swift */; };
-		4ECD04C92C9D74F60070BB9C /* FavouriteProduct+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD04C82C9D74F60070BB9C /* FavouriteProduct+CoreDataProperties.swift */; };
-		4ECD04CB2C9D75B60070BB9C /* FavouriteProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD04CA2C9D75B60070BB9C /* FavouriteProduct+CoreDataClass.swift */; };
-		4ECD04CE2C9D815C0070BB9C /* BasketProduct+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD04CC2C9D815C0070BB9C /* BasketProduct+CoreDataClass.swift */; };
-		4ECD04CF2C9D815C0070BB9C /* BasketProduct+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD04CD2C9D815C0070BB9C /* BasketProduct+CoreDataProperties.swift */; };
 		4EDF6E6A2C803912007FAAEE /* HayTableViewSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDF6E692C803912007FAAEE /* HayTableViewSections.swift */; };
 		4EFA9A882C8456540051E52A /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA9A872C8456530051E52A /* LabelFactory.swift */; };
 		4EFA9A8A2C8466E10051E52A /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFA9A892C8466E10051E52A /* DataFetcher.swift */; };
@@ -106,11 +106,11 @@
 		4E4D6C872C6A094C00F47B5F /* ProductCDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCDO.swift; sourceTree = "<group>"; };
 		4E4D6CBC2C6DDE1400F47B5F /* UIFont + customFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + customFont.swift"; sourceTree = "<group>"; };
 		4E5C24062C79BE54004EC7BF /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		4EC421862CA160FC000630F2 /* HayProduct+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HayProduct+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4EC421872CA160FC000630F2 /* HayProduct+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HayProduct+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4EC4218C2CA1614D000630F2 /* Basket+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Basket+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		4EC4218D2CA1614D000630F2 /* Basket+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Basket+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4ECD031E2C9C38C80070BB9C /* BasketCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketCoordinator.swift; sourceTree = "<group>"; };
-		4ECD04C82C9D74F60070BB9C /* FavouriteProduct+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteProduct+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		4ECD04CA2C9D75B60070BB9C /* FavouriteProduct+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavouriteProduct+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4ECD04CC2C9D815C0070BB9C /* BasketProduct+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasketProduct+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4ECD04CD2C9D815C0070BB9C /* BasketProduct+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasketProduct+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4EDF6E692C803912007FAAEE /* HayTableViewSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HayTableViewSections.swift; sourceTree = "<group>"; };
 		4EFA9A872C8456530051E52A /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		4EFA9A892C8466E10051E52A /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
@@ -304,10 +304,10 @@
 		4E25A6B92C494B9E00066DFD /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				4ECD04CC2C9D815C0070BB9C /* BasketProduct+CoreDataClass.swift */,
-				4ECD04CD2C9D815C0070BB9C /* BasketProduct+CoreDataProperties.swift */,
-				4ECD04CA2C9D75B60070BB9C /* FavouriteProduct+CoreDataClass.swift */,
-				4ECD04C82C9D74F60070BB9C /* FavouriteProduct+CoreDataProperties.swift */,
+				4EC4218C2CA1614D000630F2 /* Basket+CoreDataClass.swift */,
+				4EC4218D2CA1614D000630F2 /* Basket+CoreDataProperties.swift */,
+				4EC421862CA160FC000630F2 /* HayProduct+CoreDataClass.swift */,
+				4EC421872CA160FC000630F2 /* HayProduct+CoreDataProperties.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -457,6 +457,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EC4218E2CA1614D000630F2 /* Basket+CoreDataClass.swift in Sources */,
+				4EC4218F2CA1614D000630F2 /* Basket+CoreDataProperties.swift in Sources */,
 				4E25A64A2C3C33A200066DFD /* HayCoordinator.swift in Sources */,
 				4E25A65A2C3C33BE00066DFD /* HayViewModel.swift in Sources */,
 				4E25A6592C3C33BE00066DFD /* HayTableView.swift in Sources */,
@@ -480,23 +482,21 @@
 				4E25A6782C3C33E900066DFD /* Endpoint.swift in Sources */,
 				4EFA9A882C8456540051E52A /* LabelFactory.swift in Sources */,
 				4E25A6832C3C33F800066DFD /* UIColor + customColor.swift in Sources */,
+				4EC4218A2CA160FC000630F2 /* HayProduct+CoreDataProperties.swift in Sources */,
+				4EC4218B2CA160FC000630F2 /* HayProduct+CoreDataClass.swift in Sources */,
 				4E25A67C2C3C33F000066DFD /* BigHeaderButton.swift in Sources */,
 				4E25A66E2C3C33DE00066DFD /* Product.swift in Sources */,
 				4E25A6562C3C33BE00066DFD /* HayView.swift in Sources */,
 				4E25A6CA2C4958B700066DFD /* FavouriteCoordinator.swift in Sources */,
-				4ECD04CB2C9D75B60070BB9C /* FavouriteProduct+CoreDataClass.swift in Sources */,
 				4E5C24072C79BE54004EC7BF /* ErrorHandler.swift in Sources */,
 				4E25A6BB2C494CC900066DFD /* ICoreDataService.swift in Sources */,
 				4E25A6CC2C4A363400066DFD /* ArrayDataSource.swift in Sources */,
 				4E25A6352C3C332E00066DFD /* SceneDelegate.swift in Sources */,
-				4ECD04C92C9D74F60070BB9C /* FavouriteProduct+CoreDataProperties.swift in Sources */,
 				4E25A6842C3C33F800066DFD /* UITableView + registerCell.swift in Sources */,
 				4E4D6C842C6379A800F47B5F /* PersistentContainerStorage.swift in Sources */,
 				4E25A6C82C49550B00066DFD /* BasicCollectionViewCell.swift in Sources */,
 				4E25A63D2C3C332E00066DFD /* Project.xcdatamodeld in Sources */,
 				4E25A66B2C3C33DE00066DFD /* Inspiration.swift in Sources */,
-				4ECD04CE2C9D815C0070BB9C /* BasketProduct+CoreDataClass.swift in Sources */,
-				4ECD04CF2C9D815C0070BB9C /* BasketProduct+CoreDataProperties.swift in Sources */,
 				4E25A67E2C3C33F000066DFD /* BuyButton.swift in Sources */,
 				4E25A6BF2C494D9A00066DFD /* CoreDataService.swift in Sources */,
 				4E25A6742C3C33E900066DFD /* HayEndpoints.swift in Sources */,

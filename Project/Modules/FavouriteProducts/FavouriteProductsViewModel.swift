@@ -127,7 +127,6 @@ extension FavouriteProductsViewModel: IFavouriteProductsViewModel {
             view?.updateViewHeader()
         }
         guard let data = likeManager.favouriteProducts.value else {
-//            view?.updateViewHeader()
             return
         }
         viewData = data.products.map({FavouriteViewData(with: $0)})

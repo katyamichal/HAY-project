@@ -114,6 +114,56 @@ extension BasketViewController: UITableViewDelegate {
         case .orderInfo: break
         }
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let section = BasketTableSection.allCases[indexPath.section]
+        switch section {
+        case .products: return true
+        case .orderInfo: return false
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if let deleteAction = createDeleteAction(indexPath: indexPath) {
+            let section = BasketTableSection.allCases[indexPath.section]
+            switch section {
+            case .products:
+                let swipe = UISwipeActionsConfiguration(actions: [deleteAction])
+                swipe.performsFirstActionWithFullSwipe = false
+                return swipe
+            case .orderInfo: return nil
+            }
+        }
+        return nil
+    }
+    
+    private func createDeleteAction(indexPath: IndexPath) -> UIContextualAction? {
+        
+        let deleteAction = UIContextualAction(style: .normal, title: "remove") { [weak self] _, _, _ in
+          //  viewModel.deleteProduct(with: <#T##Int#>, at: <#T##Int#>)
+            
+//            let product = viewModel.productsToBuy[indexPath.row]
+            
+//            self?.onDeleteProduct?(product, Int(indexPath.row))
+            
+//            self?.tableView.beginUpdates()
+//            self?.tableView.deleteRows(at: [indexPath], with: .left)
+//            self?.tableView.endUpdates()
+            
+            //            /// обновить общую сумму покупки
+            //            let orderIndexPath = IndexPath(row: 0, section: 1)
+            //            guard let cell = self.tableView.cellForRow(at: orderIndexPath) as? OrderInfoTableCell else {return}
+            //
+            //
+            //            if viewModel.productsToBuy.count == 0 {
+            //                self.tableView.isHidden = true
+            //                self.headerLabel.text = viewModel.emptyMessage
+            //            }
+        }
+        deleteAction.image = UIImage(systemName: "multiply")
+        
+        return deleteAction
+    }
 }
 
 extension BasketViewController: IObserver {

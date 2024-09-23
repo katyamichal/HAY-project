@@ -132,6 +132,7 @@ extension BasketViewModel: IBasketViewModel {
         guard let data = buyButtonManager.basketProducts.value else {
             return
         }
+        print(data.products.count)
         viewData = data.products.map({ BasketViewData(with: $0)})
     }
     

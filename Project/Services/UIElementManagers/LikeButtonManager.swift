@@ -45,15 +45,13 @@ private extension LikeButtonManager {
     }
     
     func addFavouriteProduct(with product: ProductCDO) {
+        defer { fetchFavouriteProducts() }
         coreDataService.add(productType: .favourite, product: product)
-        favouriteProducts.value?.products.append(product)
-        print("Product add to favorites")
     }
     
     func deleteProduct(with id: Int, at index: Int) {
+        defer { fetchFavouriteProducts() }
         coreDataService.deleteProduct(productType: .favourite, id: id)
-        favouriteProducts.value?.products.remove(at: index)
-        print("Product removed from favorites")
     }
 }
 

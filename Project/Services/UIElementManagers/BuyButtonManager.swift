@@ -45,18 +45,12 @@ private extension BuyButtonManager {
     }
     
     func addBasketProduct(with product: IProductCDO) {
+        defer { fetchBasketProducts() }
         coreDataService.add(productType: .basket, product: product)
-         let product = BasketProductCDO(with: product, count: 1)
-        basketProducts.value?.products.append(product)
-        print("Product add to basketProducts")
     }
     
     func changeProductCount(with id: Int, at index: Int) {
-        defer {
-            fetchBasketProducts()
-        }
-        coreDataService.updateBasketCount(with: id)
-        
-        print("Product update of basketProducts")
+        defer { fetchBasketProducts() }
+        coreDataService.updateBasketCount(for: id, increment: true)
     }
 }

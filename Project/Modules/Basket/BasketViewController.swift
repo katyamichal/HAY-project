@@ -154,7 +154,8 @@ private extension BasketViewController {
     }
     
     func createDeleteAction(indexPath: IndexPath) -> UIContextualAction? {
-        let deleteAction = UIContextualAction(style: .normal, title: "remove") { [weak self] _, _, completionHandler in
+        let deleteAction = UIContextualAction(style: .destructive, title: "remove") { [weak self] _, _, completionHandler in
+            
             guard let self = self else {
                 completionHandler(false)
                 return
@@ -183,7 +184,11 @@ private extension BasketViewController {
             
             CATransaction.begin()
             CATransaction.setCompletionBlock {
+                let priceIndexPath = IndexPath(row: 0, section: 1)
+                tableView.beginUpdates()
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.reloadRows(at: [priceIndexPath], with: .none)
+                tableView.endUpdates()
                 if self.viewModel.productsCount == 0 {
                     self.basketView.hideTableView()
                     self.updateViewHeader()

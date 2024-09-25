@@ -83,7 +83,8 @@ extension BasketViewModel: IBasketViewModel {
     
     var price: String {
         guard let currentProduct else { return emptyData }
-        return "£\(currentProduct.price)"
+        let wholePrice = currentProduct.count * currentProduct.price
+        return "£\(wholePrice)"
     }
     
     var image: UIImage {
@@ -183,7 +184,7 @@ private extension BasketViewModel {
     var subtotal: Int {
         var price = 0
         viewData.forEach({ product in
-            price += product.price })
+            price += (product.price * product.count) })
         return price
     }
     

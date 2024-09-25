@@ -27,6 +27,8 @@ protocol IBasketViewModel: AnyObject {
     func getData()
     
     func showDetail(at index: Int)
+    
+    func swapToDeleteFromBasket(at index: Int)
 }
 
 final class BasketViewModel {
@@ -44,8 +46,20 @@ final class BasketViewModel {
         self.coordinator = coordinator
     }
 }
+// MARK: - IBasketViewModel protocol
 
 extension BasketViewModel: IBasketViewModel {
+    func swapToDeleteFromBasket(at index: Int) {
+        defer {
+            if let data = buyButtonManager.basketProducts.value {
+                print(data.products.count)
+                viewData = data.products.map({ BasketViewData(with: $0)})
+            }
+        }
+        buyButtonManager.deleteFromBasket(with: viewData[index].productId)
+    }
+    
+    // MARK: -
 
     var isFavourite: Bool {
         guard let currentProduct else { return false }
@@ -123,17 +137,20 @@ extension BasketViewModel: IBasketViewModel {
     }
     
     // MARK: - Fetching Data
-    
     func getData() {
         defer {
-            view?.updateView()
-            view?.updateViewHeader()
+            updateViews()
         }
         guard let data = buyButtonManager.basketProducts.value else {
             return
         }
         print(data.products.count)
         viewData = data.products.map({ BasketViewData(with: $0)})
+    }
+    
+    func updateViews() {
+        view?.updateView(with: !viewData.isEmpty)
+        view?.updateViewHeader()
     }
     
     // MARK: - Subscriptions

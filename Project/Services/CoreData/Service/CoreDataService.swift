@@ -85,6 +85,10 @@ extension CoreDataService: ICoreDataService {
         do {
             if let basketProduct = try context.fetch(request).first {
                 basketProduct.count += increment ? 1 : -1
+                if basketProduct.count == 0 {
+                    deleteProductFromContext(productType: .basket, id: id)
+                }
+                
             }
         } catch {
             print("Error updating basket product count: \(error.localizedDescription)")

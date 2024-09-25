@@ -22,13 +22,18 @@ final class BuyButtonManager {
         print("BuyButtonManager Init")
     }
     
-    func changeProductStatus(with product: IProductCDO) {
+    func changeProductStatus(with product: IProductCDO, increment: Bool) {
         let product = ProductCDO(with: product, type: .basket)
         if let id = basketProducts.value?.products.firstIndex(where: {$0.productId == product.productId }) {
-            changeProductCount(with: product.productId, at: id)
+            changeProductCount(with: product.productId, at: id, increment: increment)
         } else {
             addBasketProduct(with: product)
         }
+    }
+    
+    func deleteFromBasket(with id: Int) {
+        defer { fetchBasketProducts() }
+        coreDataService.deleteProduct(productType: .basket, id: id)
     }
 }
 
@@ -49,8 +54,8 @@ private extension BuyButtonManager {
         coreDataService.add(productType: .basket, product: product)
     }
     
-    func changeProductCount(with id: Int, at index: Int) {
+    func changeProductCount(with id: Int, at index: Int, increment: Bool) {
         defer { fetchBasketProducts() }
-        coreDataService.updateBasketCount(for: id, increment: true)
+        coreDataService.updateBasketCount(for: id, increment: increment)
     }
 }

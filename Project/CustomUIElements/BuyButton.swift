@@ -8,7 +8,7 @@
 import UIKit
 
 protocol IBuyButton: AnyObject {
-    func changeProductCount(with id: Int)
+    func addProductToBasket(with id: Int)
 }
 class BuyButton: UIButton {
     weak var delegate: IBuyButton?
@@ -45,6 +45,6 @@ class BuyButton: UIButton {
     @objc
     func didSelectedBuyButton() {
         guard let productId else { return }
-        delegate?.changeProductCount(with: productId)
+        delegate?.addProductToBasket(with: productId)
     }
 }

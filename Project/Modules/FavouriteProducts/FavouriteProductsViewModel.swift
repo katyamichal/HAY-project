@@ -154,12 +154,11 @@ extension FavouriteProductsViewModel: ILikeButton {
 // MARK: - Buy Button Delegate
 
 extension FavouriteProductsViewModel: IBuyButton {
-    func changeProductCount(with id: Int) {
+    func addProductToBasket(with id: Int) {
         guard let product = viewData.first(where: { $0.productId == id }) else { return }
-        buyButtonManager.changeProductStatus(with: product)
+        buyButtonManager.changeProductStatus(with: product, increment: true)
     }
 }
-
 
 // MARK: - Private
 

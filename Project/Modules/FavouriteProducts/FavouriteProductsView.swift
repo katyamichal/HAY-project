@@ -33,6 +33,14 @@ final class FavouriteProductsView: UIView {
     
     // MARK: - UI Elements
     
+    private lazy var headerLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textColor = .black
+        return label
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collection.translatesAutoresizingMaskIntoConstraints = false
@@ -40,14 +48,6 @@ final class FavouriteProductsView: UIView {
         collection.showsVerticalScrollIndicator = false
         collection.register(BasicCollectionViewCell.self, forCellWithReuseIdentifier: BasicCollectionViewCell.reuseIdentifier)
         return collection
-    }()
-    
-    private lazy var headerLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.textColor = .black
-        return label
     }()
     
     // MARK: - Public

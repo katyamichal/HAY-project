@@ -46,7 +46,7 @@ final class BasketView: UIView {
         return label
     }()
     
-    private lazy var tableView: UITableView = {
+    private(set) lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
@@ -75,6 +75,24 @@ final class BasketView: UIView {
     func updateHeader(with title: String, and font: UIFont) {
         headerLabel.text = title
         headerLabel.font = font
+    }
+    
+    func hideTableView() {
+        tableView.isHidden = true
+    }
+    
+    // MARK: - Updating Row methods
+
+    func startUpdatingTableView() {
+        tableView.beginUpdates()
+    }
+    
+    func deleteRow(at indexPath: IndexPath) {
+        tableView.deleteRows(at: [indexPath], with: .left)
+    }
+    
+    func finishUpdatingTableView() {
+        tableView.endUpdates()
     }
 }
 // MARK: - Setup methods

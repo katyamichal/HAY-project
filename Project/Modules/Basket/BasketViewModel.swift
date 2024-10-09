@@ -33,15 +33,14 @@ protocol IBasketViewModel: AnyObject {
 
 final class BasketViewModel {
     private weak var coordinator: Coordinator?
-
     private weak var view: IBasketView?
     private var viewData: [BasketViewData] = []
     private var currentProduct: BasketViewData?
-    
     private let buyButtonManager = BuyButtonManager.shared
     private let likeManager = LikeButtonManager.shared
     
-    
+    // MARK: - Initializer
+
     init(coordinator: Coordinator) {
         self.coordinator = coordinator
     }
@@ -68,7 +67,7 @@ extension BasketViewModel: IBasketViewModel {
         }
         return false
     }
-    
+
     // MARK: - Computed properties for a single product
     
     var productId: Int {

@@ -160,6 +160,7 @@ private extension BasketViewController {
                 completionHandler(false)
                 return
             }
+            
             let tableView = self.basketView.tableView
             guard let cell = tableView.cellForRow(at: indexPath) else {
                 completionHandler(false)
@@ -174,6 +175,7 @@ private extension BasketViewController {
         deleteAction.image = UIImage(systemName: "multiply")
         return deleteAction
     }
+    
     // MARK: - Delete Row Animation
     
     func animateRowDeletion(_ tableView: UITableView, on cell: UITableViewCell, at indexPath: IndexPath) {

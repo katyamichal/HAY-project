@@ -7,7 +7,7 @@
 
 import Foundation
 import CoreData
-
+#warning("remove singleton and make it DI")
 final class CoreDataService {
     static let shared = CoreDataService()
     private init() {}
@@ -56,7 +56,7 @@ extension CoreDataService: ICoreDataService {
     
     // MARK: - Delete Product
     
-    func deleteProduct(productType: EntityType, id: Int) {
+    func deleteProduct(productType: EntityType, id: Int, completion: @escaping (Result<String, Error>) -> Void) {
         defer { PersistantContainerStorage.saveContext() }
         
         switch productType {
@@ -65,17 +65,17 @@ extension CoreDataService: ICoreDataService {
                 if fetchSingleProduct(type: .basket, id: id) is Basket {
                     product.isFavourite = false
                 } else {
-                    deleteProductFromContext(productType: .favourite, id: id)
+                    deleteProductFromContext(productType: .favourite, id: id, completion: completion)
                 }
             }
         case .basket:
-            deleteProductFromContext(productType: .basket, id: id)
+            deleteProductFromContext(productType: .basket, id: id, completion: completion)
         }
     }
     
     // MARK: - Update Basket Product
     
-    func updateBasketCount(for id: Int, increment: Bool = true) {
+    func updateBasketCount(for id: Int, increment: Bool = true,  completion: @escaping (Result<String, Error>) -> Void) {
         let context = PersistantContainerStorage.persistentContainer.viewContext
         let request: NSFetchRequest<Basket> = Basket.fetchRequest()
         request.predicate = NSPredicate(format: "productId == %d", id)
@@ -83,15 +83,18 @@ extension CoreDataService: ICoreDataService {
         defer { PersistantContainerStorage.saveContext() }
         
         do {
+            defer {
+                completion(.success("Success to update basket count"))
+            }
             if let basketProduct = try context.fetch(request).first {
                 basketProduct.count += increment ? 1 : -1
                 if basketProduct.count == 0 {
-                    deleteProductFromContext(productType: .basket, id: id)
+                    deleteProductFromContext(productType: .basket, id: id, completion: completion)
                 }
-                
             }
         } catch {
             print("Error updating basket product count: \(error.localizedDescription)")
+            completion(.success("Error to update basket count"))
         }
     }
 }
@@ -99,6 +102,8 @@ extension CoreDataService: ICoreDataService {
 // MARK: - Private Helper Methods
 
 private extension CoreDataService {
+    
+    // MARK: Fetch products by its type
 
     func fetchProducts(by productType: EntityType) throws -> [IProductCDO] {
         let context = PersistantContainerStorage.persistentContainer.viewContext
@@ -149,6 +154,8 @@ private extension CoreDataService {
         }
     }
     
+    // MARK: Fetch a single product by its type
+
     func fetchSingleProduct(type: EntityType, id: Int) -> Any? {
         let context = PersistantContainerStorage.persistentContainer.viewContext
         
@@ -165,27 +172,36 @@ private extension CoreDataService {
         }
     }
     
-    func deleteProductFromContext(productType: EntityType, id: Int) {
+    // MARK: Delete a single product by its type
+    
+    func deleteProductFromContext(productType: EntityType, id: Int, completion: @escaping (Result<String, Error>) -> Void) {
         let context = PersistantContainerStorage.persistentContainer.viewContext
         
         switch productType {
         case .favourite:
             let request = HayProduct.fetchRequest()
             request.predicate = NSPredicate(format: "identifier == %d", id)
-            deleteProducts(from: request, in: context)
+            deleteProducts(from: request, in: context, completion: completion)
             
         case .basket:
             let request = Basket.fetchRequest()
             request.predicate = NSPredicate(format: "productId == %d", id)
-            deleteProducts(from: request, in: context)
+            deleteProducts(from: request, in: context, completion: completion)
         }
     }
     
-    func deleteProducts<T: NSManagedObject>(from request: NSFetchRequest<T>, in context: NSManagedObjectContext) {
+    // MARK: Delete all products with current context
+    
+    func deleteProducts<T: NSManagedObject>(from request: NSFetchRequest<T>, in context: NSManagedObjectContext, completion: @escaping (Result<String, Error>) -> Void) {
         do {
+            defer {
+                completion(.success("Success to delete product"))
+            }
             let products = try context.fetch(request)
             products.forEach { context.delete($0) }
+            
         } catch {
+            completion(.failure(error))
             print("Error deleting product: \(error.localizedDescription)")
         }
     }

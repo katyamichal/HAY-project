@@ -27,13 +27,15 @@ enum Constants {
         static let detailArrow = "arrow.right"
         static let goBack = "chevron.left"
         static let share =  "square.and.arrow.up"
-        
+        static let delete = "multiply"
     }
     
     enum LabelTitles {
-        static let designerSection = "HAY × Designers"
-        static let addBasketButtonName = "Add to Basket"
+        static let designerSection = "HAY × Designer"
+        static let addBasketButtonName = "add to basket"
+        static let addMore = "add more"
         static let navigationBarHay = "HAY"
+        static let removeAction = "remove"
     }
     
     enum ProductModuleTitles {
@@ -46,6 +48,7 @@ enum Constants {
     enum EmptyData {
         static let noData = "no data"
         static let noFavouriteProduct = "You haven't added any favorite products yet. Start exploring and save your top picks here!"
+        static let emptyBasket = "You haven't added any products yet. Start exploring and add your top picks here!"
     }
     
     enum Links {

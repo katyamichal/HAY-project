@@ -50,8 +50,14 @@ private extension LikeButtonManager {
     }
     
     func deleteProduct(with id: Int, at index: Int) {
-        defer { fetchFavouriteProducts() }
-        coreDataService.deleteProduct(productType: .favourite, id: id)
+        coreDataService.deleteProduct(productType: .favourite, id: id) { [weak self] result in
+            switch result {
+            case .success(let message):
+                print(message)
+                self?.fetchFavouriteProducts()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
-

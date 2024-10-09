@@ -20,7 +20,7 @@ protocol IProductCDO {
 
 // MARK: - Type used to save data into CoreData Storage
 
-struct ProductCDO: Equatable, Entity {
+struct ProductCDO: Equatable {
     let productId: Int
     let endpoint: ProductEndpoint
     let itemIdentifier: Int

@@ -28,7 +28,7 @@ protocol IBasketViewModel: AnyObject {
     
     func showDetail(at index: Int)
     
-    func swapToDeleteFromBasket(at index: Int)
+    func swapToDeleteFromBasket(at index: Int, completion: @escaping (Bool) -> Void)
 }
 
 final class BasketViewModel {
@@ -48,17 +48,24 @@ final class BasketViewModel {
 // MARK: - IBasketViewModel protocol
 
 extension BasketViewModel: IBasketViewModel {
-    func swapToDeleteFromBasket(at index: Int) {
-        defer {
-            if let data = buyButtonManager.basketProducts.value {
-                print(data.products.count)
-                viewData = data.products.map({ BasketViewData(with: $0)})
+    func swapToDeleteFromBasket(at index: Int, completion: @escaping (Bool) -> Void) {
+        buyButtonManager.deleteFromBasket(with: viewData[index].productId) { [weak self] result in
+            switch result {
+            case .success:
+                if let data = self?.buyButtonManager.basketProducts.value {
+                    print(data.products.count)
+                    self?.viewData.remove(at: index)
+                    completion(true)
+                }
+            case .failure:
+                print("Show an error for a user")
+                // Notify the view that deletion failed
+                completion(false)
             }
         }
-        buyButtonManager.deleteFromBasket(with: viewData[index].productId)
     }
-    
-    // MARK: -
+
+    // MARK: - Favourite Status for a single product
 
     var isFavourite: Bool {
         guard let currentProduct else { return false }
@@ -107,7 +114,7 @@ extension BasketViewModel: IBasketViewModel {
     // MARK: - Order Info Properties
     
     var subtotalPrice: String {
-        return "Subtotal  £\(subtotal)"
+        return "Subtotal £\(subtotal)"
     }
     
     var deliveryPrice: String {
@@ -125,7 +132,7 @@ extension BasketViewModel: IBasketViewModel {
     }
     
     var headerTitle: String {
-        (viewData.count == 0) ?  Constants.EmptyData.noFavouriteProduct : "Basket".uppercased()
+        (viewData.count == 0) ?  Constants.EmptyData.emptyBasket : "Basket".uppercased()
     }
     
     func setupView(with view: IBasketView) {
@@ -141,10 +148,7 @@ extension BasketViewModel: IBasketViewModel {
         defer {
             updateViews()
         }
-        guard let data = buyButtonManager.basketProducts.value else {
-            return
-        }
-        print(data.products.count)
+        guard let data = buyButtonManager.basketProducts.value else { return }
         viewData = data.products.map({ BasketViewData(with: $0)})
     }
     

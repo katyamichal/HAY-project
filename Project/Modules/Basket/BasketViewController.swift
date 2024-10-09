@@ -154,7 +154,7 @@ private extension BasketViewController {
     }
     
     func createDeleteAction(indexPath: IndexPath) -> UIContextualAction? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "remove") { [weak self] _, _, completionHandler in
+        let deleteAction = UIContextualAction(style: .normal, title: Constants.LabelTitles.removeAction) { [weak self] _, _, completionHandler in
             
             guard let self = self else {
                 completionHandler(false)
@@ -166,41 +166,51 @@ private extension BasketViewController {
                 completionHandler(false)
                 return
             }
+            
             isEditingRow = true
             completionHandler(true)
-            self.viewModel.swapToDeleteFromBasket(at: indexPath.row)
-            self.animateRowDeletion(tableView, on: cell, at: indexPath)
+            self.startFlashingAnimation(on: cell)
+            self.viewModel.swapToDeleteFromBasket(at: indexPath.row) { success in
+                if success {
+                    self.animateRowDeletion(tableView, on: cell, at: indexPath)
+                } else {
+                    self.stopFlashingAnimation(on: cell)
+                    self.isEditingRow = false
+                }
+            }
         }
         deleteAction.backgroundColor = .black
-        deleteAction.image = UIImage(systemName: "multiply")
+        deleteAction.image = UIImage(systemName: Constants.SystemUIElementNames.delete)
         return deleteAction
     }
-    
+
     // MARK: - Delete Row Animation
-    
     func animateRowDeletion(_ tableView: UITableView, on cell: UITableViewCell, at indexPath: IndexPath) {
-        startFlashingAnimation(on: cell)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            guard let self = self else { return }
+
             self.stopFlashingAnimation(on: cell)
-            
+
             CATransaction.begin()
             CATransaction.setCompletionBlock {
                 let priceIndexPath = IndexPath(row: 0, section: 1)
-                tableView.beginUpdates()
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                tableView.reloadRows(at: [priceIndexPath], with: .none)
-                tableView.endUpdates()
-                if self.viewModel.productsCount == 0 {
-                    self.basketView.hideTableView()
-                    self.updateViewHeader()
+                tableView.performBatchUpdates {
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                } completion: { _ in
+                    if self.viewModel.productsCount == 0 {
+                        self.basketView.hideTableView()
+                        self.updateViewHeader()
+                    } else {
+                        tableView.reloadRows(at: [priceIndexPath], with: .none)
+                    }
                 }
             }
             CATransaction.commit()
             self.isEditingRow = false
         }
     }
-    
+
+            
     func startFlashingAnimation(on cell: UITableViewCell) {
         let flashingAnimation = CABasicAnimation(keyPath: "backgroundColor")
         flashingAnimation.toValue = UIColor.gray.withAlphaComponent(0.1).cgColor

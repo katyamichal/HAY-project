@@ -31,9 +31,19 @@ final class BuyButtonManager {
         }
     }
     
-    func deleteFromBasket(with id: Int) {
-        defer { fetchBasketProducts() }
-        coreDataService.deleteProduct(productType: .basket, id: id)
+    func deleteFromBasket(with id: Int, completion: @escaping (Result<String, Error>) -> Void) {
+        coreDataService.deleteProduct(productType: .basket, id: id) { [weak self] result in
+            switch result {
+            case .success(let message):
+                defer { completion(.success("Success to delete product")) }
+                print(message)
+                self?.fetchBasketProducts()
+                
+            case .failure(let error):
+                print(error)
+                completion(.failure(error))
+            }
+        }
     }
 }
 
@@ -55,7 +65,14 @@ private extension BuyButtonManager {
     }
     
     func changeProductCount(with id: Int, at index: Int, increment: Bool) {
-        defer { fetchBasketProducts() }
-        coreDataService.updateBasketCount(for: id, increment: increment)
+        coreDataService.updateBasketCount(for: id, increment: increment) { [weak self] result in
+            switch result {
+            case .success(let message):
+                print(message)
+                self?.fetchBasketProducts()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
